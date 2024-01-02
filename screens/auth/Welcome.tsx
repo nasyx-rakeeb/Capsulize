@@ -10,22 +10,18 @@ const Welcome = ({navigation}) => {
   return (
     <View style={styles.container}>
     <View style={styles.box}>
-    <View style={styles.logoContainer}>
-      <Image resizeMode="cover" style={styles.logo}  source={require("../../assets/images/logo.png")} />
-      {/*<LottieView
+    <View style={styles.animationContainer}>
+      <LottieView
         autoPlay
-        style={{
-          width: 200,
-          height: 200,
-        }}
-        source={require('../../assets/lottie_animations/An1.json')}
-      />*/}
+        style={styles.animation}
+        source={require('../../assets/lottie_animations/Robot.json')}
+      />
     </View>
     <View style={styles.headingContainer}>
     <Text style={styles.heading}>Welcome!</Text>
     </View>
     <View style={styles.subHeadingContainer}>
-    <Text style={styles.subHeading}>Embrace Timeless Connections with Capsulize</Text>
+    <Text style={styles.subHeading}>Ahoy there! Welcome aboard our time-traveling ship. Secure your spot in the crew by signing up or teleport to your account with a quick login.</Text>
     </View>
     </View>
     <View style={styles.box}>
@@ -48,25 +44,23 @@ const styles = StyleSheet.create({
     backgroundColor: colors.prussianBluePrimary,
     justifyContent: "space-between"
   },
-  logoContainer: {
+  animationContainer: {
     width: "100%",
     justifyContent: "center",
-    alignItems: "center",
-    marginBottom: 30
+    alignItems: "center"
   },
-  logo: {
-    height: 200,
-    width: 200
+  animation: {
+    width: "100%",
+    marginLeft: 20
   },
   headingContainer: {
     width: "90%",
   },
   heading: {
-    color: colors.beige,
+    color: colors.silver,
     textAlign: "center",
-    fontWeight: "bold",
     fontSize: 55,
-    fontFamily: "Poppins-Bold",
+    fontFamily: "Merienda-Bold",
     letterSpacing: 3.5
   },
   btnContainer: {
@@ -97,15 +91,15 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto-Bold"
   },
   subHeadingContainer: {
-    width: "98%",
+    width: "90%",
     marginTop: 10,
   },
   subHeading: {
     textAlign: "center",
-    color: colors.beige,
+    color: colors.silver,
     fontFamily: "Roboto-Regular",
     letterSpacing: 1.5,
-    fontSize: 14
+    fontSize: 16
   }
 })
 
