@@ -26,7 +26,7 @@ const Welcome = ({navigation}) => {
     </View>
     <View style={styles.box}>
     <View style={styles.btnContainer}>
-      <Button uppercase={false} labelStyle={styles.btnTxt1} buttonColor={colors.brightTurquoise} style={styles.btn1} icon="login" mode="contained" onPress={() => handleBtnPress("Login")}>
+      <Button uppercase={false} labelStyle={styles.btnTxt1} buttonColor={colors.wisteria} style={styles.btn1} icon="login" mode="contained" onPress={() => handleBtnPress("Login")}>
 Log In
 </Button>
 <Button uppercase={false} labelStyle={styles.btnTxt2} style={styles.btn2} icon="account-plus" mode="outlined" onPress={() => handleBtnPress("Username")}>
