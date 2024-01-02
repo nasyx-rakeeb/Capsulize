@@ -61,7 +61,8 @@ const styles = StyleSheet.create({
   subHeading: {
     color: colors.slateGray,
     fontFamily: "Roboto-Regular",
-    fontSize: 16
+    fontSize: 16,
+    lineHeight: 16
   },
   inputContainer: {
     width: "100%",
