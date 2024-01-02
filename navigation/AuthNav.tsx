@@ -1,6 +1,7 @@
 import {Welcome, Login, ForgotPassword, Email, Bio, Gender, ProfilePicture, Username, Name, Birthday} from "../screens"
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import colors from "../others/colors"
+import {HeaderBackBtn} from "../components/"
 
 const AuthNav = () => {
   const AuthStack = createNativeStackNavigator();
@@ -10,9 +11,10 @@ const AuthNav = () => {
         headerStyle: {
           backgroundColor: colors.prussianBluePrimary,
         },
-        headerTintColor: colors.white,
+        headerTintColor: colors.silver,
         headerShadowVisible: false,
-        headerTitle: ""
+        headerTitle: '',
+        headerLeft: ({canGoBack}) => canGoBack && ( <HeaderBackBtn />)
       }}>
         <AuthStack.Screen name="Welcome" component={Welcome} />
         <AuthStack.Screen name="Login" component={Login} />
