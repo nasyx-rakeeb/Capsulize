@@ -11,6 +11,7 @@ const HeaderBackBtn = () => {
       size={24}
       onPress={() => navigation.goBack()}
       color={colors.slateGray}
+      style={{marginLeft: 10}}
     />
       )
   }
