@@ -11,7 +11,8 @@ const colors = {
   steelBlue: "#4891C3",
   yellow: "#FEAB2F",
   sweet: "#FE6F57",
-  beige: "#FCF6DF"
+  beige: "#FCF6DF",
+  wisteria: "#D1BCFF"
 }
 
 export default colors

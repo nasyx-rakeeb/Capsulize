@@ -10,7 +10,7 @@ const HeaderBackBtn = () => {
       name="arrow-back-ios"
       size={24}
       onPress={() => navigation.goBack()}
-      color={colors.silver}
+      color={colors.slateGray}
     />
       )
   }
