@@ -3,7 +3,7 @@ import {DateTimePickerAndroid} from '@react-native-community/datetimepicker'
 
 const useBirthday = (navigation) => {
   const [birthday, setBirthday] = useState<string>("")
-  const notes = ["Date of birth can not be empty"]
+  const notes = ["Date of birth can not be empty", "Year of birth can not be greater than current year"]
   const [date, setDate] = useState<Date>(new Date());
   
   const handleBtnPress = () => {
@@ -16,16 +16,19 @@ const useBirthday = (navigation) => {
     const formattedDate = selectedDate.toLocaleDateString('en-GB', {
         day: 'numeric',
         month: 'short',
-        year: 'numeric',
+        year: 'numeric'
       });
     setBirthday(formattedDate)
   };
 
   const showDatePicker = () => {
+    const maximumDate = new Date(new Date());
+    maximumDate.setFullYear(new Date().getFullYear() + 1);
     DateTimePickerAndroid.open({
       value: date,
       onChange,
-      mode: "date"
+      mode: "date",
+      maximumDate: maximumDate
     });
   };
   
@@ -33,7 +36,9 @@ const useBirthday = (navigation) => {
     switch (note) {
       case notes[0]:
         return !!birthday && birthday.length > 1;
-      default:
+      case notes[1]:
+        return Number(new Date(date).getFullYear()) <= Number(new Date().getFullYear())
+    default:
         return true;
     }
   };
