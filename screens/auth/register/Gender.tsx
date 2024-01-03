@@ -17,3 +17,5 @@ const styles = StyleSheet.create({
 })
 
 export default Gender
+
+//Select the gender you identify with.

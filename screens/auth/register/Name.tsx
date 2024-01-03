@@ -14,7 +14,7 @@ const Name = ({navigation}) => {
       <Text style={styles.heading}>Name</Text>
       </View>
       <View style={styles.subHeadingContainer}>
-      <Text style={styles.subHeading}>Please enter your name to continue</Text>
+      <Text style={styles.subHeading}>Enter your complete name as you want it to appear</Text>
       </View>
       <View style={styles.inputContainer}>
         <TextInput onChangeText={setName} value={name} left={<TextInput.Icon icon="account"/>} style={styles.input} label="Full Name" mode="flat" />

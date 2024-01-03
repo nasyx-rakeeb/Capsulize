@@ -14,7 +14,7 @@ const Email = ({navigation}) => {
       <Text style={styles.heading}>Email</Text>
       </View>
       <View style={styles.subHeadingContainer}>
-      <Text style={styles.subHeading}>Please enter your email address to continue</Text>
+      <Text style={styles.subHeading}>Provide your email for account verification.</Text>
       </View>
       <View style={styles.inputContainer}>
         <TextInput onChangeText={setEmail} value={email} left={<TextInput.Icon icon="email"/>} style={styles.input} label="Email" mode="flat" />

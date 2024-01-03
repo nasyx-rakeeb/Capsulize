@@ -14,7 +14,7 @@ const Username = ({navigation}) => {
       <Text style={styles.heading}>Username</Text>
       </View>
       <View style={styles.subHeadingContainer}>
-      <Text style={styles.subHeading}>Please enter your username to continue</Text>
+      <Text style={styles.subHeading}>Pick a unique username for your account</Text>
       </View>
       <View style={styles.inputContainer}>
         <TextInput onChangeText={setUsername} value={username} left={<TextInput.Icon icon="at"/>} style={styles.input} label="Username" mode="flat" />

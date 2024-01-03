@@ -17,3 +17,5 @@ const styles = StyleSheet.create({
 })
 
 export default ProfilePicture
+
+//Enhance your profile by adding a picture.
