@@ -4,7 +4,7 @@ import { TextInput, Button } from "react-native-paper";
 import { useForgotPassword } from "../../../hooks";
 
 const ForgotPassword = ({ navigation }) => {
-  const { email, setEmail, handleBtnPress } = useForgotPassword(navigation);
+  const { email, setEmail, handleBtnPress, disableBtn } = useForgotPassword(navigation);
 
   return (
     <View style={styles.container}>
@@ -33,6 +33,7 @@ const ForgotPassword = ({ navigation }) => {
           icon="arrow-right"
           mode="contained"
           onPress={handleBtnPress}
+          disabled={disableBtn()}
         >
           Continue
         </Button>

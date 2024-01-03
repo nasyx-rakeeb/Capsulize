@@ -12,9 +12,9 @@ const useProfilePicture = (navigation) => {
       allowsEditing: true,
       aspect: [1, 1],
       quality: 1,
-      base64: true
+      base64: true,
     });
-  
+
     if (!result.canceled) {
       setProfilePicture(result.assets[0].uri);
     }

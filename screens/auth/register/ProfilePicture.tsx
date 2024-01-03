@@ -17,7 +17,7 @@ const ProfilePicture = ({ navigation }) => {
     areAllConditionsMet,
     imageLoading,
     setImageLoading,
-    pickImage
+    pickImage,
   } = useProfilePicture(navigation);
 
   return (
@@ -85,26 +85,28 @@ const ProfilePicture = ({ navigation }) => {
             />
           ))}
       </View>
-      {!!profilePicture && profilePicture?.length > 0 && <View style={styles.actionBtnContainer}>
-        <Button
-          labelStyle={styles.actionBtnTxt}
-          style={[styles.actionBtn, styles.btn1]}
-          icon="delete"
-          mode="outlined"
-          onPress={() => setProfilePicture("")}
-        >
-          Remove
-        </Button>
-        <Button
-          labelStyle={styles.actionBtnTxt}
-          style={[styles.actionBtn, styles.btn2]}
-          icon="autorenew"
-          mode="outlined"
-          onPress={pickImage}
-        >
-          Change
-        </Button>
-      </View>}
+      {!!profilePicture && profilePicture?.length > 0 && (
+        <View style={styles.actionBtnContainer}>
+          <Button
+            labelStyle={styles.actionBtnTxt}
+            style={[styles.actionBtn, styles.btn1]}
+            icon="delete"
+            mode="outlined"
+            onPress={() => setProfilePicture("")}
+          >
+            Remove
+          </Button>
+          <Button
+            labelStyle={styles.actionBtnTxt}
+            style={[styles.actionBtn, styles.btn2]}
+            icon="autorenew"
+            mode="outlined"
+            onPress={pickImage}
+          >
+            Change
+          </Button>
+        </View>
+      )}
       <View style={styles.btnContainer}>
         <Button
           labelStyle={styles.btnTxt}
@@ -175,7 +177,7 @@ const styles = StyleSheet.create({
   },
   actionBtnTxt: {
     color: colors.silver,
-    fontFamily: "Roboto-Bold"
+    fontFamily: "Roboto-Bold",
   },
   listContainer: {
     width: "100%",
@@ -214,14 +216,14 @@ const styles = StyleSheet.create({
     marginHorizontal: 25,
   },
   actionBtn: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   btn1: {
-    marginRight: 4
+    marginRight: 4,
   },
   btn2: {
-    marginLeft: 4
-  }
+    marginLeft: 4,
+  },
 });
 
 export default ProfilePicture;

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {isEmail} from "../others/utils"
 
 const useEmail = (navigation) => {
   const [email, setEmail] = useState<string>("");
@@ -12,7 +13,7 @@ const useEmail = (navigation) => {
       case notes[0]:
         return email.trim() !== "";
       case notes[1]:
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        return isEmail(email);
       default:
         return true;
     }

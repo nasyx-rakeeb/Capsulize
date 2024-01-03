@@ -1,4 +1,10 @@
-import { View, Text, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
 import colors from "../../../others/colors";
 import { TextInput, Button } from "react-native-paper";
 import { useLogin } from "../../../hooks";
@@ -12,10 +18,14 @@ const Login = ({ navigation }) => {
     setPwdVisibility,
     pwdVisibility,
     handleBtnPress,
+    disableBtn,
   } = useLogin(navigation);
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
       <View style={styles.top}>
         <View style={styles.headingContainer}>
           <Text style={styles.heading}>Login</Text>
@@ -70,6 +80,7 @@ const Login = ({ navigation }) => {
             icon="login"
             mode="contained"
             onPress={() => {}}
+            disabled={disableBtn()}
           >
             Log In
           </Button>
@@ -88,7 +99,7 @@ const Login = ({ navigation }) => {
           Don't have an account? Sign Up
         </Button>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
