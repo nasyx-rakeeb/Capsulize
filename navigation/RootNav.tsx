@@ -1,13 +1,13 @@
-import AuthNav from "./AuthNav"
-import HomeNav from "./HomeNav"
+import AuthNav from "./AuthNav";
+import HomeNav from "./HomeNav";
 import { NavigationContainer } from "@react-navigation/native";
 
 const RootNav = () => {
   return (
     <NavigationContainer>
       <AuthNav />
-      </NavigationContainer>
-    )
-}
+    </NavigationContainer>
+  );
+};
 
-export default RootNav
+export default RootNav;

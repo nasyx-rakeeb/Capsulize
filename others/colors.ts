@@ -12,7 +12,7 @@ const colors = {
   yellow: "#FEAB2F",
   sweet: "#FE6F57",
   beige: "#FCF6DF",
-  wisteria: "#D1BCFF"
-}
+  wisteria: "#D1BCFF",
+};
 
-export default colors
+export default colors;

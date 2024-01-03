@@ -1,9 +1,9 @@
 const useWelcome = (navigation) => {
   const handleBtnPress = (navigateTo: "Login" | "Username") => {
-    navigation.navigate(navigateTo)
-  }
-  
-  return {handleBtnPress}
-}
+    navigation.navigate(navigateTo);
+  };
 
-export default useWelcome
+  return { handleBtnPress };
+};
+
+export default useWelcome;

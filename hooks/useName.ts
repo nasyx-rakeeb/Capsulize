@@ -1,14 +1,14 @@
-import {useState} from "react"
+import { useState } from "react";
 
 const useName = (navigation) => {
-  const [name, setName] = useState<string>("")
+  const [name, setName] = useState<string>("");
   const notes = [
-  "Name cannot be empty",
-  "Must be at least 2 characters long",
-  "Cannot exceed 15 characters",
-  "Cannot contain special characters"
-];
-  
+    "Name cannot be empty",
+    "Must be at least 2 characters long",
+    "Cannot exceed 15 characters",
+    "Cannot contain special characters",
+  ];
+
   const noteConditionMet = (note) => {
     switch (note) {
       case notes[0]:
@@ -23,16 +23,23 @@ const useName = (navigation) => {
         return true;
     }
   };
-  
-  const areAllConditionsMet = () => {
-    return notes.every(note => noteConditionMet(note));
-  };
-  
-  const handleBtnPress = () => {
-    navigation.navigate("Email")
-  }
-  
-  return{name, setName, handleBtnPress, notes, noteConditionMet, areAllConditionsMet}
-}
 
-export default useName
+  const areAllConditionsMet = () => {
+    return notes.every((note) => noteConditionMet(note));
+  };
+
+  const handleBtnPress = () => {
+    navigation.navigate("Email");
+  };
+
+  return {
+    name,
+    setName,
+    handleBtnPress,
+    notes,
+    noteConditionMet,
+    areAllConditionsMet,
+  };
+};
+
+export default useName;

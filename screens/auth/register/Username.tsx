@@ -1,43 +1,76 @@
-import {View, Text, StyleSheet} from "react-native"
-import colors from "../../../others/colors"
-import { TextInput, Button } from 'react-native-paper';
-import {useUsername} from "../../../hooks"
-import { List } from 'react-native-paper';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import { View, Text, StyleSheet } from "react-native";
+import colors from "../../../others/colors";
+import { TextInput, Button } from "react-native-paper";
+import { useUsername } from "../../../hooks";
+import { List } from "react-native-paper";
+import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 
-const Username = ({navigation}) => {
-  const {username, setUsername, handleBtnPress, notes, noteConditionMet, areAllConditionsMet} = useUsername(navigation)
-  
+const Username = ({ navigation }) => {
+  const {
+    username,
+    setUsername,
+    handleBtnPress,
+    notes,
+    noteConditionMet,
+    areAllConditionsMet,
+  } = useUsername(navigation);
+
   return (
     <View style={styles.container}>
       <View style={styles.headingContainer}>
-      <Text style={styles.heading}>Username</Text>
+        <Text style={styles.heading}>Username</Text>
       </View>
       <View style={styles.subHeadingContainer}>
-      <Text style={styles.subHeading}>Pick a unique username for your account</Text>
+        <Text style={styles.subHeading}>
+          Pick a unique username for your account
+        </Text>
       </View>
       <View style={styles.inputContainer}>
-        <TextInput onChangeText={setUsername} value={username} left={<TextInput.Icon icon="at"/>} style={styles.input} label="Username" mode="flat" />
+        <TextInput
+          onChangeText={setUsername}
+          value={username}
+          left={<TextInput.Icon icon="at" />}
+          style={styles.input}
+          label="Username"
+          mode="flat"
+        />
       </View>
       <View style={styles.listContainer}>
         {notes.map((note, index) => (
           <List.Item
             style={styles.listItem}
-            titleStyle={[styles.listTitle, !noteConditionMet(note) && styles.error]}
+            titleStyle={[
+              styles.listTitle,
+              !noteConditionMet(note) && styles.error,
+            ]}
             key={index}
             title={note}
-            left={props => <MaterialIcon {...props} name={!noteConditionMet(note) ? "highlight-remove" : "check"} color={!noteConditionMet(note) ? "red" : colors.silver} size={15} />}
+            left={(props) => (
+              <MaterialIcon
+                {...props}
+                name={!noteConditionMet(note) ? "highlight-remove" : "check"}
+                color={!noteConditionMet(note) ? "red" : colors.silver}
+                size={15}
+              />
+            )}
           />
         ))}
       </View>
       <View style={styles.btnContainer}>
-        <Button labelStyle={styles.btnTxt} style={styles.btn} icon="arrow-right" mode="contained" onPress={handleBtnPress} disabled={!areAllConditionsMet()}>
-    Continue
-  </Button>
+        <Button
+          labelStyle={styles.btnTxt}
+          style={styles.btn}
+          icon="arrow-right"
+          mode="contained"
+          onPress={handleBtnPress}
+          disabled={!areAllConditionsMet()}
+        >
+          Continue
+        </Button>
       </View>
     </View>
-    )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -46,7 +79,7 @@ const styles = StyleSheet.create({
   },
   headingContainer: {
     width: "100%",
-    marginHorizontal: 25
+    marginHorizontal: 25,
   },
   heading: {
     color: colors.silver,
@@ -55,50 +88,50 @@ const styles = StyleSheet.create({
   },
   subHeadingContainer: {
     width: "100%",
-    marginHorizontal: 25,
   },
   subHeading: {
     color: colors.slateGray,
     fontFamily: "Roboto-Regular",
     fontSize: 16,
-    lineHeight: 16
+    marginHorizontal: 25,
+    lineHeight: 20,
   },
   inputContainer: {
     width: "100%",
-    marginTop: 50
+    marginTop: 50,
   },
   input: {
     marginHorizontal: 25,
-    backgroundColor: colors.prussianBlueSecondary
+    backgroundColor: colors.prussianBlueSecondary,
   },
   btnContainer: {
     width: "100%",
     alignItems: "flex-end",
-    marginTop: 30
+    marginTop: 30,
   },
   btn: {
     marginHorizontal: 25,
   },
   btnTxt: {
     color: colors.prussianBluePrimary,
-    fontFamily: "Roboto-Bold"
+    fontFamily: "Roboto-Bold",
   },
   listContainer: {
     width: "100%",
-    marginHorizontal: 10
+    marginHorizontal: 10,
   },
   listTitle: {
     fontFamily: "Roboto-Regular",
     color: colors.silver,
     fontSize: 12,
-    marginLeft: -8.5
+    marginLeft: -8.5,
   },
   listItem: {
-    marginBottom: -20
+    marginBottom: -20,
   },
   error: {
-    color: "red"
-  }
-})
+    color: "red",
+  },
+});
 
-export default Username
+export default Username;

@@ -1,9 +1,12 @@
-import {useState} from "react"
+import { useState } from "react";
 
 const useEmail = (navigation) => {
   const [email, setEmail] = useState<string>("");
-  const notes = ["Email address cannot be empty", "Email address must be in valid format"];
-  
+  const notes = [
+    "Email address cannot be empty",
+    "Email address must be in valid format",
+  ];
+
   const noteConditionMet = (note) => {
     switch (note) {
       case notes[0]:
@@ -14,16 +17,23 @@ const useEmail = (navigation) => {
         return true;
     }
   };
-  
+
   const areAllConditionsMet = () => {
-    return notes.every(note => noteConditionMet(note));
+    return notes.every((note) => noteConditionMet(note));
   };
-  
+
   const handleBtnPress = () => {
     navigation.navigate("Bio");
-  }
-  
-  return { email, setEmail, handleBtnPress, notes, noteConditionMet, areAllConditionsMet };
-}
+  };
+
+  return {
+    email,
+    setEmail,
+    handleBtnPress,
+    notes,
+    noteConditionMet,
+    areAllConditionsMet,
+  };
+};
 
 export default useEmail;

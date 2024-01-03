@@ -1,19 +1,19 @@
-import { useNavigation } from '@react-navigation/native';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
-import colors from "../../others/colors"
+import { useNavigation } from "@react-navigation/native";
+import MaterialIcon from "react-native-vector-icons/MaterialIcons";
+import colors from "../../others/colors";
 
 const HeaderBackBtn = () => {
-    const navigation = useNavigation();
-    
-    return (
-      <MaterialIcon
+  const navigation = useNavigation();
+
+  return (
+    <MaterialIcon
       name="arrow-back-ios"
       size={24}
       onPress={() => navigation.goBack()}
       color={colors.slateGray}
-      style={{marginLeft: 10}}
+      style={{ marginLeft: 10 }}
     />
-      )
-  }
-  
-  export default HeaderBackBtn
+  );
+};
+
+export default HeaderBackBtn;

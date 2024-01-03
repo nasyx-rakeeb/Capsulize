@@ -1,1 +1,1 @@
-export {default as HeaderBackBtn} from "./Navigation/HeaderBackBtn"
+export { default as HeaderBackBtn } from "./Navigation/HeaderBackBtn";

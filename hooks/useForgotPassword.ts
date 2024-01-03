@@ -1,13 +1,11 @@
-import {useState} from "react"
+import { useState } from "react";
 
 const useForgotPassword = (navigation) => {
-  const [email, setEmail] = useState<string>("")
-  
-  const handleBtnPress = () => {
-    
-  }
-  
-  return {email, setEmail, handleBtnPress}
-}
+  const [email, setEmail] = useState<string>("");
 
-export default useForgotPassword
+  const handleBtnPress = () => {};
+
+  return { email, setEmail, handleBtnPress };
+};
+
+export default useForgotPassword;

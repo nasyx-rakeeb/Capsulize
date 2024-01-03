@@ -1,19 +1,19 @@
-import {View, Text, StyleSheet} from "react-native"
-import colors from "../../others/colors"
+import { View, Text, StyleSheet } from "react-native";
+import colors from "../../others/colors";
 
-const Home  = () => {
+const Home = () => {
   return (
     <View style={styles.container}>
-    <Text>Home</Text>
+      <Text>Home</Text>
     </View>
-    )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.prussianBluePrimary
-  }
-})
+    backgroundColor: colors.prussianBluePrimary,
+  },
+});
 
-export default Home
+export default Home;
