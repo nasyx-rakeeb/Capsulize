@@ -26,78 +26,80 @@ const Login = ({ navigation }) => {
       style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
-      <View style={styles.top}>
-        <View style={styles.headingContainer}>
-          <Text style={styles.heading}>Login</Text>
+      <View style={styles.innerContainer}>
+        <View style={styles.top}>
+          <View style={styles.headingContainer}>
+            <Text style={styles.heading}>Login</Text>
+          </View>
+          <View style={styles.subHeadingContainer}>
+            <Text style={styles.subHeading}>Please sign in to continue</Text>
+          </View>
+          <View style={styles.inputContainer}>
+            <TextInput
+              onChangeText={setEmail}
+              value={email}
+              left={<TextInput.Icon icon="email" />}
+              style={[styles.input, styles.input1]}
+              label="Email"
+              mode="flat"
+            />
+            <TextInput
+              secureTextEntry={pwdVisibility}
+              onChangeText={setPassword}
+              value={password}
+              left={<TextInput.Icon icon="lock" />}
+              right={
+                password?.length > 0 && (
+                  <TextInput.Icon
+                    icon={pwdVisibility ? "eye" : "eye-off"}
+                    onPress={() => {
+                      setPwdVisibility(pwdVisibility ? false : true);
+                    }}
+                  />
+                )
+              }
+              style={styles.input}
+              label="Password"
+              mode="flat"
+            />
+          </View>
+          <View style={styles.btnContainer}>
+            <Button
+              style={styles.btn2}
+              labelStyle={styles.btnTxt2}
+              mode="text"
+              onPress={() => {
+                handleBtnPress("ForgotPassword");
+              }}
+              rippleColor={colors.prussianBluePrimary}
+            >
+              Forgot password?
+            </Button>
+            <Button
+              labelStyle={styles.btnTxt}
+              style={styles.btn}
+              icon="login"
+              mode="contained"
+              onPress={() => {}}
+              disabled={disableBtn()}
+            >
+              Log In
+            </Button>
+          </View>
         </View>
-        <View style={styles.subHeadingContainer}>
-          <Text style={styles.subHeading}>Please sign in to continue</Text>
-        </View>
-        <View style={styles.inputContainer}>
-          <TextInput
-            onChangeText={setEmail}
-            value={email}
-            left={<TextInput.Icon icon="email" />}
-            style={[styles.input, styles.input1]}
-            label="Email"
-            mode="flat"
-          />
-          <TextInput
-            secureTextEntry={pwdVisibility}
-            onChangeText={setPassword}
-            value={password}
-            left={<TextInput.Icon icon="lock" />}
-            right={
-              password?.length > 0 && (
-                <TextInput.Icon
-                  icon={pwdVisibility ? "eye" : "eye-off"}
-                  onPress={() => {
-                    setPwdVisibility(pwdVisibility ? false : true);
-                  }}
-                />
-              )
-            }
-            style={styles.input}
-            label="Password"
-            mode="flat"
-          />
-        </View>
-        <View style={styles.btnContainer}>
+        <View style={styles.signupBtnContainer}>
           <Button
             style={styles.btn2}
-            labelStyle={styles.btnTxt2}
+            labelStyle={styles.signupBtnTxt}
             mode="text"
             onPress={() => {
-              handleBtnPress("ForgotPassword");
+              handleBtnPress("Username");
             }}
             rippleColor={colors.prussianBluePrimary}
           >
-            Forgot password?
-          </Button>
-          <Button
-            labelStyle={styles.btnTxt}
-            style={styles.btn}
-            icon="login"
-            mode="contained"
-            onPress={() => {}}
-            disabled={disableBtn()}
-          >
-            Log In
+            Don't have an account? Sign Up
           </Button>
         </View>
-      </View>
-      <View style={styles.signupBtnContainer}>
-        <Button
-          style={styles.btn2}
-          labelStyle={styles.signupBtnTxt}
-          mode="text"
-          onPress={() => {
-            handleBtnPress("Username");
-          }}
-          rippleColor={colors.prussianBluePrimary}
-        >
-          Don't have an account? Sign Up
-        </Button>
       </View>
     </KeyboardAvoidingView>
   );
@@ -105,8 +107,11 @@ const Login = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     backgroundColor: colors.prussianBluePrimary,
+  },
+  innerContainer: {
+    flex: 1,
   },
   top: {
     flex: 1,

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {isEmail} from "../others/utils"
+import { isEmail } from "../others/utils";
 
 const useLogin = (navigation) => {
   const [email, setEmail] = useState<string>("");
@@ -12,14 +12,14 @@ const useLogin = (navigation) => {
     } else if (!password || password?.trim()?.length <= 5) {
       return true;
     } else if (!isEmail(email)) {
-      return true
+      return true;
     } else {
       return false;
     }
   };
 
   const handleBtnPress = (navigateTo: "ForgotPassword" | "Username") => {
-    navigation.navigate(navigateTo)
+    navigation.navigate(navigateTo);
   };
 
   return {

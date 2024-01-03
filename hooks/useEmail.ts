@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {isEmail} from "../others/utils"
+import { isEmail } from "../others/utils";
 
 const useEmail = (navigation) => {
   const [email, setEmail] = useState<string>("");
