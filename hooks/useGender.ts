@@ -20,7 +20,7 @@ const useGender = (navigation) => {
   };
   
   const handleBtnPress = () => {
-    navigation.navigate("")
+    navigation.navigate("ProfilePicture")
   }
   
   return{gender, setGender, handleBtnPress, notes, options, noteConditionMet, areAllConditionsMet, optionsVisible, setOptionsVisible}
