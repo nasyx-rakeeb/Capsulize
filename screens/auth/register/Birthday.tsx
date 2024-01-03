@@ -16,11 +16,9 @@ const Birthday = ({navigation}) => {
       <View style={styles.subHeadingContainer}>
       <Text style={styles.subHeading}>Provide your date of birth for a personalized experience</Text>
       </View>
-      <View style={styles.inputContainer}>
-        <TouchableOpacity onPress={showDatePicker}>
+        <TouchableOpacity style={styles.inputContainer} onPress={showDatePicker}>
         <TextInput editable={false} value={birthday} left={<TextInput.Icon icon="calendar"/>} style={styles.input} label="D.O.B" mode="flat" />
         </TouchableOpacity>
-      </View>
       <View style={styles.listContainer}>
         {notes.map((note, index) => (
           <List.Item
