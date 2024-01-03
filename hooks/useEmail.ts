@@ -2,7 +2,7 @@ import {useState} from "react"
 
 const useEmail = (navigation) => {
   const [email, setEmail] = useState<string>("");
-  const notes = ["Email can not be empty", "Email must be in valid format"]
+  const notes = ["Email address cannot be empty", "Email address must be in valid format"];
   
   const noteConditionMet = (note) => {
     switch (note) {

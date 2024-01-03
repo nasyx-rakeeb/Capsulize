@@ -3,7 +3,7 @@ import {useState} from "react"
 const useBio = (navigation) => {
   const [bio, setBio] = useState<string>("");
   const maxBioLength = 100;
-  const notes = ["Bio can not be greater than 100 characters"];
+  const notes = ["Bio cannot exceed 100 characters"];
   
   const noteConditionMet = (note) => {
     switch (note) {

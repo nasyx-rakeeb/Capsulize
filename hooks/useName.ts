@@ -2,7 +2,12 @@ import {useState} from "react"
 
 const useName = (navigation) => {
   const [name, setName] = useState<string>("")
-  const notes = ["Name can not be empty", "Name must be at least 2 characters long", "Name can not be more than 15 charactera long", "Name can not contain special characters"]
+  const notes = [
+  "Name cannot be empty",
+  "Must be at least 2 characters long",
+  "Cannot exceed 15 characters",
+  "Cannot contain special characters"
+];
   
   const noteConditionMet = (note) => {
     switch (note) {

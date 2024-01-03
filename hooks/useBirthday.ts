@@ -3,7 +3,7 @@ import {DateTimePickerAndroid} from '@react-native-community/datetimepicker'
 
 const useBirthday = (navigation) => {
   const [birthday, setBirthday] = useState<string>("")
-  const notes = ["Date of birth can not be empty", "Birth year should be on or before the current year"]
+  const notes = ["Date of birth cannot be empty", "Birth year should be on or before the current year"];
   const [date, setDate] = useState<Date>(new Date());
   
   const handleBtnPress = () => {
