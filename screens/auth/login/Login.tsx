@@ -3,11 +3,13 @@ import {
   Text,
   StyleSheet,
   KeyboardAvoidingView,
-  Platform,
+  Platform
 } from "react-native";
 import colors from "../../../others/colors";
-import { TextInput, Button } from "react-native-paper";
+import { TextInput, Button, Snackbar } from "react-native-paper";
 import { useLogin } from "../../../hooks";
+import Constants from 'expo-constants';
+import React from "react"
 
 const Login = ({ navigation }) => {
   const {
@@ -20,6 +22,8 @@ const Login = ({ navigation }) => {
     handleBtnPress,
     disableBtn,
   } = useLogin(navigation);
+  
+  const statusBarHeight = Constants.statusBarHeight
 
   return (
     <KeyboardAvoidingView
@@ -111,7 +115,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.prussianBluePrimary,
   },
   innerContainer: {
-    flex: 1,
+    flex: 1
   },
   top: {
     flex: 1,
@@ -172,7 +176,7 @@ const styles = StyleSheet.create({
   signupBtnTxt: {
     color: colors.silver,
     fontFamily: "Roboto-Bold",
-  },
+  }
 });
 
 export default Login;
