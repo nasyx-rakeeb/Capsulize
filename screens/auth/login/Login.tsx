@@ -5,7 +5,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   Pressable,
-  Keyboard
+  Keyboard,
 } from "react-native";
 import colors from "../../../others/colors";
 import { TextInput, Button } from "react-native-paper";
@@ -173,15 +173,7 @@ const styles = StyleSheet.create({
   signupBtnTxt: {
     color: colors.silver,
     fontFamily: "Roboto-Bold",
-  },
-  notificationModal: {
-    position: "absolute",
-    top: 0,
-    width: "100%",
-    backgroundColor: "white",
-    padding: 20,
-    elevation: 5,
-  },
+  }
 });
 
 export default Login;

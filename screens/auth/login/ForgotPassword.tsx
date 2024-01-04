@@ -3,8 +3,9 @@ import {
   Text,
   StyleSheet,
   KeyboardAvoidingView,
-  Platform,Pressable,
-  Keyboard
+  Platform,
+  Pressable,
+  Keyboard,
 } from "react-native";
 import colors from "../../../others/colors";
 import { TextInput, Button } from "react-native-paper";

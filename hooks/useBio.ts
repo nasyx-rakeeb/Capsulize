@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {Keyboard} from "react-native"
+import { Keyboard } from "react-native";
 
 const useBio = (navigation) => {
   const [bio, setBio] = useState<string>("");
@@ -20,7 +20,7 @@ const useBio = (navigation) => {
   };
 
   const handleBtnPress = () => {
-    Keyboard.dismiss()
+    Keyboard.dismiss();
     navigation.navigate("Birthday");
   };
 

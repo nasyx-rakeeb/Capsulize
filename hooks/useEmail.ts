@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { isEmail } from "../others/utils";
-import {Keyboard} from "react-native"
+import { Keyboard } from "react-native";
 
 const useEmail = (navigation) => {
   const [email, setEmail] = useState<string>("");
@@ -25,7 +25,7 @@ const useEmail = (navigation) => {
   };
 
   const handleBtnPress = () => {
-    Keyboard.dismiss()
+    Keyboard.dismiss();
     navigation.navigate("Bio");
   };
 
