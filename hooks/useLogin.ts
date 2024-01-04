@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { isEmail } from "../others/utils";
+import {Keyboard} from "react-native"
 
 const useLogin = (navigation) => {
   const [email, setEmail] = useState<string>("");
@@ -18,9 +19,17 @@ const useLogin = (navigation) => {
     }
   };
 
-  const handleBtnPress = (navigateTo: "ForgotPassword" | "Username") => {
-    navigation.navigate(navigateTo);
+  const handleLoginPress = () => {
+    Keyboard.dismiss()
   };
+  
+  const handleForgotPress = () => {
+    navigation.navigate("ForgotPassword");
+  }
+  
+  const handleSignupPress = () => {
+    navigation.navigate("Username");
+  }
 
   return {
     email,
@@ -29,7 +38,9 @@ const useLogin = (navigation) => {
     setPassword,
     setPwdVisibility,
     pwdVisibility,
-    handleBtnPress,
+    handleLoginPress,
+    handleForgotPress,
+    handleSignupPress,
     disableBtn,
   };
 };

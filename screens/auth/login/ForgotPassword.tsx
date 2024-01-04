@@ -3,7 +3,8 @@ import {
   Text,
   StyleSheet,
   KeyboardAvoidingView,
-  Platform,
+  Platform,Pressable,
+  Keyboard
 } from "react-native";
 import colors from "../../../others/colors";
 import { TextInput, Button } from "react-native-paper";
@@ -18,7 +19,7 @@ const ForgotPassword = ({ navigation }) => {
       style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
-      <View style={styles.innerContainer}>
+      <Pressable onPress={Keyboard.dismiss} style={styles.innerContainer}>
         <View style={styles.headingContainer}>
           <Text style={styles.heading}>Reset Password</Text>
         </View>
@@ -49,7 +50,7 @@ const ForgotPassword = ({ navigation }) => {
             Continue
           </Button>
         </View>
-      </View>
+      </Pressable>
     </KeyboardAvoidingView>
   );
 };

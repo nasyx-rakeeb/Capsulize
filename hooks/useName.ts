@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {Keyboard} from "react-native"
 
 const useName = (navigation) => {
   const [name, setName] = useState<string>("");
@@ -29,6 +30,7 @@ const useName = (navigation) => {
   };
 
   const handleBtnPress = () => {
+    Keyboard.dismiss()
     navigation.navigate("Email");
   };
 

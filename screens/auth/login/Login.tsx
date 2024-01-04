@@ -3,13 +3,14 @@ import {
   Text,
   StyleSheet,
   KeyboardAvoidingView,
-  Platform
+  Platform,
+  Pressable,
+  Keyboard
 } from "react-native";
 import colors from "../../../others/colors";
-import { TextInput, Button, Snackbar } from "react-native-paper";
+import { TextInput, Button } from "react-native-paper";
 import { useLogin } from "../../../hooks";
-import Constants from 'expo-constants';
-import React from "react"
+import React, { useState } from "react";
 
 const Login = ({ navigation }) => {
   const {
@@ -19,18 +20,18 @@ const Login = ({ navigation }) => {
     setPassword,
     setPwdVisibility,
     pwdVisibility,
-    handleBtnPress,
+    handleLoginPress,
+    handleForgotPress,
+    handleSignupPress,
     disableBtn,
   } = useLogin(navigation);
-  
-  const statusBarHeight = Constants.statusBarHeight
 
   return (
     <KeyboardAvoidingView
       style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
-      <View style={styles.innerContainer}>
+      <Pressable onPress={Keyboard.dismiss} style={styles.innerContainer}>
         <View style={styles.top}>
           <View style={styles.headingContainer}>
             <Text style={styles.heading}>Login</Text>
@@ -72,9 +73,7 @@ const Login = ({ navigation }) => {
               style={styles.btn2}
               labelStyle={styles.btnTxt2}
               mode="text"
-              onPress={() => {
-                handleBtnPress("ForgotPassword");
-              }}
+              onPress={handleForgotPress}
               rippleColor={colors.prussianBluePrimary}
             >
               Forgot password?
@@ -84,7 +83,7 @@ const Login = ({ navigation }) => {
               style={styles.btn}
               icon="login"
               mode="contained"
-              onPress={() => {}}
+              onPress={handleLoginPress}
               disabled={disableBtn()}
             >
               Log In
@@ -96,15 +95,13 @@ const Login = ({ navigation }) => {
             style={styles.btn2}
             labelStyle={styles.signupBtnTxt}
             mode="text"
-            onPress={() => {
-              handleBtnPress("Username");
-            }}
+            onPress={handleSignupPress}
             rippleColor={colors.prussianBluePrimary}
           >
             Don't have an account? Sign Up
           </Button>
         </View>
-      </View>
+      </Pressable>
     </KeyboardAvoidingView>
   );
 };
@@ -115,7 +112,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.prussianBluePrimary,
   },
   innerContainer: {
-    flex: 1
+    flex: 1,
   },
   top: {
     flex: 1,
@@ -176,7 +173,15 @@ const styles = StyleSheet.create({
   signupBtnTxt: {
     color: colors.silver,
     fontFamily: "Roboto-Bold",
-  }
+  },
+  notificationModal: {
+    position: "absolute",
+    top: 0,
+    width: "100%",
+    backgroundColor: "white",
+    padding: 20,
+    elevation: 5,
+  },
 });
 
 export default Login;
