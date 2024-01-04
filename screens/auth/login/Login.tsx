@@ -5,12 +5,11 @@ import {
   KeyboardAvoidingView,
   Platform,
   Pressable,
-  Keyboard,
+  Keyboard
 } from "react-native";
 import colors from "../../../others/colors";
 import { TextInput, Button } from "react-native-paper";
 import { useLogin } from "../../../hooks";
-import React, { useState } from "react";
 
 const Login = ({ navigation }) => {
   const {
@@ -173,7 +172,7 @@ const styles = StyleSheet.create({
   signupBtnTxt: {
     color: colors.silver,
     fontFamily: "Roboto-Bold",
-  }
+  },
 });
 
 export default Login;
