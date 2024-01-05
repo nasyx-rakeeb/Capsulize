@@ -32,6 +32,7 @@ const Login = ({ navigation }: { navigation: any }) => {
       style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
+      <Notification message="hello world" visible={true} duration={400000} />
       <Pressable onPress={Keyboard.dismiss} style={styles.innerContainer}>
         <View style={styles.top}>
           <View style={styles.headingContainer}>
