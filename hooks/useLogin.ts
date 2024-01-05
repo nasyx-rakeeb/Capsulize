@@ -2,10 +2,11 @@ import { useState } from "react";
 import { isEmail } from "../others/utils";
 import { Keyboard } from "react-native";
 
-const useLogin = (navigation) => {
+const useLogin = (navigation: any) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [pwdVisibility, setPwdVisibility] = useState<boolean>(true);
+  const [errorMsg, setErrorMsg] = useState<string>("");
 
   const disableBtn = () => {
     if (!email || email?.trim()?.length <= 0) {
@@ -42,6 +43,7 @@ const useLogin = (navigation) => {
     handleForgotPress,
     handleSignupPress,
     disableBtn,
+    errorMsg,
   };
 };
 

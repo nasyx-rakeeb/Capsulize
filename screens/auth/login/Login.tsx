@@ -5,13 +5,14 @@ import {
   KeyboardAvoidingView,
   Platform,
   Pressable,
-  Keyboard
+  Keyboard,
 } from "react-native";
 import colors from "../../../others/colors";
-import { TextInput, Button } from "react-native-paper";
+import { TextInput, Button, HelperText } from "react-native-paper";
 import { useLogin } from "../../../hooks";
+import { Notification } from "../../../components";
 
-const Login = ({ navigation }) => {
+const Login = ({ navigation }: { navigation: any }) => {
   const {
     email,
     password,
@@ -23,6 +24,7 @@ const Login = ({ navigation }) => {
     handleForgotPress,
     handleSignupPress,
     disableBtn,
+    errorMsg,
   } = useLogin(navigation);
 
   return (
@@ -67,6 +69,13 @@ const Login = ({ navigation }) => {
               mode="flat"
             />
           </View>
+          <HelperText
+            style={styles.error}
+            type="error"
+            visible={!!errorMsg && errorMsg?.length > 0}
+          >
+            {errorMsg}
+          </HelperText>
           <View style={styles.btnContainer}>
             <Button
               style={styles.btn2}
@@ -112,6 +121,11 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     flex: 1,
+  },
+  error: {
+    marginHorizontal: 15,
+    textAlign: "center",
+    marginTop: 8,
   },
   top: {
     flex: 1,
