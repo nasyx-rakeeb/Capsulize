@@ -8,11 +8,11 @@ import {
   Keyboard,
 } from "react-native";
 import colors from "../../../others/colors";
-import { TextInput, Button } from "react-native-paper";
+import { TextInput, Button, HelperText } from "react-native-paper";
 import { useForgotPassword } from "../../../hooks";
 
-const ForgotPassword = ({ navigation }) => {
-  const { email, setEmail, handleBtnPress, disableBtn } =
+const ForgotPassword = ({ navigation }: { navigation: any }) => {
+  const { email, setEmail, handleBtnPress, disableBtn, errorMsg } =
     useForgotPassword(navigation);
 
   return (
@@ -39,6 +39,13 @@ const ForgotPassword = ({ navigation }) => {
             mode="flat"
           />
         </View>
+        <HelperText
+          style={styles.error}
+          type="error"
+          visible={!!errorMsg && errorMsg?.length > 0}
+        >
+          {errorMsg}
+        </HelperText>
         <View style={styles.btnContainer}>
           <Button
             labelStyle={styles.btnTxt}
@@ -82,6 +89,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginHorizontal: 25,
     lineHeight: 20,
+  },
+  error: {
+    marginHorizontal: 15,
+    textAlign: "center",
+    marginTop: 8,
   },
   inputContainer: {
     width: "100%",

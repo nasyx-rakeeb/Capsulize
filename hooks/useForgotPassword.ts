@@ -2,8 +2,9 @@ import { useState } from "react";
 import { isEmail } from "../others/utils";
 import { Keyboard } from "react-native";
 
-const useForgotPassword = (navigation) => {
+const useForgotPassword = (navigation: any) => {
   const [email, setEmail] = useState<string>("");
+  const [errorMsg, setErrorMsg] = useState<string>("");
 
   const disableBtn = () => {
     if (!email || email?.trim()?.length <= 0) {
@@ -19,7 +20,7 @@ const useForgotPassword = (navigation) => {
     Keyboard.dismiss();
   };
 
-  return { email, setEmail, handleBtnPress, disableBtn };
+  return { email, setEmail, handleBtnPress, disableBtn, errorMsg };
 };
 
 export default useForgotPassword;
