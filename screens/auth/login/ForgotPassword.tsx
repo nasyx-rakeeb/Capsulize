@@ -39,13 +39,11 @@ const ForgotPassword = ({ navigation }: { navigation: any }) => {
             mode="flat"
           />
         </View>
-        <HelperText
-          style={styles.error}
-          type="error"
-          visible={!!errorMsg && errorMsg?.length > 0}
-        >
-          {errorMsg}
-        </HelperText>
+        {!!errorMsg && errorMsg?.length > 0 && (
+          <HelperText style={styles.error} type="error" visible={true}>
+            {errorMsg}
+          </HelperText>
+        )}
         <View style={styles.btnContainer}>
           <Button
             labelStyle={styles.btnTxt}
