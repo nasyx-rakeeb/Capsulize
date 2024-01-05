@@ -20,7 +20,7 @@ const useProfilePicture = (navigation: any) => {
     }
   };
 
-  const noteConditionMet = (note) => {
+  const noteConditionMet = (note: string) => {
     switch (note) {
       default:
         return true;
