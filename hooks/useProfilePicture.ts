@@ -1,7 +1,7 @@
 import { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 
-const useProfilePicture = (navigation) => {
+const useProfilePicture = (navigation: any) => {
   const [profilePicture, setProfilePicture] = useState<string>("");
   const notes = [""];
   const [imageLoading, setImageLoading] = useState<boolean>(false);
