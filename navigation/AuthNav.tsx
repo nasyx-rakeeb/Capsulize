@@ -29,6 +29,7 @@ const AuthNav = () => {
         headerLeft: ({ canGoBack }) => canGoBack && <HeaderBackBtn />,
       }}
     >
+      <AuthStack.Screen name="Gender" component={Gender} />
       <AuthStack.Screen name="Welcome" component={Welcome} />
       <AuthStack.Screen name="Login" component={Login} />
       <AuthStack.Screen name="ProfilePicture" component={ProfilePicture} />
@@ -36,7 +37,6 @@ const AuthNav = () => {
       <AuthStack.Screen name="Email" component={Email} />
       <AuthStack.Screen name="Birthday" component={Birthday} />
       <AuthStack.Screen name="Bio" component={Bio} />
-      <AuthStack.Screen name="Gender" component={Gender} />
       <AuthStack.Screen name="Username" component={Username} />
       <AuthStack.Screen name="Name" component={Name} />
     </AuthStack.Navigator>

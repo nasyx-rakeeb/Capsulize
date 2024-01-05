@@ -1,11 +1,17 @@
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useState, useRef } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Animated,
+} from "react-native";
 import colors from "../../../others/colors";
-import { TextInput, Button } from "react-native-paper";
-import { useGender } from "../../../hooks";
-import { List } from "react-native-paper";
+import { TextInput, Button, List } from "react-native-paper";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
+import { useGender } from "../../../hooks";
 
-const Gender = ({ navigation }) => {
+const Gender = ({ navigation }: { navigation: any }) => {
   const {
     gender,
     setGender,
@@ -16,6 +22,8 @@ const Gender = ({ navigation }) => {
     areAllConditionsMet,
     optionsVisible,
     setOptionsVisible,
+    optionsHeight,
+    toggleOptions,
   } = useGender(navigation);
 
   return (
@@ -28,10 +36,7 @@ const Gender = ({ navigation }) => {
           Select the gender you identify with
         </Text>
       </View>
-      <TouchableOpacity
-        onPress={() => setOptionsVisible(optionsVisible ? false : true)}
-        style={styles.inputContainer}
-      >
+      <TouchableOpacity onPress={toggleOptions} style={styles.inputContainer}>
         <TextInput
           editable={false}
           value={gender?.charAt(0)?.toUpperCase() + gender?.slice(1)}
@@ -41,31 +46,32 @@ const Gender = ({ navigation }) => {
           mode="flat"
         />
       </TouchableOpacity>
-      <View style={styles.optionsContainer}>
-        {optionsVisible &&
-          options.map((option, index) => (
-            <List.Item
-              key={index}
-              onPress={() => {
-                setGender(option);
-                setOptionsVisible(false);
-              }}
-              style={styles.optionItem}
-              titleStyle={styles.optionTitle}
-              title={option.charAt(0).toUpperCase() + option.slice(1)}
-              right={(props) =>
-                gender === option && (
-                  <MaterialIcon
-                    {...props}
-                    name="check"
-                    color={colors.silver}
-                    size={15}
-                  />
-                )
-              }
-            />
-          ))}
-      </View>
+      <Animated.View
+        style={[styles.optionsContainer, { height: optionsHeight }]}
+      >
+        {options.map((option, index) => (
+          <List.Item
+            key={index}
+            onPress={() => {
+              setGender(option);
+              toggleOptions();
+            }}
+            style={styles.optionItem}
+            titleStyle={styles.optionTitle}
+            title={option.charAt(0).toUpperCase() + option.slice(1)}
+            right={(props) =>
+              gender === option && (
+                <MaterialIcon
+                  {...props}
+                  name="check"
+                  color={colors.silver}
+                  size={15}
+                />
+              )
+            }
+          />
+        ))}
+      </Animated.View>
       <View style={styles.listContainer}>
         {notes.map((note, index) => (
           <List.Item
@@ -109,6 +115,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.prussianBluePrimary,
   },
   optionsContainer: {
+    overflow: "hidden",
     width: "100%",
   },
   optionItem: {
