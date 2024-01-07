@@ -6,7 +6,7 @@ import { Alert } from "react-native";
 import axios from "axios";
 import { BASE_API_URL } from "../others/constants";
 import { saveToSecurestore } from "../others/utils";
-import { Buffer } from "buffer";
+import { uploadImage } from "../services/user_services";
 
 const useProfilePicture = (navigation: any) => {
   const [profilePicture, setProfilePicture] = useState<string>("");
