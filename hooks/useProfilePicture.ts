@@ -42,6 +42,10 @@ const useProfilePicture = (navigation: any) => {
 
       if (!result.canceled) {
         setProfilePicture(result.assets[0].uri);
+        setUserData((prev) => ({
+          ...prev,
+          profilePicture: !!result.assets ? result.assets[0].uri : "",
+        }));
       }
     } catch (error) {
       console.log("Error occurred while launching media library: " + error);
@@ -71,6 +75,10 @@ const useProfilePicture = (navigation: any) => {
 
       if (!result.canceled) {
         setProfilePicture(result.assets[0].uri);
+        setUserData((prev) => ({
+          ...prev,
+          profilePicture: !!result.assets ? result.assets[0].uri : "",
+        }));
       }
     } catch (error) {
       console.log("Error occurred while launching the camera: ", error);
@@ -94,7 +102,6 @@ const useProfilePicture = (navigation: any) => {
   };
 
   const handleBtnPress = async () => {
-    setUserData((prev) => ({ ...prev, profilePicture: profilePicture }));
     setloading(true);
     try {
       const { data } = await axios.post(
@@ -112,11 +119,11 @@ const useProfilePicture = (navigation: any) => {
         return;
       } else if (data?.status === "ok") {
         await saveToSecurestore("JWT_TOKEN", data?.token?.toString());
-        Alert.alert("Success")
+        Alert.alert("Success");
       }
     } catch (error: any) {
       console.log(error);
-      setloading(false)
+      setloading(false);
       setErrorMsg("An error occured, please try again");
     }
   };
