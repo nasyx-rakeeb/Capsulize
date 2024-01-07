@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { Keyboard } from "react-native";
+import axios from "axios";
+import { BASE_API_URL } from "../others/constants";
 
-const useUsername = (navigation) => {
+const useUsername = (navigation: any) => {
   const [username, setUsername] = useState<string>("");
+  const [errorMsg, setErrorMsg] = useState<string>("");
+  const [loading, setloading] = useState(false);
   const notes = [
     "Username can not be empty",
     "Must be at least 4 characters long",
@@ -12,7 +16,7 @@ const useUsername = (navigation) => {
     "Consecutive periods are not allowed",
   ];
 
-  const noteConditionMet = (note) => {
+  const noteConditionMet = (note: string) => {
     switch (note) {
       case notes[0]:
         return username.trim() !== "";
@@ -35,9 +39,34 @@ const useUsername = (navigation) => {
     return notes.every((note) => noteConditionMet(note));
   };
 
-  const handleBtnPress = () => {
-    Keyboard.dismiss();
-    navigation.navigate("Name");
+  const onDismissSnackBar = () => setErrorMsg("");
+
+  const handleBtnPress = async () => {
+    try {
+      Keyboard.dismiss();
+
+      setloading(true);
+
+      const { data } = await axios.post(
+        `${BASE_API_URL}/auth/username-available`,
+        { username },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      setloading(false);
+
+      if (data?.available === false || data?.status === "fail") {
+        setErrorMsg(data?.message);
+        return;
+      }
+
+      navigation.navigate("Name");
+    } catch (error: any) {
+      console.log(error);
+      setErrorMsg("An error occured, please try again");
+    }
   };
 
   return {
@@ -47,6 +76,9 @@ const useUsername = (navigation) => {
     notes,
     noteConditionMet,
     areAllConditionsMet,
+    onDismissSnackBar,
+    errorMsg,
+    loading,
   };
 };
 

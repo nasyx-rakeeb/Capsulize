@@ -1,15 +1,19 @@
 import { useState } from "react";
 import { isEmail } from "../others/utils";
 import { Keyboard } from "react-native";
+import { BASE_API_URL } from "../others/constants";
+import axios from "axios";
 
-const useEmail = (navigation) => {
+const useEmail = (navigation: any) => {
   const [email, setEmail] = useState<string>("");
+  const [errorMsg, setErrorMsg] = useState<string>("");
+  const [loading, setloading] = useState(false);
   const notes = [
     "Email address cannot be empty",
     "Email address must be in valid format",
   ];
 
-  const noteConditionMet = (note) => {
+  const noteConditionMet = (note: string) => {
     switch (note) {
       case notes[0]:
         return email.trim() !== "";
@@ -24,9 +28,34 @@ const useEmail = (navigation) => {
     return notes.every((note) => noteConditionMet(note));
   };
 
-  const handleBtnPress = () => {
-    Keyboard.dismiss();
-    navigation.navigate("Bio");
+  const onDismissSnackBar = () => setErrorMsg("");
+
+  const handleBtnPress = async () => {
+    try {
+      Keyboard.dismiss();
+
+      setloading(true);
+
+      const { data } = await axios.post(
+        `${BASE_API_URL}/auth/validate-email`,
+        { email },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      setloading(false);
+
+      if (data?.canUse === false || data?.status === "fail") {
+        setErrorMsg(data?.message);
+        return;
+      }
+
+      navigation.navigate("Bio");
+    } catch (error: any) {
+      console.log(error);
+      setErrorMsg("An error occured, please try again");
+    }
   };
 
   return {
@@ -36,6 +65,9 @@ const useEmail = (navigation) => {
     notes,
     noteConditionMet,
     areAllConditionsMet,
+    onDismissSnackBar,
+    errorMsg,
+    loading,
   };
 };
 

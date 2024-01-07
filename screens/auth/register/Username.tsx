@@ -8,12 +8,12 @@ import {
   Keyboard,
 } from "react-native";
 import colors from "../../../others/colors";
-import { TextInput, Button } from "react-native-paper";
+import { TextInput, Button, Snackbar } from "react-native-paper";
 import { useUsername } from "../../../hooks";
 import { List } from "react-native-paper";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 
-const Username = ({ navigation }) => {
+const Username = ({ navigation }: any) => {
   const {
     username,
     setUsername,
@@ -21,6 +21,9 @@ const Username = ({ navigation }) => {
     notes,
     noteConditionMet,
     areAllConditionsMet,
+    onDismissSnackBar,
+    errorMsg,
+    loading,
   } = useUsername(navigation);
 
   return (
@@ -28,6 +31,12 @@ const Username = ({ navigation }) => {
       style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
+      <Snackbar
+        visible={!!errorMsg && errorMsg?.length > 0 ? true : false}
+        onDismiss={onDismissSnackBar}
+      >
+        {errorMsg}
+      </Snackbar>
       <Pressable onPress={Keyboard.dismiss} style={styles.innerContainer}>
         <View style={styles.headingContainer}>
           <Text style={styles.heading}>Username</Text>
@@ -75,7 +84,8 @@ const Username = ({ navigation }) => {
             icon="arrow-right"
             mode="contained"
             onPress={handleBtnPress}
-            disabled={!areAllConditionsMet()}
+            disabled={!areAllConditionsMet() || loading}
+            loading={loading}
           >
             Continue
           </Button>

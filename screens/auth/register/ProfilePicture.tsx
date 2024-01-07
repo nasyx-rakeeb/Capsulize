@@ -1,13 +1,14 @@
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
 import colors from "../../../others/colors";
-import { TextInput, Button } from "react-native-paper";
+import { TextInput, Button, Text } from "react-native-paper";
 import { useProfilePicture } from "../../../hooks";
 import { List } from "react-native-paper";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import { Avatar } from "react-native-paper";
 import { ActivityIndicator } from "react-native-paper";
+import React from "react";
 
-const ProfilePicture = ({ navigation }) => {
+const ProfilePicture = ({ navigation }: any) => {
   const {
     profilePicture,
     setProfilePicture,
