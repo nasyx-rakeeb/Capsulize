@@ -3,11 +3,13 @@ import { isEmail } from "../others/utils";
 import { Keyboard } from "react-native";
 import { BASE_API_URL } from "../others/constants";
 import axios from "axios";
+import { useAuthContext } from "../context/AuthContext";
 
 const useEmail = (navigation: any) => {
   const [email, setEmail] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [loading, setloading] = useState(false);
+  const { setUserData } = useAuthContext();
   const notes = [
     "Email address cannot be empty",
     "Email address must be in valid format",
@@ -50,6 +52,8 @@ const useEmail = (navigation: any) => {
         setErrorMsg(data?.message);
         return;
       }
+
+      setUserData((prev) => ({ ...prev, email: email }));
 
       navigation.navigate("Bio");
     } catch (error: any) {

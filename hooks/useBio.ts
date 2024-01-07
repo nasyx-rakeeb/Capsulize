@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Keyboard } from "react-native";
+import { useAuthContext } from "../context/AuthContext";
 
-const useBio = (navigation) => {
+const useBio = (navigation: any) => {
   const [bio, setBio] = useState<string>("");
   const maxBioLength = 100;
   const notes = ["Bio cannot exceed 100 characters"];
+  const { setUserData } = useAuthContext();
 
-  const noteConditionMet = (note) => {
+  const noteConditionMet = (note: string) => {
     switch (note) {
       case notes[0]:
         return bio.length <= maxBioLength;
@@ -21,6 +23,7 @@ const useBio = (navigation) => {
 
   const handleBtnPress = () => {
     Keyboard.dismiss();
+    setUserData((prev) => ({ ...prev, bio: bio }));
     navigation.navigate("Birthday");
   };
 

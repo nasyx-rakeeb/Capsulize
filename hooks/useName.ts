@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Keyboard } from "react-native";
+import { useAuthContext } from "../context/AuthContext";
 
-const useName = (navigation) => {
+const useName = (navigation: any) => {
   const [name, setName] = useState<string>("");
+  const { setUserData } = useAuthContext();
   const notes = [
     "Name cannot be empty",
     "Must be at least 2 characters long",
@@ -10,7 +12,7 @@ const useName = (navigation) => {
     "Cannot contain special characters",
   ];
 
-  const noteConditionMet = (note) => {
+  const noteConditionMet = (note: string) => {
     switch (note) {
       case notes[0]:
         return name.trim() !== "";
@@ -31,6 +33,7 @@ const useName = (navigation) => {
 
   const handleBtnPress = () => {
     Keyboard.dismiss();
+    setUserData((prev) => ({ ...prev, name: name }));
     navigation.navigate("Email");
   };
 

@@ -1,17 +1,16 @@
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import colors from "../../../others/colors";
-import { TextInput, Button, Text } from "react-native-paper";
+import { TextInput, Button, Text, Portal } from "react-native-paper";
 import { useProfilePicture } from "../../../hooks";
 import { List } from "react-native-paper";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import { Avatar } from "react-native-paper";
 import { ActivityIndicator } from "react-native-paper";
-import React from "react";
+import { ProfilePicturebottomSheet } from "../../../components";
 
 const ProfilePicture = ({ navigation }: any) => {
   const {
     profilePicture,
-    setProfilePicture,
     handleBtnPress,
     notes,
     noteConditionMet,
@@ -19,10 +18,24 @@ const ProfilePicture = ({ navigation }: any) => {
     imageLoading,
     setImageLoading,
     pickImage,
+    removeProfilePicture,
+    bottomSheetVisible,
+    sheetRef,
+    openBottomSheet,
+    closeBottomSheet,
+    openCamera,
   } = useProfilePicture(navigation);
 
   return (
     <View style={styles.container}>
+      {bottomSheetVisible && (
+        <ProfilePicturebottomSheet
+          pickImage={pickImage}
+          sheetRef={sheetRef}
+          closeBottomSheet={closeBottomSheet}
+          openCamera={openCamera}
+        />
+      )}
       <View style={styles.headingContainer}>
         <Text style={styles.heading}>Profile Picture</Text>
       </View>
@@ -50,7 +63,7 @@ const ProfilePicture = ({ navigation }: any) => {
             />
           </>
         ) : (
-          <TouchableOpacity onPress={pickImage} style={styles.uploadBtn}>
+          <TouchableOpacity onPress={openBottomSheet} style={styles.uploadBtn}>
             <MaterialIcon
               color={colors.prussianBluePrimary}
               name="cloud-upload"
@@ -93,7 +106,7 @@ const ProfilePicture = ({ navigation }: any) => {
             style={[styles.actionBtn, styles.btn1]}
             icon="delete"
             mode="outlined"
-            onPress={() => setProfilePicture("")}
+            onPress={removeProfilePicture}
           >
             Remove
           </Button>
@@ -102,7 +115,7 @@ const ProfilePicture = ({ navigation }: any) => {
             style={[styles.actionBtn, styles.btn2]}
             icon="autorenew"
             mode="outlined"
-            onPress={pickImage}
+            onPress={openBottomSheet}
           >
             Change
           </Button>

@@ -1,27 +1,31 @@
 import { useState, useCallback } from "react";
-import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
+import {
+  DateTimePickerAndroid,
+  DateTimePickerEvent,
+} from "@react-native-community/datetimepicker";
+import { useAuthContext } from "../context/AuthContext";
+import { formatISODate } from "../others/utils";
 
-const useBirthday = (navigation) => {
+const useBirthday = (navigation: any) => {
   const [birthday, setBirthday] = useState<string>("");
   const notes = [
     "Date of birth cannot be empty",
     "Birth year should be on or before the current year",
   ];
   const [date, setDate] = useState<Date>(new Date());
+  const { setUserData } = useAuthContext();
 
   const handleBtnPress = () => {
+    setUserData((prev) => ({ ...prev, birthday: date }));
     navigation.navigate("Gender");
   };
 
-  const onChange = (event, userSelectedDate) => {
-    setDate(userSelectedDate);
-    const selectedDate = new Date(userSelectedDate);
-    const formattedDate = selectedDate.toLocaleDateString("en-GB", {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    });
-    setBirthday(formattedDate);
+  const onChange = (
+    event: DateTimePickerEvent,
+    userSelectedDate: Date | undefined
+  ) => {
+    setDate(userSelectedDate as Date);
+    setBirthday(formatISODate(userSelectedDate as Date));
   };
 
   const showDatePicker = () => {
@@ -35,7 +39,7 @@ const useBirthday = (navigation) => {
     });
   };
 
-  const noteConditionMet = (note) => {
+  const noteConditionMet = (note: string) => {
     switch (note) {
       case notes[0]:
         return !!birthday && birthday.length > 1;

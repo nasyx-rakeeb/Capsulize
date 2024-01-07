@@ -2,11 +2,13 @@ import { useState } from "react";
 import { Keyboard } from "react-native";
 import axios from "axios";
 import { BASE_API_URL } from "../others/constants";
+import { useAuthContext } from "../context/AuthContext";
 
 const useUsername = (navigation: any) => {
   const [username, setUsername] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [loading, setloading] = useState(false);
+  const { setUserData } = useAuthContext();
   const notes = [
     "Username can not be empty",
     "Must be at least 4 characters long",
@@ -61,7 +63,7 @@ const useUsername = (navigation: any) => {
         setErrorMsg(data?.message);
         return;
       }
-
+      setUserData((prev) => ({ ...prev, username: username }));
       navigation.navigate("Name");
     } catch (error: any) {
       console.log(error);

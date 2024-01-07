@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { Animated } from "react-native";
+import { useAuthContext } from "../context/AuthContext";
 
 const useGender = (navigation: any) => {
   const [gender, setGender] = useState<string>("");
@@ -7,6 +8,7 @@ const useGender = (navigation: any) => {
   const notes = ["Gender can not be empty"];
   const [optionsVisible, setOptionsVisible] = useState<boolean>(false);
   const optionsHeight = useRef(new Animated.Value(0)).current;
+  const { setUserData } = useAuthContext();
 
   const noteConditionMet = (note: string) => {
     switch (note) {
@@ -22,6 +24,7 @@ const useGender = (navigation: any) => {
   };
 
   const handleBtnPress = () => {
+    setUserData((prev) => ({ ...prev, gender: gender }));
     navigation.navigate("ProfilePicture");
   };
 
