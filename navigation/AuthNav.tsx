@@ -9,6 +9,7 @@ import {
   Username,
   Name,
   Birthday,
+  Password,
 } from "../screens";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import colors from "../others/colors";
@@ -31,8 +32,9 @@ const AuthNav = () => {
           headerLeft: ({ canGoBack }) => canGoBack && <HeaderBackBtn />,
         }}
       >
-        <AuthStack.Screen name="ProfilePicture" component={ProfilePicture} />
         <AuthStack.Screen name="Welcome" component={Welcome} />
+        <AuthStack.Screen name="Password" component={Password} />
+        <AuthStack.Screen name="ProfilePicture" component={ProfilePicture} />
         <AuthStack.Screen name="Login" component={Login} />
         <AuthStack.Screen name="ForgotPassword" component={ForgotPassword} />
         <AuthStack.Screen name="Gender" component={Gender} />

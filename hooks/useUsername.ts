@@ -67,6 +67,7 @@ const useUsername = (navigation: any) => {
       navigation.navigate("Name");
     } catch (error: any) {
       console.log(error);
+      setloading(false)
       setErrorMsg("An error occured, please try again");
     }
   };

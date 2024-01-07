@@ -58,6 +58,7 @@ const useEmail = (navigation: any) => {
       navigation.navigate("Bio");
     } catch (error: any) {
       console.log(error);
+      setloading(false)
       setErrorMsg("An error occured, please try again");
     }
   };

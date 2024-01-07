@@ -1,6 +1,6 @@
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import colors from "../../../others/colors";
-import { TextInput, Button, Text, Portal } from "react-native-paper";
+import { TextInput, Button, Text, Portal, Snackbar } from "react-native-paper";
 import { useProfilePicture } from "../../../hooks";
 import { List } from "react-native-paper";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
@@ -24,10 +24,19 @@ const ProfilePicture = ({ navigation }: any) => {
     openBottomSheet,
     closeBottomSheet,
     openCamera,
+    errorMsg,
+    loading,
+    onDismissSnackBar,
   } = useProfilePicture(navigation);
 
   return (
     <View style={styles.container}>
+      <Snackbar
+        visible={!!errorMsg && errorMsg?.length > 0 ? true : false}
+        onDismiss={onDismissSnackBar}
+      >
+        {errorMsg}
+      </Snackbar>
       {bottomSheetVisible && (
         <ProfilePicturebottomSheet
           pickImage={pickImage}
@@ -123,12 +132,13 @@ const ProfilePicture = ({ navigation }: any) => {
       )}
       <View style={styles.btnContainer}>
         <Button
+          loading={loading}
           labelStyle={styles.btnTxt}
           style={styles.btn}
           icon="account-check"
           mode="contained"
           onPress={handleBtnPress}
-          disabled={!areAllConditionsMet()}
+          disabled={!areAllConditionsMet() || loading}
         >
           Finish
         </Button>

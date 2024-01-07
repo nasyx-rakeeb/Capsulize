@@ -25,7 +25,7 @@ const useGender = (navigation: any) => {
 
   const handleBtnPress = () => {
     setUserData((prev) => ({ ...prev, gender: gender }));
-    navigation.navigate("ProfilePicture");
+    navigation.navigate("Password");
   };
 
   const toggleOptions = () => {
