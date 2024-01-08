@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useFonts } from "expo-font";
+import * as SecureStore from "expo-secure-store";
 
-export default function useApp() {
+export default function useRootNav() {
   const [fontsLoaded, errorLoadingFonts] = useFonts({
     "Poppins-Bold": require("../assets/fonts/Poppins/Poppins-Bold.ttf"),
     "Poppins-Medium": require("../assets/fonts/Poppins/Poppins-Medium.ttf"),
@@ -18,9 +19,26 @@ export default function useApp() {
     "Merienda-SemiBold": require("../assets/fonts/Merienda/Merienda-SemiBold.ttf"),
     "Merienda-Regular": require("../assets/fonts/Merienda/Merienda-Regular.ttf"),
   });
+  const [loading, setLoading] = useState(false);
+  const [authorized, setAuthorized] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      setLoading(true);
+      const JWT_TOKEN = await SecureStore.getItemAsync("JWT_TOKEN");
+      if (JWT_TOKEN) {
+        setAuthorized(true);
+      } else if (!JWT_TOKEN) {
+        setAuthorized(false);
+      }
+      setLoading(false);
+    })();
+  }, []);
 
   return {
     fontsLoaded,
     errorLoadingFonts,
+    loading,
+    authorized,
   };
 }

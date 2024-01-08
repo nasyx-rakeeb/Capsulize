@@ -33,7 +33,7 @@ const useName = (navigation: any) => {
 
   const handleBtnPress = () => {
     Keyboard.dismiss();
-    setUserData((prev) => ({ ...prev, name: name }));
+    setUserData((prev) => ({ ...prev, name: name.trim() }));
     navigation.navigate("Email");
   };
 

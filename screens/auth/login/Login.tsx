@@ -25,6 +25,7 @@ const Login = ({ navigation }: { navigation: any }) => {
     handleSignupPress,
     disableBtn,
     errorMsg,
+    loading,
   } = useLogin(navigation);
 
   return (
@@ -88,7 +89,8 @@ const Login = ({ navigation }: { navigation: any }) => {
               icon="login"
               mode="contained"
               onPress={handleLoginPress}
-              disabled={disableBtn()}
+              disabled={disableBtn() || loading}
+              loading={loading}
             >
               Log In
             </Button>

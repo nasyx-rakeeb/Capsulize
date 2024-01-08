@@ -5,8 +5,8 @@ import BottomSheet from "@gorhom/bottom-sheet";
 import { Alert } from "react-native";
 import axios from "axios";
 import { BASE_API_URL } from "../others/constants";
-import { saveToSecurestore } from "../others/utils";
 import { uploadImage } from "../services/user_services";
+import * as SecureStore from "expo-secure-store";
 
 const useProfilePicture = (navigation: any) => {
   const [profilePicture, setProfilePicture] = useState<{
@@ -127,7 +127,7 @@ const useProfilePicture = (navigation: any) => {
         setErrorMsg(data?.message);
         return;
       } else if (data?.status === "ok") {
-        await saveToSecurestore("JWT_TOKEN", data?.token?.toString());
+        await SecureStore.setItemAsync("JWT_TOKEN", data?.token?.toString());
         Alert.alert("Success");
         setUserData({
           bio: "",
