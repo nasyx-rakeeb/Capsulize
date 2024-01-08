@@ -4,6 +4,7 @@ import { Keyboard } from "react-native";
 import { BASE_API_URL } from "../others/constants";
 import axios from "axios";
 import * as SecureStore from "expo-secure-store";
+import { useAppContext } from "../context/AppContext";
 
 const useLogin = (navigation: any) => {
   const [email, setEmail] = useState<string>("");
@@ -11,6 +12,7 @@ const useLogin = (navigation: any) => {
   const [pwdVisibility, setPwdVisibility] = useState<boolean>(true);
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [loading, setLoading] = useState(false);
+  const { setIsUserAuthorized } = useAppContext();
 
   const disableBtn = () => {
     if (!email || email?.trim()?.length <= 0) {
@@ -43,6 +45,7 @@ const useLogin = (navigation: any) => {
         return;
       } else if (data?.status === "ok") {
         await SecureStore.setItemAsync("JWT_TOKEN", data?.token?.toString());
+        setIsUserAuthorized(true);
       }
     } catch (error: any) {
       console.log(error);

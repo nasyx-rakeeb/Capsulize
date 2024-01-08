@@ -7,6 +7,7 @@ import axios from "axios";
 import { BASE_API_URL } from "../others/constants";
 import { uploadImage } from "../services/user_services";
 import * as SecureStore from "expo-secure-store";
+import { useAppContext } from "../context/AppContext";
 
 const useProfilePicture = (navigation: any) => {
   const [profilePicture, setProfilePicture] = useState<{
@@ -20,6 +21,7 @@ const useProfilePicture = (navigation: any) => {
   const sheetRef = useRef<BottomSheet>(null);
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [loading, setloading] = useState(false);
+  const { setIsUserAuthorized } = useAppContext();
 
   const onDismissSnackBar = () => setErrorMsg("");
 
@@ -128,6 +130,7 @@ const useProfilePicture = (navigation: any) => {
         return;
       } else if (data?.status === "ok") {
         await SecureStore.setItemAsync("JWT_TOKEN", data?.token?.toString());
+        setIsUserAuthorized(true);
         setUserData({
           bio: "",
           birthday: "",

@@ -2,10 +2,14 @@ import { View, Text, StyleSheet } from "react-native";
 import colors from "../../others/colors";
 import { Button } from "react-native-paper";
 import * as SecureStore from "expo-secure-store";
+import { useAppContext } from "../../context/AppContext";
 
 const Home = () => {
+  const { account, setIsUserAuthorized } = useAppContext();
+
   const fun = async () => {
     await SecureStore.deleteItemAsync("JWT_TOKEN");
+    await setIsUserAuthorized(false);
   };
 
   return (

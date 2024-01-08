@@ -58,7 +58,7 @@ function AppProvider({ children }: { children: React.ReactNode }) {
       setAccount(data);
       setAppLoading(false);
     })();
-  }, []);
+  }, [isUserAuthorized]);
 
   const value = {
     appLoading,
