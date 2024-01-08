@@ -39,7 +39,9 @@ function AppProvider({ children }: { children: React.ReactNode }) {
         return;
       } else if (!tokenFound && reason === "error-occurred") {
         setIsUserAuthorized(false);
-        setAppErrorMsg("An error occurred while authorizing your identity");
+        setAppErrorMsg(
+          "An error occurred while authorizing your identity, please restart the app"
+        );
         setAppLoading(false);
         return;
       }
