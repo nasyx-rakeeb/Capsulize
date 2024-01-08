@@ -5,5 +5,4 @@ interface AuthUser {
   email?: string;
   gender?: string;
   name?: string;
-  profilePicture?: string;
 }

@@ -55,12 +55,12 @@ const ProfilePicture = ({ navigation }: any) => {
         </Text>
       </View>
       <View style={styles.pictureContainer}>
-        {!!profilePicture && profilePicture?.length > 0 ? (
+        {!!profilePicture?.uri && profilePicture?.uri?.length > 0 ? (
           <>
             <Avatar.Image
               style={styles.picture}
               size={250}
-              source={{ uri: profilePicture }}
+              source={{ uri: profilePicture?.uri }}
               onLoadStart={() => setImageLoading(true)}
               onLoadEnd={() => setImageLoading(false)}
             />
@@ -108,7 +108,7 @@ const ProfilePicture = ({ navigation }: any) => {
             />
           ))}
       </View>
-      {!!profilePicture && profilePicture?.length > 0 && (
+      {!!profilePicture?.uri && profilePicture?.uri?.length > 0 && (
         <View style={styles.actionBtnContainer}>
           <Button
             labelStyle={styles.actionBtnTxt}

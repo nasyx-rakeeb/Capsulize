@@ -24,7 +24,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     email: "",
     gender: "",
     name: "",
-    profilePicture: "",
   });
 
   const contextValue: AuthContextType = {

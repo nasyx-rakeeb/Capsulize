@@ -9,7 +9,10 @@ import { saveToSecurestore } from "../others/utils";
 import { uploadImage } from "../services/user_services";
 
 const useProfilePicture = (navigation: any) => {
-  const [profilePicture, setProfilePicture] = useState<string>("");
+  const [profilePicture, setProfilePicture] = useState<{
+    uri: string | null;
+    base64: string | null | undefined;
+  }>({ uri: null, base64: null });
   const notes = [""];
   const [imageLoading, setImageLoading] = useState<boolean>(false);
   const { userData, setUserData } = useAuthContext();
@@ -42,11 +45,10 @@ const useProfilePicture = (navigation: any) => {
       });
 
       if (!result.canceled) {
-        setProfilePicture(result.assets[0].uri);
-        setUserData((prev) => ({
-          ...prev,
-          profilePicture: !!result.assets ? result.assets[0].uri : "",
-        }));
+        setProfilePicture({
+          uri: result.assets[0].uri,
+          base64: result.assets[0].base64,
+        });
       }
     } catch (error) {
       console.log("Error occurred while launching media library: " + error);
@@ -75,11 +77,10 @@ const useProfilePicture = (navigation: any) => {
       });
 
       if (!result.canceled) {
-        setProfilePicture(result.assets[0].uri);
-        setUserData((prev) => ({
-          ...prev,
-          profilePicture: !!result.assets ? result.assets[0].uri : "",
-        }));
+        setProfilePicture({
+          uri: result.assets[0].uri,
+          base64: result.assets[0].base64,
+        });
       }
     } catch (error) {
       console.log("Error occurred while launching the camera: ", error);
@@ -98,16 +99,23 @@ const useProfilePicture = (navigation: any) => {
   };
 
   const removeProfilePicture = () => {
-    setUserData((prev) => ({ ...prev, profilePicture: "" }));
-    setProfilePicture("");
+    setProfilePicture({ uri: null, base64: null });
   };
 
   const handleBtnPress = async () => {
     setloading(true);
+    const { imageLink, success } = await uploadImage(profilePicture?.base64);
+    if (!success) {
+      setloading(false);
+      setErrorMsg(
+        "An error occurred while uploading your profile picture, please try again"
+      );
+      return;
+    }
     try {
       const { data } = await axios.post(
         `${BASE_API_URL}/auth/signup`,
-        { ...userData },
+        { ...userData, profilePicture: imageLink },
         {
           headers: { "Content-Type": "application/json" },
         }
@@ -121,6 +129,15 @@ const useProfilePicture = (navigation: any) => {
       } else if (data?.status === "ok") {
         await saveToSecurestore("JWT_TOKEN", data?.token?.toString());
         Alert.alert("Success");
+        setUserData({
+          bio: "",
+          birthday: "",
+          email: "",
+          gender: "",
+          name: "",
+          username: "",
+        });
+        setProfilePicture({ uri: null, base64: null });
       }
     } catch (error: any) {
       console.log(error);
