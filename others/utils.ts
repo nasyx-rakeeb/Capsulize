@@ -13,3 +13,20 @@ export const formatISODate = (date: Date) => {
 
   return formattedDate;
 };
+
+export const getJwtToken = async (): Promise<{
+  tokenFound: boolean;
+  token: string | null;
+  reason?: "not-available" | "error-occurred";
+}> => {
+  try {
+    const token = await SecureStore.getItemAsync("JWT_TOKEN");
+    if (!token) {
+      return { tokenFound: false, token: null, reason: "not-available" };
+    }
+    return { tokenFound: true, token };
+  } catch (error) {
+    console.log(error);
+    return { tokenFound: false, token: null, reason: "error-occurred" };
+  }
+};

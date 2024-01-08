@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { isEmail } from "../others/utils";
-import { Alert, Keyboard } from "react-native";
+import { Keyboard } from "react-native";
 import { BASE_API_URL } from "../others/constants";
 import axios from "axios";
 import * as SecureStore from "expo-secure-store";
@@ -43,7 +43,6 @@ const useLogin = (navigation: any) => {
         return;
       } else if (data?.status === "ok") {
         await SecureStore.setItemAsync("JWT_TOKEN", data?.token?.toString());
-        Alert.alert("Success");
       }
     } catch (error: any) {
       console.log(error);

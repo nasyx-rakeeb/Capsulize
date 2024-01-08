@@ -1,1 +1,1 @@
-export { uploadImage } from "./user_services";
+export { uploadImage, getMyAccount } from "./user_services";

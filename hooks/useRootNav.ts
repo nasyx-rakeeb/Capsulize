@@ -19,26 +19,9 @@ export default function useRootNav() {
     "Merienda-SemiBold": require("../assets/fonts/Merienda/Merienda-SemiBold.ttf"),
     "Merienda-Regular": require("../assets/fonts/Merienda/Merienda-Regular.ttf"),
   });
-  const [loading, setLoading] = useState(false);
-  const [authorized, setAuthorized] = useState(false);
-
-  useEffect(() => {
-    (async () => {
-      setLoading(true);
-      const JWT_TOKEN = await SecureStore.getItemAsync("JWT_TOKEN");
-      if (JWT_TOKEN) {
-        setAuthorized(true);
-      } else if (!JWT_TOKEN) {
-        setAuthorized(false);
-      }
-      setLoading(false);
-    })();
-  }, []);
 
   return {
     fontsLoaded,
     errorLoadingFonts,
-    loading,
-    authorized,
   };
 }

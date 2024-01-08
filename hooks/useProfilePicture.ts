@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef } from "react";
+import { useState, useRef } from "react";
 import * as ImagePicker from "expo-image-picker";
 import { useAuthContext } from "../context/AuthContext";
 import BottomSheet from "@gorhom/bottom-sheet";
@@ -128,7 +128,6 @@ const useProfilePicture = (navigation: any) => {
         return;
       } else if (data?.status === "ok") {
         await SecureStore.setItemAsync("JWT_TOKEN", data?.token?.toString());
-        Alert.alert("Success");
         setUserData({
           bio: "",
           birthday: "",

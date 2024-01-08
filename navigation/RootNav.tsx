@@ -1,20 +1,21 @@
-import { Text } from "react-native";
 import AuthNav from "./AuthNav";
 import HomeNav from "./HomeNav";
 import { NavigationContainer } from "@react-navigation/native";
 import { useRootNAv } from "../hooks";
 import { FullScreenLoader } from "../components";
+import { useAppContext } from "../context/AppContext";
 
 const RootNav = () => {
-  const { fontsLoaded, errorLoadingFonts, loading, authorized } = useRootNAv();
+  const { fontsLoaded, errorLoadingFonts } = useRootNAv();
+  const { isUserAuthorized, appLoading } = useAppContext();
 
-  if (!fontsLoaded || loading) {
-    return <FullScreenLoader />;
+  if (!fontsLoaded || appLoading) {
+    return <FullScreenLoader showWithoutOverlay={true} />;
   }
 
   return (
     <NavigationContainer>
-      {!authorized ? <AuthNav /> : <HomeNav />}
+      {!isUserAuthorized ? <AuthNav /> : <HomeNav />}
     </NavigationContainer>
   );
 };
