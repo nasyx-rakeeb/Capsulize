@@ -28,9 +28,16 @@ const useLogin = (navigation: any) => {
 
   const handleLoginPress = async () => {
     setErrorMsg("");
+    setLoading(true);
+    Keyboard.dismiss();
+
+    if (!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&]).+$/.test(password)) {
+      setErrorMsg("Invalid credentials.");
+      setLoading(false);
+      return;
+    }
+
     try {
-      Keyboard.dismiss();
-      setLoading(true);
       const { data } = await axios.post(
         `${BASE_API_URL}/auth/login`,
         { email: email.trim(), password: password.trim() },
@@ -38,6 +45,7 @@ const useLogin = (navigation: any) => {
           headers: { "Content-Type": "application/json" },
         }
       );
+
       setLoading(false);
 
       if (data?.status === "fail") {
