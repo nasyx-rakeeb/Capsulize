@@ -1,46 +1,49 @@
 {
-  "expo": {
-    "name": "capsulize",
-    "slug": "capsulize",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "userInterfaceStyle": "dark",
-    "backgroundColor": "#201A31",
-    "plugins": [
-      [
-        "expo-image-picker",
-        {
-          "photosPermission": "Capsulize accesses your media like photos and videos."
+    "expo": {
+        "name": "capsulize",
+        "slug": "capsulize",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "icon": "./assets/images/icon.png",
+        "userInterfaceStyle": "dark",
+        "backgroundColor": "#201A31",
+        "plugins": [
+            "@react-native-firebase/app",
+            "@react-native-firebase/messaging",
+            [
+                "expo-image-picker",
+                {
+                    "photosPermission": "Capsulize accesses your media like photos and videos."
+                }
+            ]
+        ],
+        "splash": {
+            "image": "./assets/images/splash.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#201A31"
+        },
+        "assetBundlePatterns": ["**/*"],
+        "ios": {
+            "supportsTablet": true,
+            "config": {
+                "usesNonExemptEncryption": false
+            }
+        },
+        "android": {
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/images/adaptive-icon.png",
+                "backgroundColor": "#201A31"
+            },
+            "package": "com.nasyx.capsulize",
+            "googleServicesFile": "./google-services.json"
+        },
+        "web": {
+            "favicon": "./assets/images/favicon.png"
+        },
+        "extra": {
+            "eas": {
+                "projectId": "5b47e15d-15f1-4c6a-9328-96d55f1a7c93"
+            }
         }
-      ]
-    ],
-    "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#201A31"
-    },
-    "assetBundlePatterns": ["**/*"],
-    "ios": {
-      "supportsTablet": true,
-      "config": {
-        "usesNonExemptEncryption": false
-      }
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#201A31"
-      },
-      "package": "com.nasyx.capsulize"
-    },
-    "web": {
-      "favicon": "./assets/images/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "5b47e15d-15f1-4c6a-9328-96d55f1a7c93"
-      }
     }
-  }
 }
