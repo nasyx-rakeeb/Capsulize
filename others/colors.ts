@@ -2,8 +2,8 @@ const colors = {
   prussianBluePrimary: "#201A31",
   brightTurquoise: "#0CF3E1",
   black: "#000000",
-  white: "#FFFFFF",
-  prussianBlueSecondary: "#38304C",
+  offWhite: "#DFDFDE",
+  prussianBlueSecondary: "#403860",
   silver: "#C0C0C0",
   slateGray: "#726F7C",
   gray: "#808080",
@@ -16,7 +16,9 @@ const colors = {
   wisteriaSecondary: "#ecbcbc",
   darkBlue: "#0F1A2C",
   navyBlue: "#133052",
-  shadeBlue: "#0954A5"
+  shadeBlue: "#0954A5",
+  white: "#FFFFFF",
+  wisteriaDark: "#9989C7",
 };
 
 export default colors;

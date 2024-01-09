@@ -3,14 +3,22 @@ import colors from "../../others/colors";
 import { Button } from "react-native-paper";
 import { useWelcome } from "../../hooks";
 import LottieView from "lottie-react-native";
-import {Alert} from "../../components"
+import { Alert } from "../../components";
 
-const Welcome = ({ navigation }) => {
+const Welcome = ({ navigation }: any) => {
   const { handleBtnPress } = useWelcome(navigation);
+
+  if (true) {
+    return (
+      <Alert
+        title="Hello There"
+        description="I told you not to do thst thats gross bruhh wjy would you even do that ok but why dont you go and fetch"
+      />
+    );
+  }
 
   return (
     <View style={styles.container}>
-    <Alert title="Hello There" description="I told you not to do thst thats gross bruhh wjy would you even do that ok but why dont you go and fetch" />
       <View style={styles.box}>
         <View style={styles.animationContainer}>
           <LottieView
