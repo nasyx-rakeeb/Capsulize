@@ -9,7 +9,6 @@
         "backgroundColor": "#201A31",
         "plugins": [
             "@react-native-firebase/app",
-            "@react-native-firebase/messaging",
             [
                 "expo-image-picker",
                 {
