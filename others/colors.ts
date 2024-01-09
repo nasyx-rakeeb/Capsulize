@@ -14,6 +14,9 @@ const colors = {
   beige: "#FCF6DF",
   wisteria: "#D1BCFF",
   wisteriaSecondary: "#ecbcbc",
+  darkBlue: "#0F1A2C",
+  navyBlue: "#133052",
+  shadeBlue: "#0954A5"
 };
 
 export default colors;

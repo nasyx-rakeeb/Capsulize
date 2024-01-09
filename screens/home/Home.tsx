@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.prussianBluePrimary,
     justifyContent: "center",
     alignItems: "center",
-  },
+  }
 });
 
 export default Home;

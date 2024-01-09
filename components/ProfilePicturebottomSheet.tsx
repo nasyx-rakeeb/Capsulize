@@ -43,20 +43,20 @@ const ProfilePicturebottomSheet = ({
       >
         <View style={styles.sheetContentContainer}>
           <Button
-            onPress={openCamera}
-            icon="camera"
-            labelStyle={styles.btnTxt}
-            mode="text"
-          >
-            Camera
-          </Button>
-          <Button
             icon="folder-multiple-image"
             labelStyle={styles.btnTxt}
             mode="text"
             onPress={pickImage}
           >
-            Gallery
+            Upload from gallery
+          </Button>
+          <Button
+            onPress={openCamera}
+            icon="camera"
+            labelStyle={styles.btnTxt}
+            mode="text"
+          >
+            Capture a photo
           </Button>
           <Button
             onPress={closeBottomSheet}
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   sheetHandle: {
-    backgroundColor: colors.prussianBlueSecondary,
+    backgroundColor: colors.prussianBluePrimary,
     borderTopRightRadius: 15,
     borderTopLeftRadius: 15,
   },
@@ -92,11 +92,13 @@ const styles = StyleSheet.create({
   },
   cancelBtnTxt: {
     color: "red",
-    fontFamily: "Roboto-Bold",
+    fontFamily: "Roboto-Regular",
+    fontSize: 18
   },
   btnTxt: {
-    fontFamily: "Roboto-Bold",
+    fontFamily: "Roboto-Regular",
     color: colors.silver,
+    fontSize: 18
   },
 });
 
