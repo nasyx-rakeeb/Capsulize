@@ -11,7 +11,7 @@ const usePassword = (navigation: any) => {
   const notes = [
     "Password can not be empty",
     "Password must be at least 6 characters long",
-    "Mmust contain letters, numbers, and at least one special character",
+    "Must contain letters, numbers, and at least one special character",
     "Password cannot begin or end with a white space",
   ];
 

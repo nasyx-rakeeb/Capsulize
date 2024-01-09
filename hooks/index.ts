@@ -10,3 +10,4 @@ export { default as useName } from "./useName";
 export { default as useEmail } from "./useEmail";
 export { default as useBirthday } from "./useBirthday";
 export { default as usePassword } from "./usePassword";
+export { default as useResetPassword } from "./useResetPassword";

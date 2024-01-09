@@ -10,3 +10,4 @@ export { default as ProfilePicture } from "./auth/register/ProfilePicture";
 export { default as Name } from "./auth/register/Name";
 export { default as Home } from "./home/Home";
 export { default as Password } from "./auth/register/Password";
+export { default as ResetPassword } from "./auth/login/ResetPassword";

@@ -10,6 +10,7 @@ import {
   Name,
   Birthday,
   Password,
+  ResetPassword,
 } from "../screens";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import colors from "../others/colors";
@@ -43,6 +44,7 @@ const AuthNav = () => {
         <AuthStack.Screen name="Bio" component={Bio} />
         <AuthStack.Screen name="Username" component={Username} />
         <AuthStack.Screen name="Name" component={Name} />
+        <AuthStack.Screen name="ResetPassword" component={ResetPassword} />
       </AuthStack.Navigator>
     </AuthProvider>
   );

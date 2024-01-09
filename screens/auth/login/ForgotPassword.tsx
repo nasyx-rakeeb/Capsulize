@@ -13,7 +13,7 @@ import { useForgotPassword } from "../../../hooks";
 import { ErrorMsg } from "../../../components";
 
 const ForgotPassword = ({ navigation }: { navigation: any }) => {
-  const { email, setEmail, handleBtnPress, disableBtn, errorMsg } =
+  const { email, setEmail, handleBtnPress, disableBtn, errorMsg, loading } =
     useForgotPassword(navigation);
 
   return (
@@ -48,7 +48,8 @@ const ForgotPassword = ({ navigation }: { navigation: any }) => {
             icon="arrow-right"
             mode="contained"
             onPress={handleBtnPress}
-            disabled={disableBtn()}
+            disabled={disableBtn() || loading}
+            loading={loading}
           >
             Continue
           </Button>
