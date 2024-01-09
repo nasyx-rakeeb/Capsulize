@@ -43,7 +43,7 @@ const Alert: React.FC<Props> = ({
                   labelStyle={styles.btnTxt}
                   style={styles.btn}
                   mode="contained"
-                  onPress={btn2OnPress}
+                  onPress={btn1OnPress}
                 >
                   {btn1title}
                 </Button>
@@ -56,7 +56,7 @@ const Alert: React.FC<Props> = ({
                 mode="contained"
                 onPress={btn2OnPress ?? hideAlert}
               >
-                {btn1title ?? "Cancel"}
+                {btn2title ?? "Cancel"}
               </Button>
             </View>
           </View>
