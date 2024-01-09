@@ -38,25 +38,25 @@ const Alert: React.FC<Props> = ({
           </View>
           <View style={styles.btnContainer}>
             <View style={styles.btn1Container}>
-              {!!btn2title && (
+              {!!btn1title && (
                 <Button
                   labelStyle={styles.btnTxt}
-                  style={styles.btn1}
+                  style={styles.btn}
                   mode="contained"
                   onPress={btn2OnPress}
                 >
-                  {btn2title}
+                  {btn1title}
                 </Button>
               )}
             </View>
             <View style={styles.btn2Container}>
               <Button
                 labelStyle={styles.btnTxt}
-                style={styles.btn1}
+                style={styles.btn}
                 mode="contained"
                 onPress={btn2OnPress ?? hideAlert}
               >
-                {btn2title ?? "Cancel"}
+                {btn1title ?? "Cancel"}
               </Button>
             </View>
           </View>
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
   btn2Container: {
     marginLeft: 10,
   },
-  btn1: {
+  btn: {
     backgroundColor: colors.wisteriaDark,
     borderRadius: 8,
   },
