@@ -31,6 +31,7 @@ function AppProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     (async () => {
       setAppLoading(true);
+      setAppErrorMsg("");
       const { tokenFound, reason } = await getJwtToken();
 
       if (!tokenFound) {
@@ -40,7 +41,7 @@ function AppProvider({ children }: { children: React.ReactNode }) {
       } else if (!tokenFound && reason === "error-occurred") {
         setIsUserAuthorized(false);
         setAppErrorMsg(
-          "An error occurred while authorizing your identity, please restart the app"
+          "An error occurred while authorizing you, please login again or restart the app"
         );
         setAppLoading(false);
         return;
