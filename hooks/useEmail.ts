@@ -43,7 +43,7 @@ const useEmail = (navigation: any) => {
         { email },
         {
           headers: { "Content-Type": "application/json" },
-        }
+        },
       );
 
       setloading(false);
@@ -58,7 +58,7 @@ const useEmail = (navigation: any) => {
       navigation.navigate("Bio");
     } catch (error: any) {
       console.log(error);
-      setloading(false)
+      setloading(false);
       setErrorMsg("An error occured, please try again");
     }
   };

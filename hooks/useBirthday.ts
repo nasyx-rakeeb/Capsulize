@@ -22,7 +22,7 @@ const useBirthday = (navigation: any) => {
 
   const onChange = (
     event: DateTimePickerEvent,
-    userSelectedDate: Date | undefined
+    userSelectedDate: Date | undefined,
   ) => {
     setDate(userSelectedDate as Date);
     setBirthday(formatISODate(userSelectedDate as Date));

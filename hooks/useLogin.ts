@@ -43,7 +43,7 @@ const useLogin = (navigation: any) => {
         { email: email.trim(), password: password.trim() },
         {
           headers: { "Content-Type": "application/json" },
-        }
+        },
       );
 
       setLoading(false);

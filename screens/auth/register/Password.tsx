@@ -64,7 +64,7 @@ const Password = ({ navigation }: { navigation: any }) => {
             <View style={styles.listContainer}>
               {notes.map((note, index) => (
                 <List.Item
-                titleNumberOfLines={2}
+                  titleNumberOfLines={2}
                   style={styles.listItem}
                   titleStyle={[
                     styles.listTitle,
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     color: colors.silver,
-    fontFamily: "Poppins-Bold",
+    fontFamily: "Rubik-Bold",
     fontSize: 26,
   },
   subHeadingContainer: {

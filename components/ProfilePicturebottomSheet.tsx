@@ -93,12 +93,12 @@ const styles = StyleSheet.create({
   cancelBtnTxt: {
     color: "red",
     fontFamily: "Roboto-Regular",
-    fontSize: 18
+    fontSize: 18,
   },
   btnTxt: {
     fontFamily: "Roboto-Regular",
     color: colors.silver,
-    fontSize: 18
+    fontSize: 18,
   },
 });
 

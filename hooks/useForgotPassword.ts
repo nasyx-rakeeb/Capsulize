@@ -29,7 +29,7 @@ const useForgotPassword = (navigation: any) => {
         { email: email.trim() },
         {
           headers: { "Content-Type": "application/json" },
-        }
+        },
       );
 
       setLoading(false);

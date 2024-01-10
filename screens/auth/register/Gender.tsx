@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     color: colors.silver,
-    fontFamily: "Poppins-Bold",
+    fontFamily: "Rubik-Bold",
     fontSize: 26,
   },
   subHeadingContainer: {

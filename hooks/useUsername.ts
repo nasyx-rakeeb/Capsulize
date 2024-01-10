@@ -54,7 +54,7 @@ const useUsername = (navigation: any) => {
         { username },
         {
           headers: { "Content-Type": "application/json" },
-        }
+        },
       );
 
       setloading(false);
@@ -67,7 +67,7 @@ const useUsername = (navigation: any) => {
       navigation.navigate("Name");
     } catch (error: any) {
       console.log(error);
-      setloading(false)
+      setloading(false);
       setErrorMsg("An error occured, please try again");
     }
   };

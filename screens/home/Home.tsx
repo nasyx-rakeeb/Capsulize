@@ -1,21 +1,20 @@
 import { View, Text, StyleSheet } from "react-native";
 import colors from "../../others/colors";
-import { Button } from "react-native-paper";
-import * as SecureStore from "expo-secure-store";
-import { useAppContext } from "../../context/AppContext";
+import {Button} from "react-native-paper"
+import {useAppContext} from "../../context/AppContext"
+import * as SS from "expo-secure-store"
 
 const Home = () => {
-  const { account, setIsUserAuthorized } = useAppContext();
-
-  const fun = async () => {
-    await SecureStore.deleteItemAsync("JWT_TOKEN");
-    await setIsUserAuthorized(false);
-  };
-
+  const {setIsUserAuthorized} = useAppContext()
+  
   return (
     <View style={styles.container}>
-      <Button onPress={fun} mode="contained">
-        log out
+      <Text>Home</Text>
+      <Button mode="contained" onPress={async () => {
+        await SS.deleteItemAsync("JWT_TOKEN")
+        setIsUserAuthorized(false)
+      } }>
+         log out
       </Button>
     </View>
   );
@@ -27,7 +26,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.prussianBluePrimary,
     justifyContent: "center",
     alignItems: "center",
-  }
+  },
 });
 
 export default Home;

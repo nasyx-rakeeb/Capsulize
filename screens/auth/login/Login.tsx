@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     color: colors.silver,
-    fontFamily: "Poppins-Bold",
+    fontFamily: "Rubik-Bold",
     fontSize: 26,
   },
   subHeadingContainer: {
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
   },
   input: {
     marginHorizontal: 25,
-    backgroundColor: colors.prussianBlueSecondary,
+    backgroundColor: colors.prussianBlueSecondary
   },
   input1: {
     marginBottom: 12,

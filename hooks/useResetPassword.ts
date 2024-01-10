@@ -29,7 +29,7 @@ const useResetPassword = (navigation: any) => {
 
     if (!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&]).+$/.test(newPassword)) {
       setErrorMsg(
-        "New password must contain letters, numbers, and at least one special character"
+        "New password must contain letters, numbers, and at least one special character",
       );
       setLoading(false);
       return;
@@ -41,7 +41,7 @@ const useResetPassword = (navigation: any) => {
         { otp: otp.trim(), newPassword: newPassword.trim() },
         {
           headers: { "Content-Type": "application/json" },
-        }
+        },
       );
 
       setLoading(false);

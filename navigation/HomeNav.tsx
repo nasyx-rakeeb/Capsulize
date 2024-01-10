@@ -1,13 +1,51 @@
-import { Home } from "../screens";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Home, Notifications, Created, Received, Account } from "../screens";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import colors from "../others/colors";
+import {AppHeaderRight, HeaderBackBtn} from "../components"
+import tabBarOptions from "./homeTabBarOptions"
+import homeStackNavOptions from "./homeStackNavOptions"
 
-const HomeNav = () => {
-  const HomeTab = createBottomTabNavigator();
+const HomeTabs = () => {
+  const Tab = createMaterialTopTabNavigator();
 
   return (
-    <HomeTab.Navigator>
-      <HomeTab.Screen name="Home" component={Home} />
-    </HomeTab.Navigator>
+    <Tab.Navigator
+      screenOptions={({ route }) => tabBarOptions({ route })}
+    >
+      <Tab.Screen
+        name="Home"
+        component={Home}
+      />
+      <Tab.Screen
+        name="Created"
+        component={Created}
+      />
+      <Tab.Screen
+        name="Received"
+        component={Received}
+      />
+      <Tab.Screen
+        name="Notifications"
+        component={Notifications}
+      />
+      <Tab.Screen
+        name="Account"
+        component={Account}
+      />
+    </Tab.Navigator>
+  );
+};
+
+const HomeNav = () => {
+  const Stack = createNativeStackNavigator();
+
+  return (
+    <Stack.Navigator
+      screenOptions={homeStackNavOptions}
+    >
+      <Stack.Screen name="HomeTabs" component={HomeTabs} />
+    </Stack.Navigator>
   );
 };
 

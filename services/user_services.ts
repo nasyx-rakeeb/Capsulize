@@ -16,7 +16,7 @@ export const uploadImage = async (image: string | null | undefined) => {
         headers: {
           Authorization: "Client-ID 2f0614d3de4bd45",
         },
-      }
+      },
     );
     return { imageLink: response?.data?.data?.link, success: true };
   } catch (error) {

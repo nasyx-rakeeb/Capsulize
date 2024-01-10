@@ -41,7 +41,7 @@ function AppProvider({ children }: { children: React.ReactNode }) {
       } else if (!tokenFound && reason === "error-occurred") {
         setIsUserAuthorized(false);
         setAppErrorMsg(
-          "An error occurred while authorizing you, please login again or restart the app"
+          "An error occurred while authorizing you, please login again or restart the app",
         );
         setAppLoading(false);
         return;

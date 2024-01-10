@@ -78,9 +78,9 @@ const styles = StyleSheet.create({
   heading: {
     color: colors.silver,
     textAlign: "center",
-    fontSize: 55,
-    fontFamily: "Merienda-Bold",
-    letterSpacing: 3.5,
+    fontSize: 45,
+    fontFamily: "Rubik-Bold",
+    letterSpacing: 1
   },
   btnContainer: {
     width: "100%",
@@ -111,14 +111,13 @@ const styles = StyleSheet.create({
   },
   subHeadingContainer: {
     width: "90%",
-    marginTop: 10,
   },
   subHeading: {
     textAlign: "center",
     color: colors.silver,
     fontFamily: "Roboto-Regular",
     letterSpacing: 1.5,
-    fontSize: 16,
+    fontSize: 14,
   },
 });
 

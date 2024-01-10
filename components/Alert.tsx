@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   },
   title: {
     color: colors.offWhite,
-    fontFamily: "Poppins-Bold",
+    fontFamily: "Rubik-Bold",
     fontSize: 24,
   },
   description: {

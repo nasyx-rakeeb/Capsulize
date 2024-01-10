@@ -11,3 +11,7 @@ export { default as Name } from "./auth/register/Name";
 export { default as Home } from "./home/Home";
 export { default as Password } from "./auth/register/Password";
 export { default as ResetPassword } from "./auth/login/ResetPassword";
+export {default as Notifications} from "./home/Notifications" 
+export {default as Created} from "./home/Created" 
+export {default as Received} from "./home/Received" 
+export {default as Account} from "./home/Account" 
