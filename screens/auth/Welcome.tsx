@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 45,
     fontFamily: "Rubik-Bold",
-    letterSpacing: 1
+    letterSpacing: 1,
   },
   btnContainer: {
     width: "100%",

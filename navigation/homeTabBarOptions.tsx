@@ -1,10 +1,10 @@
-import React from 'react';
-import { View } from 'react-native';
+import React from "react";
+import { View } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import colors from "../others/colors";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
- const tabBarOptions = ({ route }: { route: any }) => ({
+const tabBarOptions = ({ route }: { route: any }) => ({
   tabBarStyle: {
     backgroundColor: colors.prussianBluePrimary,
     elevation: 0,
@@ -21,16 +21,16 @@ import Ionicons from "react-native-vector-icons/Ionicons";
   tabBarIcon: ({ focused, tintColor, size }: any) => {
     let iconName;
 
-    if (route.name === 'Home') {
-      iconName = focused ? 'home-sharp' : 'home-outline';
-    } else if (route.name === 'Created') {
-      iconName = focused ? 'share' : 'share-outline';
+    if (route.name === "Home") {
+      iconName = focused ? "home-sharp" : "home-outline";
+    } else if (route.name === "Created") {
+      iconName = focused ? "share" : "share-outline";
     } else if (route.name === "Received") {
-      iconName = focused ? 'cloud-download' : 'cloud-download-outline';
+      iconName = focused ? "cloud-download" : "cloud-download-outline";
     } else if (route.name === "Notifications") {
-      iconName = focused ? 'notifications-sharp' : 'notifications-outline';
+      iconName = focused ? "notifications-sharp" : "notifications-outline";
     } else if (route.name === "Account") {
-      iconName = focused ? 'person-circle-sharp' : 'person-circle-outline';
+      iconName = focused ? "person-circle-sharp" : "person-circle-outline";
     }
 
     return (
@@ -43,4 +43,4 @@ import Ionicons from "react-native-vector-icons/Ionicons";
   },
 });
 
-export default tabBarOptions
+export default tabBarOptions;

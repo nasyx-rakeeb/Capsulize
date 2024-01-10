@@ -1,6 +1,6 @@
 import axios from "axios";
 import { BASE_API_URL } from "../others/constants";
-import { getJwtToken } from "../others/utils";
+import { getJwtToken, getFcmToken } from "../others/utils";
 
 export const uploadImage = async (image: string | null | undefined) => {
   if (!image) {
@@ -55,3 +55,21 @@ export const getMyAccount = async (): Promise<{
     };
   }
 };
+
+export const saveFcmToken = async () => {
+  const { token } = await getJwtToken();
+  try {
+    const {success, fcmToken} = await getFcmToken() 
+    
+  if (!success) {
+    console.warn("Error occurred while getting fcm token")
+    return
+  }
+    
+    const {data} = await axios.post(`${BASE_API_URL}/user/save-fcm-token`, {fcmToken}, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  } catch (error) {
+    console.log(error)
+  }
+}

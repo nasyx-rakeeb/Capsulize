@@ -1,4 +1,5 @@
 import * as SecureStore from "expo-secure-store";
+import messaging from "@react-native-firebase/messaging";
 
 export const isEmail = (email: string) => {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
@@ -28,5 +29,19 @@ export const getJwtToken = async (): Promise<{
   } catch (error) {
     console.log(error);
     return { tokenFound: false, token: null, reason: "error-occurred" };
+  }
+};
+
+export const getFcmToken = async (): Promise<{
+  success: boolean;
+  fcmToken: string | null;
+}> => {
+  try {
+    await messaging().registerDeviceForRemoteMessages();
+    const token = await messaging().getToken();
+    return { success: true, fcmToken: token };
+  } catch (error) {
+    console.log("error: " + error);
+    return {success: false, fcmToken: null};
   }
 };

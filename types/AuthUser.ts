@@ -5,4 +5,5 @@ interface AuthUser {
   email?: string;
   gender?: string;
   name?: string;
+  fcmToken?: string | null;
 }

@@ -64,7 +64,7 @@ const useProfilePicture = (navigation: any) => {
     if (status !== "granted") {
       Alert.alert(
         "Error",
-        "Sorry, we need camera permissions to make this work!",
+        "Sorry, we need camera permissions to make this work!"
       );
       return;
     }
@@ -106,21 +106,24 @@ const useProfilePicture = (navigation: any) => {
 
   const handleBtnPress = async () => {
     setloading(true);
+
     const { imageLink, success } = await uploadImage(profilePicture?.base64);
+
     if (!success) {
       setloading(false);
       setErrorMsg(
-        "An error occurred while uploading your profile picture, please try again",
+        "An error occurred while uploading your profile picture, please try again"
       );
       return;
     }
+
     try {
       const { data } = await axios.post(
         `${BASE_API_URL}/auth/signup`,
         { ...userData, profilePicture: imageLink },
         {
           headers: { "Content-Type": "application/json" },
-        },
+        }
       );
 
       setloading(false);
@@ -138,7 +141,9 @@ const useProfilePicture = (navigation: any) => {
           gender: "",
           name: "",
           username: "",
+          fcmToken: "",
         });
+
         setProfilePicture({ uri: null, base64: null });
       }
     } catch (error: any) {

@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useFonts } from "expo-font";
-import * as SecureStore from "expo-secure-store";
+import {useAppContext} from "../context/AppContext"
+import {saveFcmToken} from "../services/user_services"
 
 export default function useRootNav() {
+  const {isUserAuthorized} = useAppContext()
   const [fontsLoaded, errorLoadingFonts] = useFonts({
     "Roboto-Regular": require("../assets/fonts/Roboto/Roboto-Regular.ttf"),
     "Roboto-BoldItalic": require("../assets/fonts/Roboto/Roboto-BoldItalic.ttf"),
@@ -13,6 +15,12 @@ export default function useRootNav() {
     "Rubik-Medium": require("../assets/fonts/Rubik/Rubik-Medium.ttf"),
     "Rubik-Bold": require("../assets/fonts/Rubik/Rubik-Bold.ttf"),
   });
+  
+  useEffect(() => {
+    if (isUserAuthorized) {
+      saveFcmToken()
+    }
+  }, [])
 
   return {
     fontsLoaded,

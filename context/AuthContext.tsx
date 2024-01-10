@@ -24,6 +24,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     email: "",
     gender: "",
     name: "",
+    fcmToken: "",
   });
 
   const contextValue: AuthContextType = {

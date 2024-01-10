@@ -18,4 +18,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Account
+export default Account;
