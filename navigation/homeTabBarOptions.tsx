@@ -18,6 +18,8 @@ const tabBarOptions = ({ route }: { route: any }) => ({
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
   },
+  tabBarPressColor: colors.prussianBlueSecondary,
+  tabBarAndroidRipple: colors.prussianBlueSecondary,
   tabBarIcon: ({ focused, tintColor, size }: any) => {
     let iconName;
 

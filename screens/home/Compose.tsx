@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
 import colors from "../../others/colors";
 
-const Compose = ({navigation}) => {
+const Compose = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text>Compose</Text>
@@ -18,4 +18,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Compose
+export default Compose;

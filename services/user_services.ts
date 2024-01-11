@@ -50,7 +50,7 @@ export const getMyAccount = async (): Promise<{
     return {
       data: null,
       message:
-        "An error occurred while fetching account details, please try again",
+        "Unable to reach server, please try again later",
       success: false,
     };
   }

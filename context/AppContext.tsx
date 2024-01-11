@@ -36,35 +36,39 @@ function AppProvider({ children }: { children: React.ReactNode }) {
     (async () => {
       setAppLoading(true);
       setAppErrorMsg("");
-      const { tokenFound, reason } = await getJwtToken();
 
-      if (!tokenFound) {
-        setIsUserAuthorized(false);
+      try {
+        const { tokenFound, reason } = await getJwtToken();
+
+        if (!tokenFound) {
+          setIsUserAuthorized(false);
+          return;
+        } else if (!tokenFound && reason === "error-occurred") {
+          setIsUserAuthorized(false);
+          setAppErrorMsg(
+            "An error occurred while authorizing you, please login again or restart the app",
+          );
+          return;
+        }
+
+        setIsUserAuthorized(true);
+        const { data, message, success } = await getMyAccount();
+
+        if (!success) {
+          setAppErrorMsg(message);
+          return;
+        }
+
+        const { initialNotification, pressAction } =
+          await getInitialNotification();
+
+        setAccount(data);
+      } catch (error) {
+        console.log(error);
+        setAppErrorMsg("An error occurred, please try again");
+      } finally {
         setAppLoading(false);
-        return;
-      } else if (!tokenFound && reason === "error-occurred") {
-        setIsUserAuthorized(false);
-        setAppErrorMsg(
-          "An error occurred while authorizing you, please login again or restart the app",
-        );
-        setAppLoading(false);
-        return;
       }
-
-      setIsUserAuthorized(true);
-
-      const { data, message, success } = await getMyAccount();
-
-      if (!success) {
-        setAppErrorMsg(message);
-        return;
-      }
-
-      const { initialNotification, pressAction } =
-        await getInitialNotification();
-
-      setAccount(data);
-      setAppLoading(false);
     })();
   }, [isUserAuthorized]);
 

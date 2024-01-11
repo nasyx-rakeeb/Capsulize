@@ -1,4 +1,11 @@
-import { Home, Notifications, Created, Received, Account, Compose } from "../screens";
+import {
+  Home,
+  Notifications,
+  Created,
+  Received,
+  Account,
+  Compose,
+} from "../screens";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import colors from "../others/colors";
