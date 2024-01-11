@@ -73,9 +73,9 @@ export const saveFcmToken = async () => {
         headers: { Authorization: `Bearer ${token}` },
       },
     );
-    return true
+    return true;
   } catch (error) {
     console.log(error);
-    return false
+    return false;
   }
 };

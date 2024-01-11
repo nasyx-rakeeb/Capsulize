@@ -24,24 +24,26 @@ export default function useRootNav() {
   });
 
   useEffect(() => {
-  const setup = async () => {
-    const { success } = await requestNotificationPermission();
+    const setup = async () => {
+      const { success } = await requestNotificationPermission();
 
-    if (success) {
-      if (isUserAuthorized) {
-       await saveFcmToken();
-      }
+      if (success) {
+        if (isUserAuthorized) {
+          await saveFcmToken();
+        }
 
-      const channelId = await notifee.createChannel({
-        id: "default",
-        name: "Default Channel",
-      });
+        const channelId = await notifee.createChannel({
+          id: "default",
+          name: "Default Channel",
+        });
 
-      const messagingUnsubscribe = messaging().onMessage(handleNotificationReceived);
+        const messagingUnsubscribe = messaging().onMessage(
+          handleNotificationReceived,
+        );
 
-      const notifeeUnsubscribeForeground = notifee.onForegroundEvent(
-        ({ type, detail }) => {
-          switch (type) {
+        const notifeeUnsubscribeForeground = notifee.onForegroundEvent(
+          ({ type, detail }) => {
+            switch (type) {
               case EventType.DISMISSED:
                 notifee.cancelNotification(detail.notification.id);
                 break;
@@ -51,28 +53,27 @@ export default function useRootNav() {
               default:
                 break;
             }
-        },
-      );
+          },
+        );
 
-      return {
-        messagingUnsubscribe,
-        notifeeUnsubscribeForeground,
-      };
-    }
-  };
+        return {
+          messagingUnsubscribe,
+          notifeeUnsubscribeForeground,
+        };
+      }
+    };
 
-  const { messagingUnsubscribe, notifeeUnsubscribeForeground } = setup();
+    const { messagingUnsubscribe, notifeeUnsubscribeForeground } = setup();
 
-  return () => {
-    if (messagingUnsubscribe) {
-      messagingUnsubscribe();
-    }
-    if (notifeeUnsubscribeForeground) {
-      notifeeUnsubscribeForeground();
-    }
-  };
-}, []);
-
+    return () => {
+      if (messagingUnsubscribe) {
+        messagingUnsubscribe();
+      }
+      if (notifeeUnsubscribeForeground) {
+        notifeeUnsubscribeForeground();
+      }
+    };
+  }, []);
 
   return {
     fontsLoaded,
