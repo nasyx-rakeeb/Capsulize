@@ -5,8 +5,8 @@ import colors from "../others/colors";
 import { AppHeaderRight, HeaderBackBtn } from "../components";
 import tabBarOptions from "./homeTabBarOptions";
 import homeStackNavOptions from "./homeStackNavOptions";
-import notifee from '@notifee/react-native';
-import messaging from '@react-native-firebase/messaging';
+import notifee from "@notifee/react-native";
+import messaging from "@react-native-firebase/messaging";
 
 const HomeTabs = () => {
   const Tab = createMaterialTopTabNavigator();

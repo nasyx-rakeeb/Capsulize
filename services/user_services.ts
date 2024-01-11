@@ -59,17 +59,23 @@ export const getMyAccount = async (): Promise<{
 export const saveFcmToken = async () => {
   const { token } = await getJwtToken();
   try {
-    const {success, fcmToken} = await getFcmToken() 
-    
-  if (!success) {
-    console.warn("Error occurred while getting fcm token")
-    return
-  }
-    
-    const {data} = await axios.post(`${BASE_API_URL}/user/save-fcm-token`, {fcmToken}, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const { success, fcmToken } = await getFcmToken();
+
+    if (!success) {
+      console.warn("Error occurred while getting fcm token.");
+      return;
+    }
+
+    const { data } = await axios.post(
+      `${BASE_API_URL}/user/save-fcm-token`,
+      { fcmToken },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      },
+    );
+    return true
   } catch (error) {
-    console.log(error)
+    console.log(error);
+    return false
   }
-}
+};

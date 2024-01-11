@@ -64,7 +64,7 @@ const useProfilePicture = (navigation: any) => {
     if (status !== "granted") {
       Alert.alert(
         "Error",
-        "Sorry, we need camera permissions to make this work!"
+        "Sorry, we need camera permissions to make this work!",
       );
       return;
     }
@@ -112,7 +112,7 @@ const useProfilePicture = (navigation: any) => {
     if (!success) {
       setloading(false);
       setErrorMsg(
-        "An error occurred while uploading your profile picture, please try again"
+        "An error occurred while uploading your profile picture, please try again",
       );
       return;
     }
@@ -123,7 +123,7 @@ const useProfilePicture = (navigation: any) => {
         { ...userData, profilePicture: imageLink },
         {
           headers: { "Content-Type": "application/json" },
-        }
+        },
       );
 
       setloading(false);

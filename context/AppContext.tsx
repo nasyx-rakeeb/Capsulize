@@ -1,6 +1,10 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { getMyAccount } from "../services";
-import { getJwtToken } from "../others/utils";
+import {
+  getJwtToken,
+  getInitialNotification,
+  handleClickedNotitfaction,
+} from "../others/utils";
 
 interface AppContextType {
   appLoading: boolean;
@@ -55,6 +59,9 @@ function AppProvider({ children }: { children: React.ReactNode }) {
         setAppErrorMsg(message);
         return;
       }
+
+      const { initialNotification, pressAction } =
+        await getInitialNotification();
 
       setAccount(data);
       setAppLoading(false);

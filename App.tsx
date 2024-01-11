@@ -4,7 +4,7 @@ import colors from "./others/colors";
 import RootNav from "./navigation/RootNav";
 import { PaperProvider } from "react-native-paper";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { AppProvider } from "./context/AppContext";
+import { AppProvider } from "./context/AppContext"
 
 export default function App() {
   return (
