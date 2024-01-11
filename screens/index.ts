@@ -15,3 +15,4 @@ export { default as Notifications } from "./home/Notifications";
 export { default as Created } from "./home/Created";
 export { default as Received } from "./home/Received";
 export { default as Account } from "./home/Account";
+export {default as Compose} from "./home/Compose"

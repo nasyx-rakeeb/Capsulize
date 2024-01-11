@@ -4,7 +4,7 @@ import { Button } from "react-native-paper";
 import { useAppContext } from "../../context/AppContext";
 import * as SS from "expo-secure-store";
 
-const Home = () => {
+const Home = ({navigation}) => {
   const { setIsUserAuthorized } = useAppContext();
 
   return (
@@ -18,6 +18,14 @@ const Home = () => {
         }}
       >
         log out
+      </Button>
+       <Button
+        mode="contained"
+        onPress={async () => {
+          navigation.navigate("Compose")
+        }}
+      >
+        Compose
       </Button>
     </View>
   );
