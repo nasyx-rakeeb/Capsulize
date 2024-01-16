@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import { Modal, StyleSheet, View, Text, Dimensions } from "react-native";
 import colors from "../../others/colors";
 import { Button } from "react-native-paper";
-import Dropdown from "./Dropdown"
+import Dropdown from "./Dropdown";
 
 const WINDOW_WIDTH = Dimensions.get("window").width;
-
-
 
 const Alert = ({
   title,
@@ -21,8 +19,8 @@ const Alert = ({
   const [visible, setVisible] = useState(true);
 
   const hideAlert = () => {
-  //  setVisible(false);
-  }
+    //  setVisible(false);
+  };
 
   return (
     <Modal transparent={true} animationType="fade" visible={visible}>
@@ -33,12 +31,14 @@ const Alert = ({
             <Text style={styles.description}>{description}</Text>
           </View>
           <View style={styles.btnContainer}>
-            <Dropdown timeCapsuleData={timeCapsuleData}
-        setTimeCapsuleData={setTimeCapsuleData}
-        optionsVisible={optionsVisible}
-        optionsHeight={optionsHeight}
-        options={options}
-        toggleOptions={toggleOptions} />
+            <Dropdown
+              timeCapsuleData={timeCapsuleData}
+              setTimeCapsuleData={setTimeCapsuleData}
+              optionsVisible={optionsVisible}
+              optionsHeight={optionsHeight}
+              options={options}
+              toggleOptions={toggleOptions}
+            />
           </View>
         </View>
       </View>

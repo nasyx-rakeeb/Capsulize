@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
-import { Animated } from "react-native";
-import * as ImagePicker from "expo-image-picker"
+import * as ImagePicker from "expo-image-picker";
 
 const useCompose = (closeComposeModal: () => void) => {
   const [timeCapsuleData, setTimeCapsuleData] = useState<TimeCapsule>({
@@ -14,22 +13,12 @@ const useCompose = (closeComposeModal: () => void) => {
     revealTime: null,
     media: [],
   });
-  const optionsHeight = useRef(new Animated.Value(0)).current;
   const options = ["public", "followers", "specified Users"];
-  const [optionsVisible, setOptionsVisible] = useState<boolean>(false);
+  const [audienceModalVisible, setAudienceModalVisible] = useState(false);
 
   const onDone = () => {
     closeComposeModal();
     return;
-  };
-
-  const toggleOptions = () => {
-    Animated.timing(optionsHeight, {
-      toValue: optionsVisible ? 0 : options.length * 50,
-      duration: 300,
-      useNativeDriver: false,
-    }).start();
-    setOptionsVisible(!optionsVisible);
   };
 
   const addLocation = async () => {};
@@ -100,15 +89,14 @@ const useCompose = (closeComposeModal: () => void) => {
     timeCapsuleData,
     onDone,
     options,
-    optionsHeight,
-    toggleOptions,
-    optionsVisible,
     setTimeCapsuleData,
     addAudio,
     addLink,
     addMedia,
     addLocation,
     capture,
+    audienceModalVisible,
+    setAudienceModalVisible,
   };
 };
 

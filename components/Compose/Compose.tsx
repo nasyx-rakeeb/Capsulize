@@ -13,6 +13,7 @@ import { useCompose } from "../../hooks";
 import Header from "./Header";
 import Body from "./Body";
 import Footer from "./Footer";
+import AudienceModal from "./AudienceModal";
 
 const Compose = ({
   visible,
@@ -25,19 +26,25 @@ const Compose = ({
     timeCapsuleData,
     onDone,
     options,
-    optionsHeight,
-    toggleOptions,
-    optionsVisible,
     setTimeCapsuleData,
     addAudio,
     addMedia,
     addLocation,
     addLink,
     capture,
+    audienceModalVisible,
+    setAudienceModalVisible,
   } = useCompose(closeComposeModal);
 
   return (
     <Modal transparent={true} animationType="slide" visible={visible}>
+      <AudienceModal
+        audienceModalVisible={audienceModalVisible}
+        setAudienceModalVisible={setAudienceModalVisible}
+        options={options}
+        setTimeCapsuleData={setTimeCapsuleData}
+        timeCapsuleData={timeCapsuleData}
+      />
       <KeyboardAvoidingView
         style={styles.container}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -46,13 +53,12 @@ const Compose = ({
           <Header
             onDone={onDone}
             closeComposeModal={closeComposeModal}
+            timeCapsuleData={timeCapsuleData}
+            audienceModalVisible={audienceModalVisible}
+            setAudienceModalVisible={setAudienceModalVisible}
           />
           <Body
             timeCapsuleData={timeCapsuleData}
-            optionsVisible={optionsVisible}
-            options={options}
-            toggleOptions={toggleOptions}
-            optionsHeight={optionsHeight}
             setTimeCapsuleData={setTimeCapsuleData}
           />
         </ScrollView>
