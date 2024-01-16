@@ -1,31 +1,24 @@
 import { View, Text, StyleSheet } from "react-native";
 import colors from "../../others/colors";
 import { Button } from "react-native-paper";
-import { useAppContext } from "../../context/AppContext";
-import * as SS from "expo-secure-store";
+import { useHome } from "../../hooks";
+import { Compose } from "../../components";
 
 const Home = ({ navigation }) => {
-  const { setIsUserAuthorized } = useAppContext();
+  const { composeModalVisible, showComposeModal, closeComposeModal } =
+    useHome();
 
   return (
     <View style={styles.container}>
-      <Text>Home</Text>
+      <Compose
+        visible={composeModalVisible}
+        closeComposeModal={closeComposeModal}
+      />
       <Button
         mode="contained"
-        onPress={async () => {
-          await SS.deleteItemAsync("JWT_TOKEN");
-          setIsUserAuthorized(false);
-        }}
+        onPress={composeModalVisible ? closeComposeModal : showComposeModal}
       >
-        log out
-      </Button>
-      <Button
-        mode="contained"
-        onPress={async () => {
-          navigation.navigate("Compose");
-        }}
-      >
-        Compose
+        Create
       </Button>
     </View>
   );

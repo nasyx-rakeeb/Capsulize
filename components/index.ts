@@ -6,3 +6,4 @@ export { default as FullScreenLoader } from "./FullScreenLoader";
 export { default as Alert } from "./Alert";
 export { default as AppHeaderRight } from "./AppHeaderRight";
 export { default as AppTitle } from "./AppTitle";
+export { default as Compose } from "./Compose/Compose";

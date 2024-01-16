@@ -49,8 +49,7 @@ export const getMyAccount = async (): Promise<{
     console.log(error);
     return {
       data: null,
-      message:
-        "Unable to reach server, please try again later",
+      message: "Unable to reach server, please try again later",
       success: false,
     };
   }

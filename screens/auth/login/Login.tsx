@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     marginTop: 1.5,
   },
   btn: {
-    marginHorizontal: 25
+    marginHorizontal: 25,
   },
   btnTxt: {
     color: colors.blackPrimary,

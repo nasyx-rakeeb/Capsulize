@@ -19,7 +19,7 @@ const colors = {
   shadeBlue: "#0954A5",
   white: "#FFFFFF",
   wisteriaDark: "#9989C7",
-  blackPrimary: "#151924"
+  blackPrimary: "#151924",
 };
 
 export default colors;

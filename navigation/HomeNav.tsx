@@ -35,7 +35,6 @@ const HomeNav = () => {
   return (
     <Stack.Navigator screenOptions={homeStackNavOptions}>
       <Stack.Screen name="HomeTabs" component={HomeTabs} />
-      <Stack.Screen name="Compose" component={Compose} />
     </Stack.Navigator>
   );
 };

@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     color: colors.silver,
     fontFamily: "Rubik-Bold",
     fontSize: 26,
-    letterSpacing: 1
+    letterSpacing: 1,
   },
   subHeadingContainer: {
     width: "100%",
