@@ -32,16 +32,16 @@ export const getMyAccount = async (): Promise<{
 }> => {
   const { token } = await getJwtToken();
   try {
-    const { data } = await axios.get(`${BASE_API_URL}/user/my-account`, {
+    const res = await axios.get(`${BASE_API_URL}/user/my-account`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    if (data?.status === "fail") {
-      return { data: null, message: data?.message, success: false };
+    if (res?.data?.status === "fail") {
+      return { data: null, message: res?.data?.message, success: false };
     }
 
     return {
-      data: data?.data,
+      data: res?.data?.data,
       message: "Account details fetched successfully",
       success: true,
     };
