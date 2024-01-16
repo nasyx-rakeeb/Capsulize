@@ -1,13 +1,13 @@
 import { useState, useRef } from "react";
 import * as ImagePicker from "expo-image-picker";
-import { useAuthContext } from "../context/AuthContext";
+import { useAuthContext } from "../../../context/AuthContext";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { Alert } from "react-native";
 import axios from "axios";
-import { BASE_API_URL } from "../others/constants";
-import { uploadImage } from "../services/user_services";
+import { BASE_API_URL } from "../../../others/constants";
+import { uploadImage } from "../../../services/user_services";
 import * as SecureStore from "expo-secure-store";
-import { useAppContext } from "../context/AppContext";
+import { useAppContext } from "../../../context/AppContext";
 
 const useProfilePicture = (navigation: any) => {
   const [profilePicture, setProfilePicture] = useState<{

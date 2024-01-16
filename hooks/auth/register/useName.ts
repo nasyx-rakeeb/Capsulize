@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Keyboard } from "react-native";
-import { useAuthContext } from "../context/AuthContext";
+import { useAuthContext } from "../../../context/AuthContext";
 
 const useName = (navigation: any) => {
   const [name, setName] = useState<string>("");

@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "userInterfaceStyle": "dark",
-    "backgroundColor": "#201A31",
+    "backgroundColor": "#151924",
     "plugins": [
       "@react-native-firebase/app",
       [
@@ -19,7 +19,7 @@
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#201A31"
+      "backgroundColor": "#151924"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
@@ -31,7 +31,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#201A31"
+        "backgroundColor": "#151924"
       },
       "package": "com.nasyx.capsulize",
       "googleServicesFile": "./google-services.json"

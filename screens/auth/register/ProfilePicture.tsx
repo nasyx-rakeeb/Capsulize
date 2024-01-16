@@ -74,7 +74,7 @@ const ProfilePicture = ({ navigation }: any) => {
         ) : (
           <TouchableOpacity onPress={openBottomSheet} style={styles.uploadBtn}>
             <MaterialIcon
-              color={colors.prussianBluePrimary}
+              color={colors.blackPrimary}
               name="cloud-upload"
               size={100}
             />
@@ -150,7 +150,7 @@ const ProfilePicture = ({ navigation }: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.prussianBluePrimary,
+    backgroundColor: colors.blackPrimary,
   },
   headingContainer: {
     width: "100%",
@@ -158,8 +158,9 @@ const styles = StyleSheet.create({
   },
   heading: {
     color: colors.silver,
-    fontFamily: "Poppins-Bold",
+    fontFamily: "Rubik-Bold",
     fontSize: 26,
+    letterSpacing: 1
   },
   subHeadingContainer: {
     width: "100%",
@@ -196,7 +197,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 25,
   },
   btnTxt: {
-    color: colors.prussianBluePrimary,
+    color: colors.blackPrimary,
     fontFamily: "Roboto-Bold",
   },
   actionBtnTxt: {
@@ -223,7 +224,7 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto-Regular",
     fontSize: 16,
     textAlign: "center",
-    color: colors.prussianBluePrimary,
+    color: colors.blackPrimary,
   },
   uploadBtn: {
     backgroundColor: colors.wisteria,

@@ -3,9 +3,9 @@ import { HeaderBackBtn } from "../components";
 
 const appNavOptions = {
   headerStyle: {
-    backgroundColor: colors.prussianBluePrimary,
+    backgroundColor: colors.blackPrimary,
   },
-  headerTintColor: colors.silver,
+  headerTintColor: colors.offWhite,
   headerShadowVisible: false,
   headerTitle: "",
   headerLeft: ({ canGoBack }) => canGoBack && <HeaderBackBtn />,

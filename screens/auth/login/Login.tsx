@@ -79,7 +79,7 @@ const Login = ({ navigation }: { navigation: any }) => {
               labelStyle={styles.btnTxt2}
               mode="text"
               onPress={handleForgotPress}
-              rippleColor={colors.prussianBluePrimary}
+              rippleColor={colors.blackPrimary}
             >
               Forgot password?
             </Button>
@@ -102,7 +102,7 @@ const Login = ({ navigation }: { navigation: any }) => {
             labelStyle={styles.signupBtnTxt}
             mode="text"
             onPress={handleSignupPress}
-            rippleColor={colors.prussianBluePrimary}
+            rippleColor={colors.blackPrimary}
           >
             Don't have an account? Sign Up
           </Button>
@@ -115,7 +115,7 @@ const Login = ({ navigation }: { navigation: any }) => {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: colors.prussianBluePrimary,
+    backgroundColor: colors.blackPrimary,
   },
   innerContainer: {
     flex: 1,
@@ -159,10 +159,10 @@ const styles = StyleSheet.create({
     marginTop: 1.5,
   },
   btn: {
-    marginHorizontal: 25,
+    marginHorizontal: 25
   },
   btnTxt: {
-    color: colors.prussianBluePrimary,
+    color: colors.blackPrimary,
     fontFamily: "Roboto-Bold",
   },
   btnTxt2: {

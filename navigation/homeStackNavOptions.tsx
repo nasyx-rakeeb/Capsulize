@@ -3,7 +3,7 @@ import { AppHeaderRight, AppTitle } from "../components";
 
 const HomeStackNavOptions = {
   headerStyle: {
-    backgroundColor: colors.prussianBluePrimary,
+    backgroundColor: colors.blackPrimary,
   },
   headerTitleStyle: {
     fontFamily: "Poppins-Bold",

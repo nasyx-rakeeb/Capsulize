@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { isEmail } from "../others/utils";
+import { isEmail } from "../../../others/utils";
 import { Keyboard } from "react-native";
 import axios from "axios";
-import { BASE_API_URL } from "../others/constants";
+import { BASE_API_URL } from "../../../others/constants";
 
 const useForgotPassword = (navigation: any) => {
   const [email, setEmail] = useState<string>("");

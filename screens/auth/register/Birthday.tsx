@@ -76,7 +76,7 @@ const Birthday = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.prussianBluePrimary,
+    backgroundColor: colors.blackPrimary,
   },
   headingContainer: {
     width: "100%",
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 25,
   },
   btnTxt: {
-    color: colors.prussianBluePrimary,
+    color: colors.blackPrimary,
     fontFamily: "Roboto-Bold",
   },
   listContainer: {

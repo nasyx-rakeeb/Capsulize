@@ -3,8 +3,8 @@ import {
   DateTimePickerAndroid,
   DateTimePickerEvent,
 } from "@react-native-community/datetimepicker";
-import { useAuthContext } from "../context/AuthContext";
-import { formatISODate } from "../others/utils";
+import { useAuthContext } from "../../../context/AuthContext";
+import { formatISODate } from "../../../others/utils";
 
 const useBirthday = (navigation: any) => {
   const [birthday, setBirthday] = useState<string>("");

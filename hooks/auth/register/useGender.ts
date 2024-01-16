@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Animated } from "react-native";
-import { useAuthContext } from "../context/AuthContext";
+import { useAuthContext } from "../../../context/AuthContext";
 
 const useGender = (navigation: any) => {
   const [gender, setGender] = useState<string>("");

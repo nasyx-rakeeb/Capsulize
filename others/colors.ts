@@ -3,7 +3,7 @@ const colors = {
   brightTurquoise: "#0CF3E1",
   black: "#000000",
   offWhite: "#DFDFDE",
-  prussianBlueSecondary: "#403860",
+  prussianBlueSecondary: "#342D4A",
   silver: "#C0C0C0",
   slateGray: "#726F7C",
   gray: "#808080",
@@ -19,6 +19,7 @@ const colors = {
   shadeBlue: "#0954A5",
   white: "#FFFFFF",
   wisteriaDark: "#9989C7",
+  blackPrimary: "#151924"
 };
 
 export default colors;

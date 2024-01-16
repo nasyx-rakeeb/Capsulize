@@ -1,26 +1,37 @@
 import { useState } from "react";
-import { isEmail } from "../others/utils";
 import { Keyboard } from "react-native";
-import { BASE_API_URL } from "../others/constants";
 import axios from "axios";
-import { useAuthContext } from "../context/AuthContext";
+import { BASE_API_URL } from "../../../others/constants";
+import { useAuthContext } from "../../../context/AuthContext";
 
-const useEmail = (navigation: any) => {
-  const [email, setEmail] = useState<string>("");
+const useUsername = (navigation: any) => {
+  const [username, setUsername] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [loading, setloading] = useState(false);
   const { setUserData } = useAuthContext();
   const notes = [
-    "Email address cannot be empty",
-    "Email address must be in valid format",
+    "Username can not be empty",
+    "Must be at least 4 characters long",
+    "Must not exceed 15 characters",
+    "Username can not begin with or end with a period",
+    "Only letters, numbers, and - . _ are allowed",
+    "Consecutive periods are not allowed",
   ];
 
   const noteConditionMet = (note: string) => {
     switch (note) {
       case notes[0]:
-        return email.trim() !== "";
+        return username.trim() !== "";
       case notes[1]:
-        return isEmail(email);
+        return username.length >= 4;
+      case notes[2]:
+        return username.length <= 15;
+      case notes[3]:
+        return !/^\./.test(username) && !/\.$/.test(username);
+      case notes[4]:
+        return /^[A-Za-z0-9_.-]+$/.test(username);
+      case notes[5]:
+        return !/\.\./.test(username);
       default:
         return true;
     }
@@ -39,8 +50,8 @@ const useEmail = (navigation: any) => {
       setloading(true);
 
       const { data } = await axios.post(
-        `${BASE_API_URL}/auth/validate-email`,
-        { email },
+        `${BASE_API_URL}/auth/username-available`,
+        { username },
         {
           headers: { "Content-Type": "application/json" },
         },
@@ -48,14 +59,12 @@ const useEmail = (navigation: any) => {
 
       setloading(false);
 
-      if (data?.canUse === false || data?.status === "fail") {
+      if (data?.available === false || data?.status === "fail") {
         setErrorMsg(data?.message);
         return;
       }
-
-      setUserData((prev) => ({ ...prev, email: email }));
-
-      navigation.navigate("Bio");
+      setUserData((prev) => ({ ...prev, username: username }));
+      navigation.navigate("Name");
     } catch (error: any) {
       console.log(error);
       setloading(false);
@@ -64,8 +73,8 @@ const useEmail = (navigation: any) => {
   };
 
   return {
-    email,
-    setEmail,
+    username,
+    setUsername,
     handleBtnPress,
     notes,
     noteConditionMet,
@@ -76,4 +85,4 @@ const useEmail = (navigation: any) => {
   };
 };
 
-export default useEmail;
+export default useUsername;

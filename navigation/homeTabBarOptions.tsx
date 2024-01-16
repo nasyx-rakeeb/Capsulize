@@ -6,7 +6,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 
 const tabBarOptions = ({ route }: { route: any }) => ({
   tabBarStyle: {
-    backgroundColor: colors.prussianBluePrimary,
+    backgroundColor: colors.blackPrimary,
     elevation: 0,
     borderBottomWidth: 1,
     borderBottomColor: colors.silver,

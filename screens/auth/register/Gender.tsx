@@ -112,7 +112,7 @@ const Gender = ({ navigation }: { navigation: any }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.prussianBluePrimary,
+    backgroundColor: colors.blackPrimary,
   },
   optionsContainer: {
     overflow: "hidden",
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 25,
   },
   btnTxt: {
-    color: colors.prussianBluePrimary,
+    color: colors.blackPrimary,
     fontFamily: "Roboto-Bold",
   },
   listContainer: {

@@ -62,7 +62,7 @@ const ForgotPassword = ({ navigation }: { navigation: any }) => {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: colors.prussianBluePrimary,
+    backgroundColor: colors.blackPrimary,
   },
   innerContainer: {
     flex: 1,
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 25,
   },
   btnTxt: {
-    color: colors.prussianBluePrimary,
+    color: colors.blackPrimary,
     fontFamily: "Roboto-Bold",
   },
 });

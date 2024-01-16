@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { isEmail } from "../others/utils";
+import { isEmail } from "../../../others/utils";
 import { Keyboard } from "react-native";
-import { BASE_API_URL } from "../others/constants";
+import { BASE_API_URL } from "../../../others/constants";
 import axios from "axios";
 import * as SecureStore from "expo-secure-store";
-import { useAppContext } from "../context/AppContext";
+import { useAppContext } from "../../../context/AppContext";
 
 const useLogin = (navigation: any) => {
   const [email, setEmail] = useState<string>("");

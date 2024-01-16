@@ -60,7 +60,7 @@ const Welcome = ({ navigation }: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.prussianBluePrimary,
+    backgroundColor: colors.blackPrimary,
     justifyContent: "space-between",
   },
   animationContainer: {
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   btnTxt1: {
-    color: colors.prussianBluePrimary,
+    color: colors.blackPrimary,
     fontFamily: "Roboto-Bold",
   },
   btnTxt2: {
