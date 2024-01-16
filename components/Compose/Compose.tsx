@@ -46,12 +46,6 @@ const Compose = ({
           <Header
             onDone={onDone}
             closeComposeModal={closeComposeModal}
-            timeCapsuleData={timeCapsuleData}
-            setTimeCapsuleData={setTimeCapsuleData}
-            optionsVisible={optionsVisible}
-            optionsHeight={optionsHeight}
-            options={options}
-            toggleOptions={toggleOptions}
           />
           <Body
             timeCapsuleData={timeCapsuleData}
