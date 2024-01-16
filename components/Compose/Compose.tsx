@@ -6,11 +6,13 @@ import {
   KeyboardAvoidingView,
   Platform,
   Keyboard,
-  Pressable,
+  ScrollView,
 } from "react-native";
 import colors from "../../others/colors";
 import { useCompose } from "../../hooks";
 import Header from "./Header";
+import Body from "./Body";
+import Footer from "./Footer";
 
 const Compose = ({
   visible,
@@ -19,7 +21,20 @@ const Compose = ({
   visible: boolean;
   closeComposeModal: () => void;
 }) => {
-  const { timeCapsuleData, onDone } = useCompose(closeComposeModal);
+  const {
+    timeCapsuleData,
+    onDone,
+    options,
+    optionsHeight,
+    toggleOptions,
+    optionsVisible,
+    setTimeCapsuleData,
+    addAudio,
+    addMedia,
+    addLocation,
+    addLink,
+    capture,
+  } = useCompose(closeComposeModal);
 
   return (
     <Modal transparent={true} animationType="slide" visible={visible}>
@@ -27,9 +42,33 @@ const Compose = ({
         style={styles.container}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
-        <Pressable onPress={Keyboard.dismiss} style={styles.innerContainer}>
-          <Header onDone={onDone} closeComposeModal={closeComposeModal} />
-        </Pressable>
+        <ScrollView style={styles.innerContainer}>
+          <Header
+            onDone={onDone}
+            closeComposeModal={closeComposeModal}
+            timeCapsuleData={timeCapsuleData}
+            setTimeCapsuleData={setTimeCapsuleData}
+            optionsVisible={optionsVisible}
+            optionsHeight={optionsHeight}
+            options={options}
+            toggleOptions={toggleOptions}
+          />
+          <Body
+            timeCapsuleData={timeCapsuleData}
+            optionsVisible={optionsVisible}
+            options={options}
+            toggleOptions={toggleOptions}
+            optionsHeight={optionsHeight}
+            setTimeCapsuleData={setTimeCapsuleData}
+          />
+        </ScrollView>
+        <Footer
+          addLink={addLink}
+          addLocation={addLocation}
+          addMedia={addMedia}
+          addAudio={addAudio}
+          capture={capture}
+        />
       </KeyboardAvoidingView>
     </Modal>
   );

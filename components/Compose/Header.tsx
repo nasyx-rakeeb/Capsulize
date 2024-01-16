@@ -3,7 +3,13 @@ import colors from "../../others/colors";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { Button } from "react-native-paper";
 
-const Header = ({ closeComposeModal, onDone }: { closeComposeModal: () => void, onDone: () => void }) => {
+const Header = ({
+  closeComposeModal,
+  onDone,
+}: {
+  closeComposeModal: () => void;
+  onDone: () => void;
+}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.left}>
@@ -15,7 +21,12 @@ const Header = ({ closeComposeModal, onDone }: { closeComposeModal: () => void, 
         />
       </TouchableOpacity>
       <View style={styles.right}>
-        <Button onPress={onDone} style={styles.btn} labelStyle={styles.btnTxt} mode="contained">
+        <Button
+          onPress={onDone}
+          style={styles.btn}
+          labelStyle={styles.btnTxt}
+          mode="contained"
+        >
           Done
         </Button>
       </View>

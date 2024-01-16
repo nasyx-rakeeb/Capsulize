@@ -7,7 +7,10 @@
       "isUnsaved": false,
       "readOnly": false,
       "deletedFile": false,
-      "cursorPos": { "row": 0, "column": 0 },
+      "cursorPos": {
+        "row": 0,
+        "column": 0
+      },
       "scrollTop": 0,
       "scrollLeft": 0,
       "editable": true,
@@ -22,7 +25,10 @@
       "isUnsaved": false,
       "readOnly": false,
       "deletedFile": false,
-      "cursorPos": { "row": 0, "column": 0 },
+      "cursorPos": {
+        "row": 0,
+        "column": 0
+      },
       "scrollTop": 0,
       "scrollLeft": 0,
       "editable": true,
@@ -62,7 +68,10 @@
     }
   ],
   "fileBrowserState": [
-    { "url": "/", "name": "/" },
+    {
+      "url": "/",
+      "name": "/"
+    },
     {
       "url": "sftp://nasyx:452811@192.168.95.193:22/?keyFile=&passPhrase=",
       "name": "RPI"
@@ -88,7 +97,10 @@
     "animation": "system",
     "appTheme": "ocean",
     "autosave": 0,
-    "fileBrowser": { "showHiddenFiles": false, "sortByName": true },
+    "fileBrowser": {
+      "showHiddenFiles": false,
+      "sortByName": true
+    },
     "formatter": {
       "json5": "default",
       "jsoniq": "default",
@@ -103,7 +115,11 @@
     "previewMode": "inapp",
     "disableCache": false,
     "host": "localhost",
-    "search": { "caseSensitive": false, "regExp": false, "wholeWord": false },
+    "search": {
+      "caseSensitive": false,
+      "regExp": false,
+      "wholeWord": false
+    },
     "lang": "en-GB",
     "fontSize": "1px",
     "editorTheme": "one-dark-pro",
@@ -245,11 +261,23 @@
       "openErrorPageOnErrors": true,
       "version": 3
     },
-    "bajrangcoder.react.snippets": { "snippetDocs": false },
+    "bajrangcoder.react.snippets": {
+      "snippetDocs": false
+    },
     "coswat.code.commenter": {
       "multiComment": true,
       "fileMode": true,
       "templEngineMode": true
+    }
+  },
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "5b47e15d-15f1-4c6a-9328-96d55f1a7c93"
+      }
+    },
+    "android": {
+      "package": "com.nasyxrakeeb.capsulize"
     }
   }
 }
