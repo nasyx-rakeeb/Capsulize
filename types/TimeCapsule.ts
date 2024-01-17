@@ -1,7 +1,10 @@
 interface TimeCapsule {
   recipients: string[];
   audience: "public" | "followers" | "specifiedUsers";
-  location: { locationDataType: "Point" | null; coordinates: number[] };
+  location: {
+    locationDataType: "Point" | null;
+    coordinates: number[];
+  };
   urls: { url: string; title: string }[];
   text: string;
   revealIdentityAtRevealTime: boolean | null;

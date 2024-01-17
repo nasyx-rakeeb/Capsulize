@@ -7,4 +7,4 @@ export { default as Alert } from "./App/Alert";
 export { default as AppHeaderRight } from "./App/AppHeaderRight";
 export { default as AppTitle } from "./App/AppTitle";
 export { default as Compose } from "./Compose/Compose";
-export { default as MapView } from "./Common/MapView";
+export { default as MapModal } from "./Common/MapModal";

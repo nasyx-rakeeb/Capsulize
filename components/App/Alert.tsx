@@ -51,21 +51,20 @@ const Alert: React.FC<Props> = ({
               )}
             </View>
             <View style={styles.btn2Container}>
-  <Button
-    labelStyle={styles.btnTxt}
-    style={styles.btn}
-    mode="contained"
-    onPress={() => {
-      if (btn2OnPress) {
-        btn2OnPress();
-      }
-      setVisible(false);
-    }}
-  >
-    {btn2title ?? "Cancel"}
-  </Button>
-</View>
-
+              <Button
+                labelStyle={styles.btnTxt}
+                style={styles.btn}
+                mode="contained"
+                onPress={() => {
+                  if (btn2OnPress) {
+                    btn2OnPress();
+                  }
+                  setVisible(false);
+                }}
+              >
+                {btn2title ?? "Cancel"}
+              </Button>
+            </View>
           </View>
         </View>
       </View>

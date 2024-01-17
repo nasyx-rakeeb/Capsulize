@@ -15,7 +15,7 @@ import Body from "./Body";
 import Footer from "./Footer";
 import AudienceModal from "./AudienceModal";
 import Alert from "../App/Alert";
-import MapView from "../Common/MapView";
+import MapModal from "../Common/MapModal";
 
 const Compose = ({
   visible,
@@ -39,10 +39,24 @@ const Compose = ({
     setCameraOptionsModalVisible,
     mapVisible,
     setMapVisible,
+    onSelectLocation,
+    onCancelLocation,
+    selectedLocation,
+    setSelectedLocation,
+    handleLocationChange,
   } = useCompose(closeComposeModal);
 
   return (
     <Modal transparent={true} animationType="slide" visible={visible}>
+      <MapModal
+        onCancel={onCancelLocation}
+        onConfirm={onSelectLocation}
+        visible={mapVisible}
+        setVisible={setMapVisible}
+        selectedLocation={selectedLocation}
+        setSelectedLocation={setSelectedLocation}
+        handleLocationChange={handleLocationChange}
+      />
       <Alert
         title="Capture Media"
         description="Select the desired media type by choosing either 'Image' or 'Video'"

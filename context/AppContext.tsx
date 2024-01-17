@@ -14,7 +14,7 @@ interface AppContextType {
   setIsUserAuthorized: (value: boolean) => void;
   appErrorMsg: string;
   visible: boolean;
-  setVisible: (v: boolean) => void
+  setVisible: (v: boolean) => void;
 }
 
 const initialValue = {
@@ -25,7 +25,7 @@ const initialValue = {
   setIsUserAuthorized: (value: boolean) => {},
   appErrorMsg: "",
   visible: false,
-  setVisible: () => {}
+  setVisible: () => {},
 };
 
 const AppContext = createContext<AppContextType>(initialValue);
@@ -35,13 +35,13 @@ function AppProvider({ children }: { children: React.ReactNode }) {
   const [isUserAuthorized, setIsUserAuthorized] = useState(false);
   const [account, setAccount] = useState<User | null>(null);
   const [appErrorMsg, setAppErrorMsg] = useState("");
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     (async () => {
       setAppLoading(true);
       setAppErrorMsg("");
-      setVisible(false)
+      setVisible(false);
 
       try {
         const { tokenFound, reason } = await getJwtToken();
@@ -54,7 +54,7 @@ function AppProvider({ children }: { children: React.ReactNode }) {
           setAppErrorMsg(
             "An error occurred while authorizing you, please login again or restart the app",
           );
-          setVisible(true)
+          setVisible(true);
           return;
         }
 
@@ -63,7 +63,7 @@ function AppProvider({ children }: { children: React.ReactNode }) {
 
         if (!success) {
           setAppErrorMsg(message);
-          setVisible(true)
+          setVisible(true);
           return;
         }
 
@@ -74,7 +74,7 @@ function AppProvider({ children }: { children: React.ReactNode }) {
       } catch (error) {
         console.log(error);
         setAppErrorMsg("An error occurred, please try again");
-        setVisible(true)
+        setVisible(true);
       } finally {
         setAppLoading(false);
       }
@@ -90,7 +90,7 @@ function AppProvider({ children }: { children: React.ReactNode }) {
     appErrorMsg,
     setAppErrorMsg,
     visible,
-    setVisible
+    setVisible,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

@@ -7,7 +7,8 @@ import { useAppContext } from "../context/AppContext";
 
 const RootNav = () => {
   const { fontsLoaded, errorLoadingFonts } = useRootNAv();
-  const { isUserAuthorized, appLoading, appErrorMsg, visible, setVisible } = useAppContext()
+  const { isUserAuthorized, appLoading, appErrorMsg, visible, setVisible } =
+    useAppContext();
 
   if (!fontsLoaded || appLoading) {
     return <FullScreenLoader showWithoutOverlay={true} />;

@@ -11,7 +11,7 @@ const Footer = ({
   cameraOptionsModalVisible,
   setCameraOptionsModalVisible,
   mapVisible,
-  setMapVisible
+  setMapVisible,
 }: {
   addLocation: () => void;
   addMedia: () => void;
@@ -20,7 +20,7 @@ const Footer = ({
   cameraOptionsModalVisible: boolean;
   setCameraOptionsModalVisible: () => void;
   mapVisible: boolean;
-  setMapVisible: () => void
+  setMapVisible: () => void;
 }) => {
   return (
     <View style={styles.container}>
@@ -36,7 +36,9 @@ const Footer = ({
       >
         <MaterialIcon name="camera-alt" size={24} color={colors.wisteria} />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => setMapVisible(mapVisible ? fqlse : true)}>
+      <TouchableOpacity
+        onPress={() => setMapVisible(mapVisible ? fqlse : true)}
+      >
         <MaterialIcon name="add-location" size={24} color={colors.wisteria} />
       </TouchableOpacity>
       <TouchableOpacity onPress={addAudio}>

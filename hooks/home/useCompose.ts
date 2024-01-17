@@ -19,10 +19,33 @@ const useCompose = (closeComposeModal: () => void) => {
   const [cameraOptionsModalVisible, setCameraOptionsModalVisible] =
     useState(false);
   const [mapVisible, setMapVisible] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState({
+    type: "Point",
+    coordinates: [0, 0],
+  });
+
+  const handleLocationChange = (event) => {
+    setSelectedLocation({
+      type: "Point",
+      coordinates: [
+        event.nativeEvent.coordinate.longitude,
+        event.nativeEvent.coordinate.latitude,
+      ],
+    });
+  };
 
   const onNext = () => {
     closeComposeModal();
     return;
+  };
+
+  const onCancelLocation = () => {
+    setMapVisible(false);
+  };
+
+  const onSelectLocation = () => {
+    setTimeCapsuleData((p) => ({ ...p, location: { ...selectedLocation } }));
+    onCancelLocation();
   };
 
   const addLocation = async () => {};
@@ -122,6 +145,11 @@ const useCompose = (closeComposeModal: () => void) => {
     setCameraOptionsModalVisible,
     mapVisible,
     setMapVisible,
+    onSelectLocation,
+    onCancelLocation,
+    selectedLocation,
+    setSelectedLocation,
+    handleLocationChange,
   };
 };
 

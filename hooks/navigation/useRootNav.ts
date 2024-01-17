@@ -77,6 +77,6 @@ export default function useRootNav() {
 
   return {
     fontsLoaded,
-    errorLoadingFonts
+    errorLoadingFonts,
   };
 }
