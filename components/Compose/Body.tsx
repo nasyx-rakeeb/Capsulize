@@ -20,12 +20,15 @@ const Body = ({
           multiline
           onChangeText={(v) => setTimeCapsuleData((p) => ({ ...p, text: v }))}
           value={timeCapsuleData.text}
-          left={<TextInput.Icon icon="alphabetical-variant" />}
           style={styles.input}
-          label="Message"
+          placeholder="Type something here..."
           mode="flat"
+          underlineColor={colors.blackPrimary}
+          activeUnderlineColor={colors.wisteria}
+          textColor={colors.offWhite}
+          cursorColor={colors.wisteria}
+          contentStyle={styles.inputContent}
         />
-        <Note note="Craft a personalized message to accompany your time capsule. Share your thoughts, memories, or anything you'd like with the recipients." />
       </View>
     </View>
   );
@@ -35,17 +38,23 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.blackPrimary,
     width: "100%",
-    paddingVertical: 15,
+    paddingVertical: 12,
+    paddingHorizontal: 6
   },
   inputContainer: {
     width: "100%",
-    marginVertical: 30,
   },
   input: {
     backgroundColor: colors.prussianBlueSecondary,
-    maxHeight: 150,
-    marginHorizontal: 12,
+    maxHeight: 300,
+    backgroundColor: colors.blackPrimary,
+    borderWidth: 0,
+    fontSize: 18
   },
+  inputContent: {
+    paddingLeft: 12,
+    paddingRight: 12
+  }
 });
 
 export default Body;
