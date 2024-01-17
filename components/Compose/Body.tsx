@@ -21,7 +21,7 @@ const Body = ({
           onChangeText={(v) => setTimeCapsuleData((p) => ({ ...p, text: v }))}
           value={timeCapsuleData.text}
           style={styles.input}
-          placeholder="Type something here..."
+          placeholder="Add a message..."
           mode="flat"
           underlineColor={colors.blackPrimary}
           activeUnderlineColor={colors.wisteria}
