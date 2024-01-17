@@ -12,6 +12,8 @@ type Props = {
   btn1OnPress?: () => void;
   btn2title?: string;
   btn2OnPress?: () => void;
+  visible: boolean;
+  setVisible: () => void;
 };
 
 const Alert: React.FC<Props> = ({
@@ -21,13 +23,9 @@ const Alert: React.FC<Props> = ({
   btn1title,
   btn2OnPress,
   btn2title,
+  visible,
+  setVisible,
 }) => {
-  const [visible, setVisible] = useState(true);
-
-  const hideAlert = () => {
-    setVisible(false);
-  };
-
   return (
     <Modal transparent={true} animationType="fade" visible={visible}>
       <View style={styles.container}>
@@ -43,7 +41,10 @@ const Alert: React.FC<Props> = ({
                   labelStyle={styles.btnTxt}
                   style={styles.btn}
                   mode="contained"
-                  onPress={btn1OnPress}
+                  onPress={() => {
+                    btn1OnPress();
+                    setVisible(false);
+                  }}
                 >
                   {btn1title}
                 </Button>
@@ -54,7 +55,10 @@ const Alert: React.FC<Props> = ({
                 labelStyle={styles.btnTxt}
                 style={styles.btn}
                 mode="contained"
-                onPress={btn2OnPress ?? hideAlert}
+                onPress={() => {
+                  btn2OnPress();
+                  setVisible(false);
+                }}
               >
                 {btn2title ?? "Cancel"}
               </Button>
@@ -78,9 +82,9 @@ const styles = StyleSheet.create({
   innerContainer: {
     width: WINDOW_WIDTH - 20,
     padding: 12,
-    backgroundColor: colors.prussianBluePrimary,
-    borderWidth: 1.1,
-    borderColor: colors.prussianBlueSecondary,
+    backgroundColor: colors.blackPrimary,
+    borderWidth: 0.5,
+    borderColor: colors.slateGray,
     borderRadius: 6,
   },
   title: {
@@ -106,11 +110,11 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   btn: {
-    backgroundColor: colors.wisteriaDark,
+    backgroundColor: colors.wisteria,
     borderRadius: 8,
   },
   btnTxt: {
-    color: colors.black,
+    color: colors.blackPrimary,
     fontFamily: "Roboto-Medium",
   },
 });

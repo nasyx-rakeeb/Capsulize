@@ -15,7 +15,12 @@ const RootNav = () => {
 
   return (
     <NavigationContainer>
-      {!!appErrorMsg && <Alert title="Error" description={appErrorMsg} />}
+      <Alert
+        visible={!!appErrorMsg}
+        setVisible={() => {}}
+        title="Error"
+        description={appErrorMsg}
+      />
       {!isUserAuthorized ? <AuthNav /> : <HomeNav />}
     </NavigationContainer>
   );

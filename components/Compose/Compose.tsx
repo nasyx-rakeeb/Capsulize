@@ -14,6 +14,7 @@ import Header from "./Header";
 import Body from "./Body";
 import Footer from "./Footer";
 import AudienceModal from "./AudienceModal";
+import Alert from "../App/Alert";
 
 const Compose = ({
   visible,
@@ -34,10 +35,22 @@ const Compose = ({
     capture,
     audienceModalVisible,
     setAudienceModalVisible,
+    cameraOptionsModalVisible,
+    setCameraOptionsModalVisible,
   } = useCompose(closeComposeModal);
 
   return (
     <Modal transparent={true} animationType="slide" visible={visible}>
+      <Alert
+        title="Capture Media"
+        description="Select the desired media type by choosing either 'Image' or 'Video'"
+        btn1title="Image"
+        btn2title="Video"
+        btn1OnPress={() => capture("image")}
+        btn2OnPress={() => capture("video")}
+        visible={cameraOptionsModalVisible}
+        setVisible={setCameraOptionsModalVisible}
+      />
       <AudienceModal
         audienceModalVisible={audienceModalVisible}
         setAudienceModalVisible={setAudienceModalVisible}
@@ -68,6 +81,8 @@ const Compose = ({
           addMedia={addMedia}
           addAudio={addAudio}
           capture={capture}
+          cameraOptionsModalVisible={cameraOptionsModalVisible}
+          setCameraOptionsModalVisible={setCameraOptionsModalVisible}
         />
       </KeyboardAvoidingView>
     </Modal>

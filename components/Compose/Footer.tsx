@@ -9,19 +9,29 @@ const Footer = ({
   addMedia,
   addLocation,
   capture,
+  cameraOptionsModalVisible,
+  setCameraOptionsModalVisible,
 }: {
   addLocation: () => void;
   addLink: () => void;
   addMedia: () => void;
   addAudio: () => void;
   capture: () => void;
+  cameraOptionsModalVisible: boolean;
+  setCameraOptionsModalVisible: () => void;
 }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={addMedia}>
         <MaterialIcon name="photo-library" size={24} color={colors.wisteria} />
       </TouchableOpacity>
-      <TouchableOpacity onPress={capture}>
+      <TouchableOpacity
+        onPress={() => {
+          setCameraOptionsModalVisible(
+            cameraOptionsModalVisible ? false : true,
+          );
+        }}
+      >
         <MaterialIcon name="camera-alt" size={24} color={colors.wisteria} />
       </TouchableOpacity>
       <TouchableOpacity onPress={addLocation}>

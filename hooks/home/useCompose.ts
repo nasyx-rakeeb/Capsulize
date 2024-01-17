@@ -15,6 +15,8 @@ const useCompose = (closeComposeModal: () => void) => {
   });
   const options = ["public", "followers", "specified Users"];
   const [audienceModalVisible, setAudienceModalVisible] = useState(false);
+  const [cameraOptionsModalVisible, setCameraOptionsModalVisible] =
+    useState(false);
 
   const onDone = () => {
     closeComposeModal();
@@ -47,7 +49,7 @@ const useCompose = (closeComposeModal: () => void) => {
     }
   };
 
-  const capture = async () => {
+  const capture = async (option: "video" | "image") => {
     const { status } = await ImagePicker.requestCameraPermissionsAsync();
 
     if (status !== "granted") {
@@ -60,7 +62,10 @@ const useCompose = (closeComposeModal: () => void) => {
 
     try {
       let result = await ImagePicker.launchCameraAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        mediaTypes:
+          option === "image"
+            ? ImagePicker.MediaTypeOptions.Images
+            : ImagePicker.MediaTypeOptions.Videos,
         quality: 1,
         aspect: [1, 1],
         base64: true,
@@ -97,6 +102,8 @@ const useCompose = (closeComposeModal: () => void) => {
     capture,
     audienceModalVisible,
     setAudienceModalVisible,
+    cameraOptionsModalVisible,
+    setCameraOptionsModalVisible,
   };
 };
 

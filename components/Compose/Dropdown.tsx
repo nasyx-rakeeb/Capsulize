@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     width: "95%",
     borderWidth: 1,
     borderColor: colors.slateGray,
-    borderRadius: 6
+    borderRadius: 6,
   },
   inputContainer: {
     width: "100%",
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     width: "100%",
     borderBottomRightRadius: 6,
-    borderBottomLeftRadius: 6
+    borderBottomLeftRadius: 6,
   },
   optionItem: {
     backgroundColor: colors.blackPrimary,
