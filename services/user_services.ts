@@ -78,3 +78,21 @@ export const saveFcmToken = async () => {
     return false;
   }
 };
+
+export const getApproxLocation = async () => {
+  const { token } = await getJwtToken();
+  try {
+    const ip = await axios.get("https://api.ipify.org/");
+    
+    const { data } = await axios.post(
+      `${BASE_API_URL}/app/get-approx-location`,
+      { ip: ip?.data },
+      { headers: { Authorization: `Bearer ${token}` } },
+    );
+    
+    return { success: true, data: data?.data };
+  } catch (error) {
+    console.log(error);
+    return { success: false, data: null };
+  }
+};

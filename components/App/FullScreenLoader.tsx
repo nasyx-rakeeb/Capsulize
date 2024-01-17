@@ -24,7 +24,7 @@ const FullScreenLoader: React.FC<Props> = ({
           {
             backgroundColor: !showWithoutOverlay
               ? `rgba(0, 0, 0, ${overlayOpacity ?? 0.5})`
-              : colors.prussianBluePrimary,
+              : colors.blackPrimary,
           },
         ]}
       >

@@ -1,6 +1,7 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import * as ImagePicker from "expo-image-picker";
 import * as DocumentPicker from "expo-document-picker";
+import { getApproxLocation } from "../../services";
 
 const useCompose = (closeComposeModal: () => void) => {
   const [timeCapsuleData, setTimeCapsuleData] = useState<TimeCapsule>({
@@ -20,19 +21,26 @@ const useCompose = (closeComposeModal: () => void) => {
     useState(false);
   const [mapVisible, setMapVisible] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState({
-    type: "Point",
-    coordinates: [0, 0],
-  });
+  type: "Point",
+  coordinates: [0, 0],
+});
+
+useEffect(() => {
+  const getCurLoc = async () => {
+    const { success, data } = await getApproxLocation();
+    const approxCoordinates = data?.loc?.split(",").reverse()
+    setSelectedLocation(() => ({type: "Point", coordinates: approxCoordinates?.map(parseFloat)}))
+  }
+  getCurLoc()
+}, [])
 
   const handleLocationChange = (event) => {
-    setSelectedLocation({
-      type: "Point",
-      coordinates: [
-        event.nativeEvent.coordinate.longitude,
-        event.nativeEvent.coordinate.latitude,
-      ],
-    });
-  };
+  const { longitude, latitude } = event.nativeEvent.coordinate;
+  setSelectedLocation({
+    type: "Point",
+    coordinates: [parseFloat(longitude), parseFloat(latitude)],
+  })
+};
 
   const onNext = () => {
     closeComposeModal();
@@ -44,9 +52,9 @@ const useCompose = (closeComposeModal: () => void) => {
   };
 
   const onSelectLocation = () => {
-    setTimeCapsuleData((p) => ({ ...p, location: { ...selectedLocation } }));
-    onCancelLocation();
-  };
+  setTimeCapsuleData((p) => ({ ...p, location: { ...selectedLocation } }));
+  onCancelLocation();
+};
 
   const addLocation = async () => {};
 
@@ -57,7 +65,7 @@ const useCompose = (closeComposeModal: () => void) => {
         allowsEditing: true,
         aspect: [16, 9],
         quality: 1,
-        base64: true,
+        base64: true
       });
 
       if (!result.canceled) {
