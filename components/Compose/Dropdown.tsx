@@ -56,22 +56,25 @@ const Dropdown = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
+    width: "95%",
+    borderWidth: 1,
+    borderColor: colors.slateGray,
+    borderRadius: 6
   },
   inputContainer: {
     width: "100%",
   },
   input: {
-    marginHorizontal: 12,
-    backgroundColor: colors.prussianBlueSecondary,
+    backgroundColor: colors.blackPrimary,
   },
   optionsContainer: {
     overflow: "hidden",
     width: "100%",
+    borderBottomRightRadius: 6,
+    borderBottomLeftRadius: 6
   },
   optionItem: {
-    backgroundColor: colors.prussianBlueSecondary,
-    marginHorizontal: 12,
+    backgroundColor: colors.blackPrimary,
     marginVertical: -1,
   },
   optionTitle: {

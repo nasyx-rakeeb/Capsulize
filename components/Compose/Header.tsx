@@ -85,7 +85,6 @@ const styles = StyleSheet.create({
     marginLeft: 22,
   },
   outlinedBtn: {
-    borderRadius: 6,
     borderColor: colors.offWhite,
   },
 });
