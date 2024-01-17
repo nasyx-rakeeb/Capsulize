@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Portal } from "react-native-paper";
-import colors from "../others/colors";
+import colors from "../../others/colors";
 import Constants from "expo-constants";
 import Animated, {
   useSharedValue,

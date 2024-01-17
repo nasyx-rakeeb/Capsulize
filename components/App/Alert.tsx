@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, StyleSheet, View, Text, Dimensions } from "react-native";
-import colors from "../others/colors";
+import colors from "../../others/colors";
 import { Button } from "react-native-paper";
 
 const WINDOW_WIDTH = Dimensions.get("window").width;

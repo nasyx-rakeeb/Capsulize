@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, StyleSheet, View } from "react-native";
 import LottieView from "lottie-react-native";
-import colors from "../others/colors";
+import colors from "../../others/colors";
 
 type Props = {
   showWithoutOverlay?: boolean;
@@ -36,7 +36,7 @@ const FullScreenLoader: React.FC<Props> = ({
             width: animationWidth ?? 200,
             height: animationheight ?? 200,
           }}
-          source={require("../assets/lottie_animations/Loader.json")}
+          source={require("../../assets/lottie_animations/Loader.json")}
         />
       </View>
     </Modal>

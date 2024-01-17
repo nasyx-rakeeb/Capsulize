@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
   outlinedBtnTxt: {
-    marginVertical: 3,
+    marginVertical: 2,
     marginHorizontal: 10,
     color: colors.offWhite,
     fontFamily: "Roboto-Medium",

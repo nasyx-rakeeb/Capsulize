@@ -2,7 +2,7 @@ import BottomSheet, { BottomSheetBackdrop } from "@gorhom/bottom-sheet";
 import React, { RefObject, useMemo, useRef } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Button, Portal } from "react-native-paper";
-import colors from "../others/colors";
+import colors from "../../others/colors";
 import { BottomSheetMethods } from "@gorhom/bottom-sheet/lib/typescript/types";
 
 const ProfilePicturebottomSheet = ({

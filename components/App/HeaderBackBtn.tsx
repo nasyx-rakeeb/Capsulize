@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
-import colors from "../others/colors";
+import colors from "../../others/colors";
 
 const HeaderBackBtn = () => {
   const navigation = useNavigation();

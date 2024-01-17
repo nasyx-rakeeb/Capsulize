@@ -1,5 +1,5 @@
 import { View, StyleSheet } from "react-native";
-import colors from "../others/colors";
+import colors from "../../others/colors";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import Ionicons from "react-native-vector-icons/Ionicons";
 

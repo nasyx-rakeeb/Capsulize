@@ -1,5 +1,5 @@
 import { Text, StyleSheet } from "react-native";
-import colors from "../others/colors";
+import colors from "../../others/colors";
 
 const AppTitle = () => {
   return <Text style={styles.title}>Capsulize</Text>;
