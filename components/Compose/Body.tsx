@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.blackPrimary,
     width: "100%",
     paddingVertical: 12,
-    paddingHorizontal: 6
+    paddingHorizontal: 6,
   },
   inputContainer: {
     width: "100%",
@@ -49,12 +49,12 @@ const styles = StyleSheet.create({
     maxHeight: 300,
     backgroundColor: colors.blackPrimary,
     borderWidth: 0,
-    fontSize: 18
+    fontSize: 18,
   },
   inputContent: {
     paddingLeft: 12,
-    paddingRight: 12
-  }
+    paddingRight: 12,
+  },
 });
 
 export default Body;

@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import * as ImagePicker from "expo-image-picker";
+import * as DocumentPicker from "expo-document-picker";
 
 const useCompose = (closeComposeModal: () => void) => {
   const [timeCapsuleData, setTimeCapsuleData] = useState<TimeCapsule>({
@@ -88,7 +89,24 @@ const useCompose = (closeComposeModal: () => void) => {
 
   const addLink = () => {};
 
-  const addAudio = async () => {};
+  const addAudio = async () => {
+    try {
+      const audioFile = await DocumentPicker.getDocumentAsync({
+        type: "audio/*",
+      });
+      if (!audioFile?.canceled) {
+        setTimeCapsuleData((p) => ({
+          ...p,
+          media: [
+            ...p?.media,
+            { mediaType: "audio", url: result.assets[0].uri },
+          ],
+        }));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return {
     timeCapsuleData,
