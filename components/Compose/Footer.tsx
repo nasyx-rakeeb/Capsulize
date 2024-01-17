@@ -4,21 +4,23 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 
 const Footer = ({
-  addLink,
   addAudio,
   addMedia,
   addLocation,
   capture,
   cameraOptionsModalVisible,
   setCameraOptionsModalVisible,
+  mapVisible,
+  setMapVisible
 }: {
   addLocation: () => void;
-  addLink: () => void;
   addMedia: () => void;
   addAudio: () => void;
   capture: () => void;
   cameraOptionsModalVisible: boolean;
   setCameraOptionsModalVisible: () => void;
+  mapVisible: boolean;
+  setMapVisible: () => void
 }) => {
   return (
     <View style={styles.container}>
@@ -34,11 +36,8 @@ const Footer = ({
       >
         <MaterialIcon name="camera-alt" size={24} color={colors.wisteria} />
       </TouchableOpacity>
-      <TouchableOpacity onPress={addLocation}>
+      <TouchableOpacity onPress={() => setMapVisible(mapVisible ? fqlse : true)}>
         <MaterialIcon name="add-location" size={24} color={colors.wisteria} />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={addLink}>
-        <MaterialIcon name="insert-link" size={24} color={colors.wisteria} />
       </TouchableOpacity>
       <TouchableOpacity onPress={addAudio}>
         <MaterialIcon name="audiotrack" size={24} color={colors.wisteria} />

@@ -15,6 +15,7 @@ import Body from "./Body";
 import Footer from "./Footer";
 import AudienceModal from "./AudienceModal";
 import Alert from "../App/Alert";
+import MapView from "../Common/MapView";
 
 const Compose = ({
   visible,
@@ -31,12 +32,13 @@ const Compose = ({
     addAudio,
     addMedia,
     addLocation,
-    addLink,
     capture,
     audienceModalVisible,
     setAudienceModalVisible,
     cameraOptionsModalVisible,
     setCameraOptionsModalVisible,
+    mapVisible,
+    setMapVisible,
   } = useCompose(closeComposeModal);
 
   return (
@@ -76,13 +78,14 @@ const Compose = ({
           />
         </ScrollView>
         <Footer
-          addLink={addLink}
           addLocation={addLocation}
           addMedia={addMedia}
           addAudio={addAudio}
           capture={capture}
           cameraOptionsModalVisible={cameraOptionsModalVisible}
           setCameraOptionsModalVisible={setCameraOptionsModalVisible}
+          mapVisible={mapVisible}
+          setMapVisible={setMapVisible}
         />
       </KeyboardAvoidingView>
     </Modal>

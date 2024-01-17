@@ -18,6 +18,7 @@ const useCompose = (closeComposeModal: () => void) => {
   const [audienceModalVisible, setAudienceModalVisible] = useState(false);
   const [cameraOptionsModalVisible, setCameraOptionsModalVisible] =
     useState(false);
+  const [mapVisible, setMapVisible] = useState(false);
 
   const onNext = () => {
     closeComposeModal();
@@ -87,8 +88,6 @@ const useCompose = (closeComposeModal: () => void) => {
     }
   };
 
-  const addLink = () => {};
-
   const addAudio = async () => {
     try {
       const audioFile = await DocumentPicker.getDocumentAsync({
@@ -114,7 +113,6 @@ const useCompose = (closeComposeModal: () => void) => {
     options,
     setTimeCapsuleData,
     addAudio,
-    addLink,
     addMedia,
     addLocation,
     capture,
@@ -122,6 +120,8 @@ const useCompose = (closeComposeModal: () => void) => {
     setAudienceModalVisible,
     cameraOptionsModalVisible,
     setCameraOptionsModalVisible,
+    mapVisible,
+    setMapVisible,
   };
 };
 

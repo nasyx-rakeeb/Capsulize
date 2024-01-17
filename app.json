@@ -39,6 +39,11 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#151924"
       },
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyAGFjDp2wJj2V3MIiYIfSOGAY652pXhsaY"
+        }
+      },
       "package": "com.nasyx.capsulize",
       "googleServicesFile": "./google-services.json"
     },

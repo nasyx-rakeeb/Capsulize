@@ -45,7 +45,8 @@
     "react-native-snap-carousel": "^3.9.1",
     "react-native-tab-view": "^3.5.2",
     "react-native-vector-icons": "^10.0.3",
-    "expo-document-picker": "~11.5.4"
+    "expo-document-picker": "~11.5.4",
+    "react-native-maps": "1.7.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
