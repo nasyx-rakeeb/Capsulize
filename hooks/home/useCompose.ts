@@ -18,7 +18,7 @@ const useCompose = (closeComposeModal: () => void) => {
   const [cameraOptionsModalVisible, setCameraOptionsModalVisible] =
     useState(false);
 
-  const onDone = () => {
+  const onNext = () => {
     closeComposeModal();
     return;
   };
@@ -92,7 +92,7 @@ const useCompose = (closeComposeModal: () => void) => {
 
   return {
     timeCapsuleData,
-    onDone,
+    onNext,
     options,
     setTimeCapsuleData,
     addAudio,

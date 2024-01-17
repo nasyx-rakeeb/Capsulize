@@ -25,7 +25,7 @@ const Compose = ({
 }) => {
   const {
     timeCapsuleData,
-    onDone,
+    onNext,
     options,
     setTimeCapsuleData,
     addAudio,
@@ -64,7 +64,7 @@ const Compose = ({
       >
         <ScrollView style={styles.innerContainer}>
           <Header
-            onDone={onDone}
+            onNext={onNext}
             closeComposeModal={closeComposeModal}
             timeCapsuleData={timeCapsuleData}
             audienceModalVisible={audienceModalVisible}

@@ -5,7 +5,7 @@ import { Button } from "react-native-paper";
 
 const Header = ({
   closeComposeModal,
-  onDone,
+  onNext,
   audienceModalVisible,
   setAudienceModalVisible,
   timeCapsuleData,
@@ -42,7 +42,7 @@ const Header = ({
       </TouchableOpacity>
       <View style={styles.right}>
         <Button
-          onPress={onDone}
+          onPress={onNext}
           style={styles.btn}
           labelStyle={styles.btnTxt}
           mode="contained"
