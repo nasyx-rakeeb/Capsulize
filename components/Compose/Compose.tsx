@@ -44,6 +44,8 @@ const Compose = ({
     selectedLocation,
     setSelectedLocation,
     handleLocationChange,
+    onFindMe,
+    mapRef,
   } = useCompose(closeComposeModal);
 
   return (
@@ -56,6 +58,8 @@ const Compose = ({
         selectedLocation={selectedLocation}
         setSelectedLocation={setSelectedLocation}
         handleLocationChange={handleLocationChange}
+        onFindMe={onFindMe}
+        mapRef={mapRef}
       />
       <Alert
         title="Capture Media"

@@ -24,13 +24,19 @@ const useCompose = (closeComposeModal: () => void) => {
     type: "Point",
     coordinates: [0, 0],
   });
+  const [currentLocation, setCurrentLocation] = useState({
+    type: "Point",
+    coordinates: [0, 0],
+  });
+  const mapRef = useRef();
 
   useEffect(() => {
     (async () => {
       const { status, lat, lng } = await getCurrentLocation();
 
       if (status === "ok") {
-        setSelectedLocation({ type: "Point", coordinates: [lat, lng] });
+        setSelectedLocation({ type: "Point", coordinates: [lng, lat] });
+        setCurrentLocation({ type: "Point", coordinates: [lng, lat] });
       }
     })();
   }, []);
@@ -41,6 +47,23 @@ const useCompose = (closeComposeModal: () => void) => {
       type: "Point",
       coordinates: [parseFloat(longitude), parseFloat(latitude)],
     });
+  };
+
+  const onFindMe = async () => {
+    if (
+      currentLocation.coordinates[0] !== 0 &&
+      currentLocation.coordinates[1] !== 0
+    ) {
+      mapRef.current.animateToRegion(
+        {
+          latitude: currentLocation.coordinates[1],
+          longitude: currentLocation.coordinates[0],
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0922,
+        },
+        2000,
+      );
+    }
   };
 
   const onNext = () => {
@@ -159,6 +182,8 @@ const useCompose = (closeComposeModal: () => void) => {
     selectedLocation,
     setSelectedLocation,
     handleLocationChange,
+    onFindMe,
+    mapRef,
   };
 };
 

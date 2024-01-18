@@ -106,7 +106,7 @@ export const getCurrentLocation = async () => {
       const { success, data } = await getApproxLocation();
 
       if (success) {
-        const approxCoordinates = data?.loc?.split(",");
+        const approxCoordinates = data?.loc?.split(",")
         return {
           status: "ok",
           lat: parseFloat(approxCoordinates[0]),
