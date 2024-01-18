@@ -1,5 +1,6 @@
 import { StyleSheet, View, TextInput } from "react-native";
 import colors from "../../others/colors";
+import SelectedMedia from "./SelectedMedia";
 
 const Body = ({
   timeCapsuleData,
@@ -21,6 +22,9 @@ const Body = ({
           placeholderTextColor={colors.gray}
         />
       </View>
+      <View style={styles.selectedMediaContainer}>
+        <SelectedMedia data={timeCapsuleData} setData={setTimeCapsuleData} />
+      </View>
     </View>
   );
 };
@@ -30,7 +34,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.blackPrimary,
     width: "100%",
     paddingVertical: 12,
-    paddingHorizontal: 6,
+    paddingHorizontal: 16,
   },
   inputContainer: {
     width: "100%",
@@ -42,7 +46,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
     height: "auto",
     color: colors.offWhite,
-    paddingHorizontal: 12,
+  },
+  selectedMediaContainer: {
+    marginTop: 18,
   },
 });
 
