@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import * as ImagePicker from "expo-image-picker";
 import * as DocumentPicker from "expo-document-picker";
 import { getCurrentLocation } from "../../services";
@@ -28,6 +28,7 @@ const useCompose = (closeComposeModal: () => void) => {
     type: "Point",
     coordinates: [0, 0],
   });
+  const [loading, setLoading] = useState(false)
   const mapRef = useRef();
 
   const getLocation = async () => {
@@ -38,10 +39,6 @@ const useCompose = (closeComposeModal: () => void) => {
       setCurrentLocation({ type: "Point", coordinates: [lng, lat] });
     }
   };
-
-  useEffect(() => {
-    getLocation();
-  }, []);
 
   const handleLocationChange = (event) => {
     const { longitude, latitude } = event.nativeEvent.coordinate;
@@ -84,7 +81,12 @@ const useCompose = (closeComposeModal: () => void) => {
     onCancelLocation();
   };
 
-  const addLocation = async () => {};
+  const addLocation = async () => {
+    setLoading(true)
+    await getLocation()
+    setLoading(false)
+    setMapVisible(true)
+  };
 
   const addMedia = async () => {
     try {
@@ -188,6 +190,7 @@ const useCompose = (closeComposeModal: () => void) => {
     handleLocationChange,
     onFindMe,
     mapRef,
+    loading
   };
 };
 

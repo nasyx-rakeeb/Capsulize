@@ -10,10 +10,6 @@ const RootNav = () => {
   const { isUserAuthorized, appLoading, appErrorMsg, visible, setVisible } =
     useAppContext();
 
-  if (!fontsLoaded || appLoading) {
-    return <FullScreenLoader showWithoutOverlay={true} />;
-  }
-
   return (
     <NavigationContainer>
       <Alert
@@ -22,6 +18,7 @@ const RootNav = () => {
         title="Error"
         description={appErrorMsg}
       />
+      <FullScreenLoader visible={!fontsLoaded || appLoading}  showWithoutOverlay={true} />
       {!isUserAuthorized ? <AuthNav /> : <HomeNav />}
     </NavigationContainer>
   );

@@ -16,6 +16,7 @@ import Footer from "./Footer";
 import AudienceModal from "./AudienceModal";
 import Alert from "../App/Alert";
 import MapModal from "../Common/MapModal";
+import FullScreenLoader from "../App/FullScreenLoader"
 
 const Compose = ({
   visible,
@@ -46,10 +47,12 @@ const Compose = ({
     handleLocationChange,
     onFindMe,
     mapRef,
+    loading
   } = useCompose(closeComposeModal);
 
   return (
     <Modal transparent={true} animationType="slide" visible={visible}>
+      <FullScreenLoader visible={loading} />
       <MapModal
         onCancel={onCancelLocation}
         onConfirm={onSelectLocation}
@@ -102,8 +105,6 @@ const Compose = ({
           capture={capture}
           cameraOptionsModalVisible={cameraOptionsModalVisible}
           setCameraOptionsModalVisible={setCameraOptionsModalVisible}
-          mapVisible={mapVisible}
-          setMapVisible={setMapVisible}
         />
       </KeyboardAvoidingView>
     </Modal>

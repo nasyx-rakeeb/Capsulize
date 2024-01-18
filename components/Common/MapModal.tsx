@@ -77,7 +77,7 @@ const MapModal = ({
           mode="contained"
           icon="crosshairs-gps"
         >
-          Locate Me
+          Current Location
         </Button>
         <Button
           rippleColor={colors.silver}
