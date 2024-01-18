@@ -12,10 +12,11 @@ const SelectedMedia = ({
   return (
     <View style={styles.container}>
       <FlatList
-        data={data}
-        keyExtractor={Math.random() * 100}
+        data={data?.media}
+        keyExtractor={() => Math.random() * 100}
         renderItem={({ item }) => <MediaItem item={item} setData={setData} />}
         horizontal={true}
+        showsHorizontalScrollIndicator={false}
       />
     </View>
   );
@@ -23,7 +24,7 @@ const SelectedMedia = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
+    flex: 1,
   },
 });
 

@@ -93,7 +93,6 @@ const useCompose = (closeComposeModal: () => void) => {
       let result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.All,
         allowsEditing: true,
-        aspect: [16, 9],
         quality: 1,
         base64: true,
       });
@@ -130,7 +129,6 @@ const useCompose = (closeComposeModal: () => void) => {
             ? ImagePicker.MediaTypeOptions.Images
             : ImagePicker.MediaTypeOptions.Videos,
         quality: 1,
-        aspect: [1, 1],
         base64: true,
         allowsEditing: true,
       });
@@ -151,10 +149,10 @@ const useCompose = (closeComposeModal: () => void) => {
 
   const addAudio = async () => {
     try {
-      const audioFile = await DocumentPicker.getDocumentAsync({
+      const result = await DocumentPicker.getDocumentAsync({
         type: "audio/*",
       });
-      if (!audioFile?.canceled) {
+      if (!result?.canceled) {
         setTimeCapsuleData((p) => ({
           ...p,
           media: [
