@@ -1,9 +1,5 @@
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, TextInput } from "react-native";
 import colors from "../../others/colors";
-import Ionicons from "react-native-vector-icons/Ionicons";
-import MaterialIcon from "react-native-vector-icons/MaterialIcons";
-import { TextInput } from "react-native-paper";
-import Note from "./Note";
 
 const Body = ({
   timeCapsuleData,
@@ -16,18 +12,13 @@ const Body = ({
     <View style={styles.container}>
       <View style={styles.inputContainer}>
         <TextInput
-          numberOfLines={4}
           multiline
           onChangeText={(v) => setTimeCapsuleData((p) => ({ ...p, text: v }))}
           value={timeCapsuleData.text}
           style={styles.input}
           placeholder="Add a message..."
-          mode="flat"
-          underlineColor={colors.blackPrimary}
-          activeUnderlineColor={colors.wisteria}
-          textColor={colors.offWhite}
-          cursorColor={colors.wisteria}
-          contentStyle={styles.inputContent}
+          cursorColor={colors.offWhite}
+          placeholderTextColor={colors.gray}
         />
       </View>
     </View>
@@ -48,12 +39,10 @@ const styles = StyleSheet.create({
     backgroundColor: colors.prussianBlueSecondary,
     maxHeight: 300,
     backgroundColor: colors.blackPrimary,
-    borderWidth: 0,
     fontSize: 18,
-  },
-  inputContent: {
-    paddingLeft: 12,
-    paddingRight: 12,
+    height: "auto",
+    color: colors.offWhite,
+    paddingHorizontal: 12,
   },
 });
 
