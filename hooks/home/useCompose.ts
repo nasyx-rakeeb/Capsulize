@@ -30,15 +30,17 @@ const useCompose = (closeComposeModal: () => void) => {
   });
   const mapRef = useRef();
 
-  useEffect(() => {
-    (async () => {
-      const { status, lat, lng } = await getCurrentLocation();
+  const getLocation = async () => {
+    const { status, lat, lng } = await getCurrentLocation();
 
-      if (status === "ok") {
-        setSelectedLocation({ type: "Point", coordinates: [lng, lat] });
-        setCurrentLocation({ type: "Point", coordinates: [lng, lat] });
-      }
-    })();
+    if (status === "ok") {
+      setSelectedLocation({ type: "Point", coordinates: [lng, lat] });
+      setCurrentLocation({ type: "Point", coordinates: [lng, lat] });
+    }
+  };
+
+  useEffect(() => {
+    getLocation();
   }, []);
 
   const handleLocationChange = (event) => {
@@ -50,19 +52,21 @@ const useCompose = (closeComposeModal: () => void) => {
   };
 
   const onFindMe = async () => {
+    const region = {
+      latitude: currentLocation.coordinates[1],
+      longitude: currentLocation.coordinates[0],
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0922,
+    };
+
     if (
       currentLocation.coordinates[0] !== 0 &&
       currentLocation.coordinates[1] !== 0
     ) {
-      mapRef.current.animateToRegion(
-        {
-          latitude: currentLocation.coordinates[1],
-          longitude: currentLocation.coordinates[0],
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0922,
-        },
-        2000,
-      );
+      mapRef.current.animateToRegion(region, 2000);
+    } else {
+      await getLocation();
+      mapRef.current.animateToRegion(region, 2000);
     }
   };
 
