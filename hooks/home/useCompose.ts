@@ -28,7 +28,7 @@ const useCompose = (closeComposeModal: () => void) => {
     type: "Point",
     coordinates: [0, 0],
   });
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const mapRef = useRef();
 
   const getLocation = async () => {
@@ -82,10 +82,10 @@ const useCompose = (closeComposeModal: () => void) => {
   };
 
   const addLocation = async () => {
-    setLoading(true)
-    await getLocation()
-    setLoading(false)
-    setMapVisible(true)
+    setLoading(true);
+    await getLocation();
+    setLoading(false);
+    setMapVisible(true);
   };
 
   const addMedia = async () => {
@@ -190,7 +190,7 @@ const useCompose = (closeComposeModal: () => void) => {
     handleLocationChange,
     onFindMe,
     mapRef,
-    loading
+    loading,
   };
 };
 

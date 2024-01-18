@@ -8,7 +8,7 @@ type Props = {
   animationWidth?: number;
   animationheight?: number;
   overlayOpacity?: number;
-  visible: boolean
+  visible: boolean;
 };
 
 const FullScreenLoader: React.FC<Props> = ({
@@ -16,7 +16,7 @@ const FullScreenLoader: React.FC<Props> = ({
   animationWidth,
   animationheight,
   overlayOpacity,
-  visible
+  visible,
 }) => {
   return (
     <Modal transparent={true} animationType="fade" visible={visible}>

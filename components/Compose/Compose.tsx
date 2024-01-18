@@ -16,7 +16,7 @@ import Footer from "./Footer";
 import AudienceModal from "./AudienceModal";
 import Alert from "../App/Alert";
 import MapModal from "../Common/MapModal";
-import FullScreenLoader from "../App/FullScreenLoader"
+import FullScreenLoader from "../App/FullScreenLoader";
 
 const Compose = ({
   visible,
@@ -47,7 +47,7 @@ const Compose = ({
     handleLocationChange,
     onFindMe,
     mapRef,
-    loading
+    loading,
   } = useCompose(closeComposeModal);
 
   return (

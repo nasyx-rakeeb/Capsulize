@@ -18,7 +18,10 @@ const RootNav = () => {
         title="Error"
         description={appErrorMsg}
       />
-      <FullScreenLoader visible={!fontsLoaded || appLoading}  showWithoutOverlay={true} />
+      <FullScreenLoader
+        visible={!fontsLoaded || appLoading}
+        showWithoutOverlay={true}
+      />
       {!isUserAuthorized ? <AuthNav /> : <HomeNav />}
     </NavigationContainer>
   );
