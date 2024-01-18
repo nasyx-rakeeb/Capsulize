@@ -2,7 +2,7 @@ import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import { StyleSheet, View, Modal } from "react-native";
 import { Button } from "react-native-paper";
 import colors from "../../others/colors";
-import mapStyles from "../../others/mapStyles"
+import mapStyles from "../../others/mapStyles";
 
 const MapModal = ({
   visible,
@@ -17,21 +17,20 @@ const MapModal = ({
   setVisible: () => void;
   onConfirm: () => void;
   onCancel: () => void;
-  selectedLocation: { type: string, coordinates: number[] };
+  selectedLocation: { type: string; coordinates: number[] };
   setSelectedLocation: () => void;
   handleLocationChange: () => void;
 }) => {
-
   return (
     <Modal transparent={true} animationType="slide" visible={visible}>
       <View style={styles.container}>
         <MapView
-        customMapStyle={mapStyles}
+          customMapStyle={mapStyles}
           initialRegion={{
-            latitude: selectedLocation?.coordinates[1],
-            longitude: selectedLocation?.coordinates[0],
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0922,
+            latitude: selectedLocation?.coordinates[0],
+            longitude: selectedLocation?.coordinates[1],
+            latitudeDelta: 50,
+            longitudeDelta: 180,
           }}
           provider={PROVIDER_GOOGLE}
           style={styles.map}
@@ -39,8 +38,8 @@ const MapModal = ({
         >
           <Marker
             coordinate={{
-              latitude: selectedLocation?.coordinates[1],
-              longitude: selectedLocation?.coordinates[0],
+              latitude: selectedLocation?.coordinates[0],
+              longitude: selectedLocation?.coordinates[1],
             }}
             title="Selected Location"
             description="Move me to select a location"

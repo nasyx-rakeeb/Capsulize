@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 12,
   },
   icon: {
-    backgroundColor: colors.prussianBlueSecondary,
+    backgroundColor: "rgba(255, 255, 255, 0.1)",
     borderRadius: 10,
     padding: 5,
   },

@@ -43,12 +43,20 @@ const Compose = ({
     onCancelLocation,
     selectedLocation,
     setSelectedLocation,
-    handleLocationChange
+    handleLocationChange,
   } = useCompose(closeComposeModal);
 
   return (
     <Modal transparent={true} animationType="slide" visible={visible}>
-      <MapModal onCancel={onCancelLocation} onConfirm={onSelectLocation} visible={mapVisible} setVisible={setMapVisible} selectedLocation={selectedLocation} setSelectedLocation={setSelectedLocation} handleLocationChange={handleLocationChange} />
+      <MapModal
+        onCancel={onCancelLocation}
+        onConfirm={onSelectLocation}
+        visible={mapVisible}
+        setVisible={setMapVisible}
+        selectedLocation={selectedLocation}
+        setSelectedLocation={setSelectedLocation}
+        handleLocationChange={handleLocationChange}
+      />
       <Alert
         title="Capture Media"
         description="Select the desired media type by choosing either 'Image' or 'Video'"

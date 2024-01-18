@@ -1,1 +1,1 @@
-export { uploadImage, getMyAccount, getApproxLocation } from "./user_services";
+export { uploadImage, getMyAccount, getCurrentLocation } from "./user_services";

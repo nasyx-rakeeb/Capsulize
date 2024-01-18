@@ -1,6 +1,7 @@
 import axios from "axios";
 import { BASE_API_URL } from "../others/constants";
 import { getJwtToken, getFcmToken } from "../others/utils";
+import * as Location from "expo-location";
 
 export const uploadImage = async (image: string | null | undefined) => {
   if (!image) {
@@ -83,16 +84,64 @@ export const getApproxLocation = async () => {
   const { token } = await getJwtToken();
   try {
     const ip = await axios.get("https://api.ipify.org/");
-    
+
     const { data } = await axios.post(
       `${BASE_API_URL}/app/get-approx-location`,
       { ip: ip?.data },
       { headers: { Authorization: `Bearer ${token}` } },
     );
-    
+
     return { success: true, data: data?.data };
   } catch (error) {
     console.log(error);
     return { success: false, data: null };
+  }
+};
+
+export const getCurrentLocation = async () => {
+  try {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+
+    if (status !== "granted") {
+      const { success, data } = await getApproxLocation();
+
+      if (success) {
+        const approxCoordinates = data?.loc?.split(",");
+        return {
+          status: "ok",
+          lat: parseFloat(approxCoordinates[0]),
+          lng: parseFloat(approxCoordinates[1]),
+        };
+      } else {
+        return { status: "fail", lat: null, lng: null };
+      }
+    }
+
+    let location = await Location.getCurrentPositionAsync({});
+
+    return {
+      status: "ok",
+      lat: location.coords.latitude,
+      lng: location.coords.longitude,
+    };
+  } catch (error) {
+    console.log(error.message);
+    if (
+      error.message.includes(
+        "Location request failed due to unsatisfied device settings.",
+      )
+    ) {
+      const { success, data } = await getApproxLocation();
+
+      if (success) {
+        const approxCoordinates = data?.loc?.split(",");
+        return {
+          status: "ok",
+          lat: parseFloat(approxCoordinates[0]),
+          lng: parseFloat(approxCoordinates[1]),
+        };
+      }
+    }
+    return { status: "fail", lat: null, lng: null };
   }
 };

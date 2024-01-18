@@ -25,7 +25,7 @@ const initialValue = {
   setIsUserAuthorized: (value: boolean) => {},
   appErrorMsg: "",
   visible: false,
-  setVisible: () => {}
+  setVisible: () => {},
 };
 
 const AppContext = createContext<AppContextType>(initialValue);
@@ -90,7 +90,7 @@ function AppProvider({ children }: { children: React.ReactNode }) {
     appErrorMsg,
     setAppErrorMsg,
     visible,
-    setVisible
+    setVisible,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
