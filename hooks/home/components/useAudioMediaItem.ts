@@ -4,7 +4,8 @@ import TrackPlayer from "react-native-track-player";
 const useAudioMediaItem = (url: string) => {
   const [playing, setPlaying] = useState(false);
 
-  const play = () => {
+  const play = async () => {
+    await TrackPlayer.setupPlayer()
     setPlaying(true);
   };
   
