@@ -1,8 +1,11 @@
 import { View, StyleSheet, Image } from "react-native";
 import colors from "../../../others/colors";
 import AntDesign from "react-native-vector-icons/AntDesign";
+import {useAudioMediaItem} from "../../../hooks"
 
-const AudioMediaItem = () => {
+const AudioMediaItem = ({url}: {url: string}) => {
+  const {play, pause, playing} = useAudioMediaItem(url)
+  
   return (
     <View style={styles.itemContainer}>
       <Image
@@ -11,7 +14,8 @@ const AudioMediaItem = () => {
         resizeMode="cover"
       />
       <AntDesign
-        name="play"
+        onPress={playing ? pause : play}
+        name={playing ? "pausecircleo" : "play"}
         size={35}
         color={colors.offWhite}
         style={styles.audioPlayBtn}

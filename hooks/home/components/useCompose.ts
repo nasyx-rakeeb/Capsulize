@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import * as ImagePicker from "expo-image-picker";
 import * as DocumentPicker from "expo-document-picker";
-import { getCurrentLocation } from "../../services";
+import { getCurrentLocation } from "../../../services";
 
 const useCompose = (closeComposeModal: () => void) => {
   const [timeCapsuleData, setTimeCapsuleData] = useState<TimeCapsule>({

@@ -12,7 +12,7 @@ const MediaItem = ({
   return item?.mediaType === "video" ? (
     <VideoMediaItem url={item?.url} />
   ) : item?.mediaType === "audio" ? (
-    <AudioMediaItem />
+    <AudioMediaItem url={item?.url} />
   ) : item?.mediaType === "image" ? (
     <ImageMediaItem url={item?.url} />
   ) : null;

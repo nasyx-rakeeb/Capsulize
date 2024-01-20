@@ -11,5 +11,6 @@ export { default as useEmail } from "./auth/register/useEmail";
 export { default as useBirthday } from "./auth/register/useBirthday";
 export { default as usePassword } from "./auth/register/usePassword";
 export { default as useResetPassword } from "./auth/login/useResetPassword";
-export { default as useCompose } from "./home/useCompose";
+export { default as useCompose } from "./home/components/useCompose";
 export { default as useHome } from "./home/useHome";
+export { default as useAudioMediaItem } from "./home/components/useAudioMediaItem";
