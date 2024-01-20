@@ -2,7 +2,7 @@ import { View, StyleSheet, Image } from "react-native";
 import colors from "../../../others/colors";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
-const MediaItem = () => {
+const AudioMediaItem = () => {
   return (
     <View style={styles.itemContainer}>
       <Image
@@ -42,4 +42,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MediaItem;
+export default AudioMediaItem;
