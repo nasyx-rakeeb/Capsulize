@@ -6,6 +6,8 @@ import {
   handleNotificationReceived,
   handleClickedNotitfication,
 } from "./others/utils";
+import TrackPlayer from "react-native-track-player";
+import { PlayBackService } from "./services/play_back_service";
 
 messaging().setBackgroundMessageHandler(handleNotificationReceived);
 
@@ -23,3 +25,4 @@ notifee.onBackgroundEvent(async ({ type, detail }) => {
 });
 
 registerRootComponent(App);
+TrackPlayer.registerPlaybackService(() => PlayBackService);
