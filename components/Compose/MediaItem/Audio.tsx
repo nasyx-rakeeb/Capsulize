@@ -1,10 +1,10 @@
-import { View, StyleSheet, Image, ActivityIndicator } from "react-native";
+import { View, StyleSheet, Image, ActivityIndicator, Text } from "react-native";
 import colors from "../../../others/colors";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import {useAudioMediaItem} from "../../../hooks"
 
 const AudioMediaItem = ({url}: {url: string}) => {
-  const {play, pause, playing, loading, error} = useAudioMediaItem(url)
+  const {play, pause, playing, loading, error, position, duration} = useAudioMediaItem(url)
   
   return (
     <View style={styles.itemContainer}>
@@ -22,6 +22,7 @@ const AudioMediaItem = ({url}: {url: string}) => {
       />) : (
         <ActivityIndicator style={styles.audioPlayBtn} size="large" color={colors.offWhite} />
         )}
+        {error && <Text style={styles.errorMsg}>Error occurred while trying to play audio</Text>}
     </View>
   );
 };
@@ -46,6 +47,20 @@ const styles = StyleSheet.create({
     left: "50%",
     transform: [{ translateX: -17.5 }, { translateY: -17.5 }],
   },
+  errorMsg: {
+    fontSize: 11,
+    fontFamily: "Roboto-Regular",
+    color: colors.offWhite,
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    backgroundColor: colors.slateGray,
+    padding: 4,
+    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: 8,
+    textAlign: "center",
+    width: "100%"
+  }
 });
 
 export default AudioMediaItem;

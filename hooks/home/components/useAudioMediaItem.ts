@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import TrackPlayer from "react-native-track-player";
-import { useTrackPlayerEvents, Event, State } from 'react-native-track-player';
+import TrackPlayer, { useTrackPlayerEvents, Event, State, useProgress } from 'react-native-track-player';
 
 const events = [ Event.PlaybackState, Event.PlaybackError ];
 
@@ -8,12 +7,9 @@ const useAudioMediaItem = (url: string) => {
   const [playing, setPlaying] = useState(false);
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
+  const { position, buffered, duration } = useProgress()
 
   useEffect(() => {
-    const initializePlayer = async () => {
-      await TrackPlayer.setupPlayer();
-    };
-    initializePlayer();
     return () => {
       TrackPlayer.stop();
       TrackPlayer.reset();
@@ -115,7 +111,7 @@ const useAudioMediaItem = (url: string) => {
     setLoading(false)
   };
 
-  return { play, pause, playing, loading, error };
+  return { play, pause, playing, loading, error, position, duration };
 };
 
 export default useAudioMediaItem;
