@@ -1,19 +1,121 @@
 import { useState, useEffect } from "react";
 import TrackPlayer from "react-native-track-player";
+import { useTrackPlayerEvents, Event, State } from 'react-native-track-player';
+
+const events = [ Event.PlaybackState, Event.PlaybackError ];
 
 const useAudioMediaItem = (url: string) => {
   const [playing, setPlaying] = useState(false);
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
+
+  useEffect(() => {
+    const initializePlayer = async () => {
+      await TrackPlayer.setupPlayer();
+    };
+    initializePlayer();
+    return () => {
+      TrackPlayer.stop();
+      TrackPlayer.reset();
+    };
+  }, []);
+  
+  useTrackPlayerEvents(events, (event) => {
+    if (event.type === Event.PlaybackState) {
+      switch (event?.state) {
+        case "none":
+          setError(false)
+          setLoading(false)
+          setPlaying(false)
+          break
+        case "ready":
+          setError(false)
+          setLoading(false)
+          setPlaying(false)
+          break
+        case "playing":
+          setError(false)
+          setLoading(false)
+          setPlaying(true)
+          break
+        case "paused":
+          setError(false)
+          setLoading(false)
+          setPlaying(false)
+          break
+        case "stopped":
+          setError(false)
+          setLoading(false)
+          setPlaying(false)
+          break
+        case "ended": 
+          setError(false)
+          setLoading(false)
+          setPlaying(false)
+          TrackPlayer.stop()
+          break
+        case "buffering":
+          setError(false)
+          setLoading(true)
+          setPlaying(false)
+          break
+        case "loading":
+          setError(false)
+          setLoading(true)
+          setPlaying(false)
+          break
+        case "error":
+          setError(true)
+          setLoading(false)
+          setPlaying(false)
+          break
+        case undefined:
+          setError(false)
+          setLoading(false)
+          setPlaying(false)
+          break
+        default:
+          setError(false)
+          setLoading(false)
+          setPlaying(false)
+      }
+    }
+    if (event.type === Event.PlaybackError) {
+      setError(true)
+      setLoading(false)
+      setPlaying(false)
+    }
+  });
 
   const play = async () => {
-    await TrackPlayer.setupPlayer()
+    try {
+      await TrackPlayer.add({
+      id: '1',
+      url: url,
+      title: 'Track Title',
+      artist: 'Artist',
+      artwork: 'https://picsum.photos/200',
+    });
+    await TrackPlayer.play();
     setPlaying(true);
-  };
-  
-  const pause = () => {
-    setPlaying(false);
+    setError(false)
+    setLoading(false)
+    } catch (error) {
+      console.log(error)
+      setPlaying(false)
+      setError(true)
+      setLoading(false)
+    }
   };
 
-  return { play, pause, playing };
+  const pause = async () => {
+    await TrackPlayer.pause();
+    setPlaying(false);
+    setError(false)
+    setLoading(false)
+  };
+
+  return { play, pause, playing, loading, error };
 };
 
-export default useAudioMediaItem
+export default useAudioMediaItem;

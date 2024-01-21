@@ -1,10 +1,10 @@
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image, ActivityIndicator } from "react-native";
 import colors from "../../../others/colors";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import {useAudioMediaItem} from "../../../hooks"
 
 const AudioMediaItem = ({url}: {url: string}) => {
-  const {play, pause, playing} = useAudioMediaItem(url)
+  const {play, pause, playing, loading, error} = useAudioMediaItem(url)
   
   return (
     <View style={styles.itemContainer}>
@@ -13,13 +13,15 @@ const AudioMediaItem = ({url}: {url: string}) => {
         style={styles.audioItem}
         resizeMode="cover"
       />
-      <AntDesign
+      {!loading ? ( <AntDesign
         onPress={playing ? pause : play}
         name={playing ? "pausecircleo" : "play"}
         size={35}
         color={colors.offWhite}
         style={styles.audioPlayBtn}
-      />
+      />) : (
+        <ActivityIndicator style={styles.audioPlayBtn} size="large" color={colors.offWhite} />
+        )}
     </View>
   );
 };
