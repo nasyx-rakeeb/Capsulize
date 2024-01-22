@@ -30,6 +30,11 @@ const useCompose = (closeComposeModal: () => void) => {
   });
   const [loading, setLoading] = useState(false);
   const mapRef = useRef();
+  const [fullscreenMediaVisible, setFullscreenMediaVisible] = useState(false);
+  const [fullscreenMedia, setFullscreenMedia] = useState<null | {
+    type: "image" | "video";
+    url: string;
+  }>(null);
 
   const getLocation = async () => {
     const { status, lat, lng } = await getCurrentLocation();
@@ -173,6 +178,16 @@ const useCompose = (closeComposeModal: () => void) => {
     }));
   };
 
+  const closeFullscreenMedia = () => {
+    setFullscreenMediaVisible(false);
+    setFullscreenMedia(null);
+  };
+
+  const openFullscreenMedia = (url: string, type: string) => {
+    setFullscreenMedia({ url, type });
+    setFullscreenMediaVisible(true);
+  };
+
   return {
     timeCapsuleData,
     onNext,
@@ -197,6 +212,10 @@ const useCompose = (closeComposeModal: () => void) => {
     mapRef,
     loading,
     onRemove,
+    fullscreenMediaVisible,
+    fullscreenMedia,
+    closeFullscreenMedia,
+    openFullscreenMedia,
   };
 };
 

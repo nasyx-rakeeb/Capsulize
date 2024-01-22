@@ -6,10 +6,12 @@ const Body = ({
   timeCapsuleData,
   setTimeCapsuleData,
   onRemove,
+  openFullscreenMedia,
 }: {
   timeCapsuleData: TimeCapsule;
   setTimeCapsuleData: () => void;
   onRemove: () => void;
+  openFullscreenMedia: () => void;
 }) => {
   return (
     <View style={styles.container}>
@@ -29,6 +31,7 @@ const Body = ({
           onRemove={onRemove}
           data={timeCapsuleData}
           setData={setTimeCapsuleData}
+          openFullscreenMedia={openFullscreenMedia}
         />
       </View>
     </View>

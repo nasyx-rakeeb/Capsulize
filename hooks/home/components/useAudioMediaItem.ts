@@ -93,9 +93,9 @@ const useAudioMediaItem = (url: string) => {
       await TrackPlayer.add({
         id: "1",
         url: url,
-        title: "Track Title",
-        artist: "Artist",
-        artwork: "https://picsum.photos/200",
+        title: "Now Playing",
+        artist: "Tap to control playback",
+        artwork: `https://picsum.photos/200`,
       });
       await TrackPlayer.play();
       setPlaying(true);

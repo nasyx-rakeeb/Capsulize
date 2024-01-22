@@ -1,20 +1,27 @@
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import colors from "../../../others/colors";
 import VideoPlayer from "react-native-video-controls";
-import { VIDEO_POSTER } from "../../../others/constants";
-import { Feather } from "react-native-vector-icons";
+import { Feather, Ionicons } from "react-native-vector-icons";
 
 const VideoMediaItem = ({
   url,
   onRemove,
+  openFullscreenMedia,
 }: {
   url: string;
   onRemove: () => void;
+  openFullscreenMedia: () => void;
 }) => {
   return (
     <View style={styles.itemContainer}>
       <TouchableOpacity onPress={() => onRemove(url)} style={styles.icon}>
         <Feather name="x" size={20} color={colors.offWhite} />
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => openFullscreenMedia(url, "video")}
+        style={styles.resizeIcon}
+      >
+        <Ionicons name="resize-outline" size={19} color={colors.offWhite} />
       </TouchableOpacity>
       <VideoPlayer
         source={{ uri: url }}
@@ -26,8 +33,6 @@ const VideoMediaItem = ({
         disableVolume={true}
         disableFullscreen={true}
         paused
-        posterResizeMode="cover"
-        poster={VIDEO_POSTER}
         resizeMode="cover"
       />
     </View>
@@ -52,7 +57,16 @@ const styles = StyleSheet.create({
     top: 4,
     right: 4,
     borderRadius: 4,
-    backgroundColor: "rgba(255,255,255, 0.2)",
+    backgroundColor: "rgba(0,0,0, 0.5)",
+    zIndex: 1,
+    padding: 2,
+  },
+  resizeIcon: {
+    position: "absolute",
+    top: 4,
+    right: 32,
+    borderRadius: 4,
+    backgroundColor: "rgba(0,0,0, 0.5)",
     zIndex: 1,
     padding: 2,
   },

@@ -1,18 +1,29 @@
 import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import colors from "../../../others/colors";
-import { Feather } from "react-native-vector-icons";
+import { Feather, Ionicons } from "react-native-vector-icons";
 
 const ImageMediaItem = ({
   url,
   onRemove,
+  openFullscreenMedia,
 }: {
   url: string;
   onRemove: () => void;
+  openFullscreenMedia: () => void;
 }) => {
   return (
     <View style={styles.itemContainer}>
-      <TouchableOpacity onPress={() => onRemove(url)} style={styles.icon}>
+      <TouchableOpacity
+        onPress={() => onRemove(url, "image")}
+        style={styles.icon}
+      >
         <Feather name="x" size={20} color={colors.offWhite} />
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => openFullscreenMedia(url, "image")}
+        style={styles.resizeIcon}
+      >
+        <Ionicons name="resize-outline" size={19} color={colors.offWhite} />
       </TouchableOpacity>
       <Image
         resizeMode="cover"
@@ -28,6 +39,7 @@ const styles = StyleSheet.create({
     height: 170,
     aspectRatio: 16 / 9,
     borderRadius: 8,
+    backgroundColor: colors.black,
   },
   itemContainer: {
     backgroundColor: colors.black,
@@ -41,7 +53,16 @@ const styles = StyleSheet.create({
     top: 4,
     right: 4,
     borderRadius: 4,
-    backgroundColor: "rgba(255,255,255, 0.2)",
+    backgroundColor: "rgba(0,0,0, 0.5)",
+    zIndex: 1,
+    padding: 2,
+  },
+  resizeIcon: {
+    position: "absolute",
+    top: 4,
+    right: 32,
+    borderRadius: 4,
+    backgroundColor: "rgba(0,0,0, 0.5)",
     zIndex: 1,
     padding: 2,
   },

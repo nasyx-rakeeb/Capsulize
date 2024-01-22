@@ -17,6 +17,7 @@ import AudienceModal from "./AudienceModal";
 import Alert from "../App/Alert";
 import MapModal from "../Common/MapModal";
 import FullScreenLoader from "../App/FullScreenLoader";
+import FullscreenMediaModal from "./FullscreenMedia";
 
 const Compose = ({
   visible,
@@ -49,10 +50,19 @@ const Compose = ({
     mapRef,
     loading,
     onRemove,
+    closeFullscreenMedia,
+    openFullscreenMedia,
+    fullscreenMediaVisible,
+    fullscreenMedia,
   } = useCompose(closeComposeModal);
 
   return (
     <Modal transparent={true} animationType="slide" visible={visible}>
+      <FullscreenMediaModal
+        visible={fullscreenMediaVisible}
+        fullscreenMedia={fullscreenMedia}
+        closeModal={closeFullscreenMedia}
+      />
       <FullScreenLoader visible={loading} />
       <MapModal
         onCancel={onCancelLocation}
@@ -98,6 +108,7 @@ const Compose = ({
             timeCapsuleData={timeCapsuleData}
             setTimeCapsuleData={setTimeCapsuleData}
             onRemove={onRemove}
+            openFullscreenMedia={openFullscreenMedia}
           />
         </ScrollView>
         <Footer
