@@ -1,28 +1,55 @@
-import { View, StyleSheet, Image, ActivityIndicator, Text } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Image,
+  ActivityIndicator,
+  Text,
+  TouchableOpacity,
+} from "react-native";
 import colors from "../../../others/colors";
-import AntDesign from "react-native-vector-icons/AntDesign";
-import {useAudioMediaItem} from "../../../hooks"
+import { Feather, AntDesign } from "react-native-vector-icons";
+import { useAudioMediaItem } from "../../../hooks";
 
-const AudioMediaItem = ({url}: {url: string}) => {
-  const {play, pause, playing, loading, error, position, duration} = useAudioMediaItem(url)
-  
+const AudioMediaItem = ({
+  url,
+  onRemove,
+}: {
+  url: string;
+  onRemove: () => void;
+}) => {
+  const { play, pause, playing, loading, error, position, duration } =
+    useAudioMediaItem(url);
+
   return (
     <View style={styles.itemContainer}>
+      <TouchableOpacity onPress={() => onRemove(url)} style={styles.icon}>
+        <Feather name="x" size={20} color={colors.offWhite} />
+      </TouchableOpacity>
       <Image
         source={require("../../../assets/images/audio-player-background.jpg")}
         style={styles.audioItem}
         resizeMode="cover"
       />
-      {!loading ? ( <AntDesign
-        onPress={playing ? pause : play}
-        name={playing ? "pausecircleo" : "play"}
-        size={35}
-        color={colors.offWhite}
-        style={styles.audioPlayBtn}
-      />) : (
-        <ActivityIndicator style={styles.audioPlayBtn} size="large" color={colors.offWhite} />
-        )}
-        {error && <Text style={styles.errorMsg}>Error occurred while trying to play audio</Text>}
+      {!loading ? (
+        <AntDesign
+          onPress={playing ? pause : play}
+          name={playing ? "pausecircleo" : "play"}
+          size={35}
+          color={colors.offWhite}
+          style={styles.audioPlayBtn}
+        />
+      ) : (
+        <ActivityIndicator
+          style={styles.audioPlayBtn}
+          size="large"
+          color={colors.offWhite}
+        />
+      )}
+      {error && (
+        <Text style={styles.errorMsg}>
+          Error occurred while trying to play audio
+        </Text>
+      )}
     </View>
   );
 };
@@ -47,6 +74,15 @@ const styles = StyleSheet.create({
     left: "50%",
     transform: [{ translateX: -17.5 }, { translateY: -17.5 }],
   },
+  icon: {
+    position: "absolute",
+    top: 4,
+    right: 4,
+    borderRadius: 4,
+    backgroundColor: "rgba(255,255,255, 0.2)",
+    zIndex: 1,
+    padding: 2,
+  },
   errorMsg: {
     fontSize: 11,
     fontFamily: "Roboto-Regular",
@@ -59,8 +95,8 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 8,
     borderBottomRightRadius: 8,
     textAlign: "center",
-    width: "100%"
-  }
+    width: "100%",
+  },
 });
 
 export default AudioMediaItem;

@@ -5,9 +5,11 @@ import SelectedMedia from "./SelectedMedia";
 const Body = ({
   timeCapsuleData,
   setTimeCapsuleData,
+  onRemove,
 }: {
   timeCapsuleData: TimeCapsule;
   setTimeCapsuleData: () => void;
+  onRemove: () => void;
 }) => {
   return (
     <View style={styles.container}>
@@ -15,7 +17,7 @@ const Body = ({
         <TextInput
           multiline
           onChangeText={(v) => setTimeCapsuleData((p) => ({ ...p, text: v }))}
-          value={timeCapsuleData.text}
+          value={timeCapsuleData?.text}
           style={styles.input}
           placeholder="Add a message..."
           cursorColor={colors.offWhite}
@@ -23,7 +25,11 @@ const Body = ({
         />
       </View>
       <View style={styles.selectedMediaContainer}>
-        <SelectedMedia data={timeCapsuleData} setData={setTimeCapsuleData} />
+        <SelectedMedia
+          onRemove={onRemove}
+          data={timeCapsuleData}
+          setData={setTimeCapsuleData}
+        />
       </View>
     </View>
   );

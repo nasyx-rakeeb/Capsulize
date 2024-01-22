@@ -166,6 +166,13 @@ const useCompose = (closeComposeModal: () => void) => {
     }
   };
 
+  const onRemove = (url: string) => {
+    setTimeCapsuleData((prevData) => ({
+      ...prevData,
+      media: prevData.media.filter((item) => item.url !== url),
+    }));
+  };
+
   return {
     timeCapsuleData,
     onNext,
@@ -189,6 +196,7 @@ const useCompose = (closeComposeModal: () => void) => {
     onFindMe,
     mapRef,
     loading,
+    onRemove,
   };
 };
 

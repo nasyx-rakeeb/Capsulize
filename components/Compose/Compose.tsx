@@ -48,6 +48,7 @@ const Compose = ({
     onFindMe,
     mapRef,
     loading,
+    onRemove,
   } = useCompose(closeComposeModal);
 
   return (
@@ -96,6 +97,7 @@ const Compose = ({
           <Body
             timeCapsuleData={timeCapsuleData}
             setTimeCapsuleData={setTimeCapsuleData}
+            onRemove={onRemove}
           />
         </ScrollView>
         <Footer

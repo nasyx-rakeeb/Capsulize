@@ -4,17 +4,17 @@ import MediaItem from "./MediaItem";
 
 const SelectedMedia = ({
   data,
-  setData,
+  onRemove,
 }: {
   data: TimeCapsule;
-  setData: () => void;
+  onRemove: () => void;
 }) => {
   return (
     <View style={styles.container}>
       <FlatList
         data={data?.media}
         keyExtractor={() => Math.random() * 100}
-        renderItem={({ item }) => <MediaItem item={item} setData={setData} />}
+        renderItem={({ item }) => <MediaItem item={item} onRemove={onRemove} />}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
       />
