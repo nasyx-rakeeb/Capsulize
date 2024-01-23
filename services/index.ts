@@ -1,1 +1,6 @@
-export { uploadImage, getMyAccount, getCurrentLocation, getCoordinatesInfo } from "./user_services";
+export {
+  uploadImage,
+  getMyAccount,
+  getCurrentLocation,
+  getCoordinatesInfo,
+} from "./user_services";

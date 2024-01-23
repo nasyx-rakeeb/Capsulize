@@ -54,7 +54,7 @@ const Compose = ({
     openFullscreenMedia,
     fullscreenMediaVisible,
     fullscreenMedia,
-    coordinatesInfo
+    coordinatesInfo,
   } = useCompose(closeComposeModal);
 
   return (
@@ -111,6 +111,7 @@ const Compose = ({
             setTimeCapsuleData={setTimeCapsuleData}
             onRemove={onRemove}
             openFullscreenMedia={openFullscreenMedia}
+            address={coordinatesInfo}
           />
         </ScrollView>
         <Footer

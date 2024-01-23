@@ -4,21 +4,26 @@ import {
   TextInput,
   Text,
   TouchableOpacity,
+  Dimensions
 } from "react-native";
 import colors from "../../others/colors";
 import SelectedMedia from "./SelectedMedia";
 import { Feather } from "react-native-vector-icons";
+
+const WIDTH = Dimensions.get("window").width
 
 const Body = ({
   timeCapsuleData,
   setTimeCapsuleData,
   onRemove,
   openFullscreenMedia,
+  address
 }: {
   timeCapsuleData: TimeCapsule;
   setTimeCapsuleData: () => void;
   onRemove: () => void;
   openFullscreenMedia: () => void;
+  address: string | null | undefined
 }) => {
   return (
     <View style={styles.container}>
@@ -41,17 +46,17 @@ const Body = ({
           openFullscreenMedia={openFullscreenMedia}
         />
       </View>
-      <View style={styles.locationContainer}>
+      {address && <View style={styles.locationContainer}>
         <View style={styles.location}>
           <Feather name="map-pin" size={18} color={colors.blackPrimary} />
           <>
-            <Text style={styles.locationTxt}>New York, US 17382</Text>
+            <Text style={styles.locationTxt}>{address}</Text>
             <TouchableOpacity>
               <Feather name="x" size={22} color={colors.blackPrimary} />
             </TouchableOpacity>
           </>
         </View>
-      </View>
+      </View>}
     </View>
   );
 };
@@ -60,11 +65,11 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.blackPrimary,
     width: "100%",
-    paddingVertical: 12,
-    paddingHorizontal: 16,
+    paddingVertical: 12
   },
   inputContainer: {
     width: "100%",
+    marginHorizontal: 16,
   },
   input: {
     backgroundColor: colors.prussianBlueSecondary,
@@ -76,10 +81,12 @@ const styles = StyleSheet.create({
   },
   selectedMediaContainer: {
     marginTop: 18,
+    marginHorizontal: 16,
   },
   locationContainer: {
     marginTop: 18,
     alignItems: "flex-start",
+    maxWidth: WIDTH -16,
   },
   location: {
     flexDirection: "row",
@@ -89,6 +96,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     paddingHorizontal: 8,
     paddingVertical: 4,
+    marginHorizontal: 16,
   },
   locationTxt: {
     fontFamily: "Roboto-Medium",

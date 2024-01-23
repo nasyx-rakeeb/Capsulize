@@ -35,16 +35,19 @@ const useCompose = (closeComposeModal: () => void) => {
     type: "image" | "video";
     url: string;
   }>(null);
-  const [coordinatesInfo, setCoordinatesInfo] = useState<null | string>(null)
-  
+  const [coordinatesInfo, setCoordinatesInfo] = useState<null | string>(null);
+
   useEffect(() => {
     (async () => {
       if (selectedLocation.coordinates[0] !== 0) {
-        const {success, data} = await getCoordinatesInfo(selectedLocation?.coordinates[1], selectedLocation?.coordinates[0])
-        setCoordinatesInfo(data)
+        const { success, data } = await getCoordinatesInfo(
+          selectedLocation?.coordinates[1],
+          selectedLocation?.coordinates[0],
+        );
+        setCoordinatesInfo(data);
       }
-    })()
-  }, [selectedLocation])
+    })();
+  }, [selectedLocation]);
 
   const getLocation = async () => {
     const { status, lat, lng } = await getCurrentLocation();
@@ -97,10 +100,14 @@ const useCompose = (closeComposeModal: () => void) => {
   };
 
   const addLocation = async () => {
-    setLoading(true);
-    await getLocation();
-    setLoading(false);
-    setMapVisible(true);
+    if (selectedLocation.coordinates[0] === 0) {
+      setLoading(true);
+      await getLocation();
+      setLoading(false);
+      setMapVisible(true);
+    } else {
+      setMapVisible(true)
+    }
   };
 
   const addMedia = async () => {
@@ -226,7 +233,7 @@ const useCompose = (closeComposeModal: () => void) => {
     fullscreenMedia,
     closeFullscreenMedia,
     openFullscreenMedia,
-    coordinatesInfo
+    coordinatesInfo,
   };
 };
 

@@ -15,7 +15,7 @@ const MapModal = ({
   handleLocationChange,
   onFindMe,
   mapRef,
-  address
+  address,
 }: {
   visible: boolean;
   setVisible: () => void;
@@ -26,7 +26,7 @@ const MapModal = ({
   handleLocationChange: () => void;
   onFindMe: () => void;
   mapRef: any;
-  address: string | null | undefined
+  address: string | null | undefined;
 }) => {
   return (
     <Modal transparent={true} animationType="slide" visible={visible}>
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.blackPrimary,
     paddingVertical: 8,
     flexDirection: "row",
-    paddingHorizontal: 6
+    paddingHorizontal: 6,
   },
   heading: {
     fontFamily: "Roboto-Regular",
