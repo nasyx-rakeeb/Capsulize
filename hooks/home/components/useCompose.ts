@@ -1,7 +1,7 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import * as ImagePicker from "expo-image-picker";
 import * as DocumentPicker from "expo-document-picker";
-import { getCurrentLocation } from "../../../services";
+import { getCurrentLocation, getCoordinatesInfo } from "../../../services";
 
 const useCompose = (closeComposeModal: () => void) => {
   const [timeCapsuleData, setTimeCapsuleData] = useState<TimeCapsule>({
@@ -35,6 +35,16 @@ const useCompose = (closeComposeModal: () => void) => {
     type: "image" | "video";
     url: string;
   }>(null);
+  const [coordinatesInfo, setCoordinatesInfo] = useState<null | string>(null)
+  
+  useEffect(() => {
+    (async () => {
+      if (selectedLocation.coordinates[0] !== 0) {
+        const {success, data} = await getCoordinatesInfo(selectedLocation?.coordinates[1], selectedLocation?.coordinates[0])
+        setCoordinatesInfo(data)
+      }
+    })()
+  }, [selectedLocation])
 
   const getLocation = async () => {
     const { status, lat, lng } = await getCurrentLocation();
@@ -216,6 +226,7 @@ const useCompose = (closeComposeModal: () => void) => {
     fullscreenMedia,
     closeFullscreenMedia,
     openFullscreenMedia,
+    coordinatesInfo
   };
 };
 

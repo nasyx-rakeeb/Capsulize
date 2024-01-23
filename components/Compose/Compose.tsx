@@ -54,6 +54,7 @@ const Compose = ({
     openFullscreenMedia,
     fullscreenMediaVisible,
     fullscreenMedia,
+    coordinatesInfo
   } = useCompose(closeComposeModal);
 
   return (
@@ -74,6 +75,7 @@ const Compose = ({
         handleLocationChange={handleLocationChange}
         onFindMe={onFindMe}
         mapRef={mapRef}
+        address={coordinatesInfo}
       />
       <Alert
         title="Capture Media"

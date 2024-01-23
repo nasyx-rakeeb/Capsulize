@@ -47,7 +47,7 @@ const Header = ({
           labelStyle={styles.btnTxt}
           mode="contained"
         >
-          Done
+          Next
         </Button>
       </View>
     </View>

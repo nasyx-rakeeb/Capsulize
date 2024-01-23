@@ -145,3 +145,19 @@ export const getCurrentLocation = async () => {
     return { status: "fail", lat: null, lng: null };
   }
 };
+
+export const getCoordinatesInfo = async (lat: number, lng: number) => {
+  const { token } = await getJwtToken();
+  try {
+    const { data } = await axios.post(
+      `${BASE_API_URL}/app/coordinates-info`,
+      { lat: parseFloat(lat), lng: parseFloat(lng) },
+      { headers: { Authorization: `Bearer ${token}` } },
+    );
+
+    return { success: true, data: data?.data };
+  } catch (error) {
+    console.log(error);
+    return { success: false, data: null };
+  }
+};

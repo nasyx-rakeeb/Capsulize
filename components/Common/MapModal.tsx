@@ -15,6 +15,7 @@ const MapModal = ({
   handleLocationChange,
   onFindMe,
   mapRef,
+  address
 }: {
   visible: boolean;
   setVisible: () => void;
@@ -25,6 +26,7 @@ const MapModal = ({
   handleLocationChange: () => void;
   onFindMe: () => void;
   mapRef: any;
+  address: string | null | undefined
 }) => {
   return (
     <Modal transparent={true} animationType="slide" visible={visible}>
@@ -34,7 +36,7 @@ const MapModal = ({
           size={20}
           color={colors.offWhite}
         />
-        <Text style={styles.heading}>Select Location</Text>
+        <Text style={styles.heading}>{address ?? "Select Location"}</Text>
       </View>
       <View style={styles.container}>
         <MapView
@@ -55,8 +57,6 @@ const MapModal = ({
               latitude: selectedLocation?.coordinates[1],
               longitude: selectedLocation?.coordinates[0],
             }}
-            title="Selected Location"
-            description="Move me to select a location"
           />
         </MapView>
       </View>
@@ -130,13 +130,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: colors.blackPrimary,
-    padding: 8,
+    paddingVertical: 8,
     flexDirection: "row",
+    paddingHorizontal: 6
   },
   heading: {
-    fontFamily: "Roboto-Bold",
+    fontFamily: "Roboto-Regular",
     color: colors.offWhite,
-    fontSize: 17,
+    fontSize: 15,
     marginLeft: 3,
   },
 });
