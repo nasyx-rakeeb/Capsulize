@@ -204,6 +204,14 @@ const useCompose = (closeComposeModal: () => void) => {
     setFullscreenMedia({ url, type });
     setFullscreenMediaVisible(true);
   };
+  
+  const onRemoveLocation = () => {
+    setCoordinatesInfo(null)
+    setSelectedLocation({
+    type: "Point",
+    coordinates: [0, 0],
+  })
+  }
 
   return {
     timeCapsuleData,
@@ -234,6 +242,7 @@ const useCompose = (closeComposeModal: () => void) => {
     closeFullscreenMedia,
     openFullscreenMedia,
     coordinatesInfo,
+    onRemoveLocation
   };
 };
 

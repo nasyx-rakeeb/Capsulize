@@ -17,13 +17,15 @@ const Body = ({
   setTimeCapsuleData,
   onRemove,
   openFullscreenMedia,
-  address
+  address,
+  onRemoveLocation
 }: {
   timeCapsuleData: TimeCapsule;
   setTimeCapsuleData: () => void;
   onRemove: () => void;
   openFullscreenMedia: () => void;
-  address: string | null | undefined
+  address: string | null | undefined;
+  onRemoveLocation: () => void
 }) => {
   return (
     <View style={styles.container}>
@@ -51,7 +53,7 @@ const Body = ({
           <Feather name="map-pin" size={18} color={colors.blackPrimary} />
           <>
             <Text style={styles.locationTxt}>{address}</Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={onRemoveLocation}>
               <Feather name="x" size={22} color={colors.blackPrimary} />
             </TouchableOpacity>
           </>

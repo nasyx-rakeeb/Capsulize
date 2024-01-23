@@ -55,6 +55,7 @@ const Compose = ({
     fullscreenMediaVisible,
     fullscreenMedia,
     coordinatesInfo,
+    onRemoveLocation
   } = useCompose(closeComposeModal);
 
   return (
@@ -112,6 +113,7 @@ const Compose = ({
             onRemove={onRemove}
             openFullscreenMedia={openFullscreenMedia}
             address={coordinatesInfo}
+            onRemoveLocation={onRemoveLocation}
           />
         </ScrollView>
         <Footer

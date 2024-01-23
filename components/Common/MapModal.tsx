@@ -32,6 +32,7 @@ const MapModal = ({
     <Modal transparent={true} animationType="slide" visible={visible}>
       <View style={styles.header}>
         <MaterialCommunityIcon
+          style={styles.locationIcon}
           name="google-maps"
           size={20}
           color={colors.offWhite}
@@ -132,14 +133,17 @@ const styles = StyleSheet.create({
     backgroundColor: colors.blackPrimary,
     paddingVertical: 8,
     flexDirection: "row",
-    paddingHorizontal: 6,
   },
   heading: {
     fontFamily: "Roboto-Regular",
     color: colors.offWhite,
     fontSize: 15,
     marginLeft: 3,
+    marginHorizontal: 20,
   },
+  locationIcon: {
+    marginLeft: 8
+  }
 });
 
 export default MapModal;
