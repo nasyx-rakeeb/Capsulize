@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import colors from "../../others/colors";
 import SelectedMedia from "./SelectedMedia";
-import { Feather } from "react-native-vector-icons";
+import { Feather, MaterialIcons } from "react-native-vector-icons";
 const WIDTH = Dimensions.get("window").width;
 
 const Body = ({
@@ -48,16 +48,24 @@ const Body = ({
         />
       </View>
       {address && (
-        <View style={styles.locationContainer}>
-          <View style={styles.location}>
-            <Feather name="map-pin" size={18} color={colors.blackPrimary} />
-            <>
-              <Text style={styles.locationTxt}>{address}</Text>
-              <TouchableOpacity onPress={onRemoveLocation}>
-                <Feather name="x" size={22} color={colors.blackPrimary} />
-              </TouchableOpacity>
-            </>
-          </View>
+        <View style={styles.locationItem}>
+          <MaterialIcons
+            style={styles.locationIcon}
+            name="location-on"
+            size={24}
+            color={colors.blackPrimary}
+          />
+          <Text style={styles.location}>{address}</Text>
+          <TouchableOpacity
+            style={styles.removeIcon}
+            onPress={onRemoveLocation}
+          >
+            <MaterialIcons
+              name="highlight-remove"
+              size={24}
+              color={colors.blackPrimary}
+            />
+          </TouchableOpacity>
         </View>
       )}
     </View>
@@ -86,27 +94,28 @@ const styles = StyleSheet.create({
     marginTop: 18,
     marginHorizontal: 16,
   },
-  locationContainer: {
-    marginTop: 18,
-    alignItems: "flex-start",
-    maxWidth: WIDTH - 16,
-  },
-  location: {
+  locationItem: {
+    backgroundColor: colors.wisteria,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: colors.wisteria,
-    borderRadius: 100,
-    paddingLeft: 15,
-    paddingRight: 15,
-    paddingVertical: 4,
     marginHorizontal: 16,
+    paddingVertical: 6,
+    borderRadius: 200,
+    alignSelf: "center",
   },
-  locationTxt: {
+  location: {
     fontFamily: "Roboto-Medium",
     color: colors.blackPrimary,
-    marginRight: 15,
-    marginLeft: 5,
+    flex: 0.9,
+  },
+  locationIcon: {
+    flex: 0.1,
+    marginRight: 4,
+  },
+  removeIcon: {
+    flex: 0.1,
+    marginLeft: 10,
   },
 });
 

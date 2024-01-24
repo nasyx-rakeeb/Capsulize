@@ -37,21 +37,15 @@ const MapModal = ({
 }) => {
   return (
     <Modal transparent={true} animationType="slide" visible={visible}>
-      {!searchInputVisible ? (
-        <View style={styles.header}>
-          <MaterialCommunityIcons
-            style={styles.locationIcon}
-            name="google-maps"
-            size={20}
-            color={colors.offWhite}
-          />
-          <Text style={styles.heading}>{address ?? "Select Location"}</Text>
-        </View>
-      ) : (
-        <View style={styles.searchHeader}>
-          <GooglePlacesInput onPress={onPressGoogleInputSuggestion} />
-        </View>
-      )}
+      <View style={styles.header}>
+        <MaterialCommunityIcons
+          style={styles.locationIcon}
+          name="google-maps"
+          size={20}
+          color={colors.offWhite}
+        />
+        <Text style={styles.heading}>{address ?? "Select Location"}</Text>
+      </View>
       <View style={styles.container}>
         <MapView
           ref={mapRef}
@@ -73,14 +67,21 @@ const MapModal = ({
             }}
           />
         </MapView>
-        <TouchableOpacity style={styles.searchIcon}>
-          <Ionicons
-            onPress={openSearchInput}
-            size={24}
-            name="search"
-            color={colors.offWhite}
-          />
-        </TouchableOpacity>
+        {searchInputVisible && (
+          <View style={styles.searchHeader}>
+            <GooglePlacesInput onPress={onPressGoogleInputSuggestion} />
+          </View>
+        )}
+        {!searchInputVisible && (
+          <TouchableOpacity style={styles.searchIcon}>
+            <Ionicons
+              onPress={openSearchInput}
+              size={24}
+              name="search"
+              color={colors.offWhite}
+            />
+          </TouchableOpacity>
+        )}
       </View>
       <View style={styles.btnContainer}>
         <Button
@@ -157,11 +158,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   searchHeader: {
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: colors.blackPrimary,
-    flexDirection: "row",
+    position: "absolute",
+    width: "95%",
+    top: 10,
+    alignSelf: "center",
+    backgroundColor: "rgba(0,0,0,0.7)",
+    borderRadius: 6,
   },
   heading: {
     fontFamily: "Roboto-Regular",

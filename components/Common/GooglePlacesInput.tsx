@@ -8,7 +8,7 @@ const GooglePlacesInput = ({ onPress }: { onPress: () => void }) => {
     <GooglePlacesAutocomplete
       styles={styles}
       textInputProps={{
-        placeholderTextColor: colors.slateGray,
+        placeholderTextColor: colors.silver,
       }}
       fetchDetails={true}
       placeholder="Search"
@@ -19,7 +19,7 @@ const GooglePlacesInput = ({ onPress }: { onPress: () => void }) => {
       onPress={(data, details = null) => {
         const { location, name } = details.geometry;
         const { lat, lng } = location;
-        const address = data?.description
+        const address = data?.description;
         onPress(lat, lng, address);
       }}
       query={{
@@ -36,10 +36,13 @@ const styles = StyleSheet.create({
   textInput: {
     color: colors.offWhite,
     borderRadius: 0,
-    backgroundColor: colors.blackPrimary,
+    backgroundColor: "transparent",
+    borderBottomWidth: 1,
+    borderBottomColor: colors.offWhite,
+    marginBottom: 0,
   },
   row: {
-    backgroundColor: colors.blackPrimary,
+    backgroundColor: "transparent",
   },
   separator: {
     backgroundColor: colors.slateGray,
@@ -64,4 +67,4 @@ const Loader = () => {
       <ActivityIndicator size="small" color={colors.wisteria} />
     </View>
   );
-}; 
+};

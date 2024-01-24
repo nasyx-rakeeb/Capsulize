@@ -37,7 +37,7 @@ const useCompose = (closeComposeModal: () => void) => {
   }>(null);
   const [coordinatesInfo, setCoordinatesInfo] = useState<null | string>(null);
   const [searchInputVisible, setSearchInputVisible] = useState(false);
-  const [locationSource, setLocationSource] = useState<"GPS" | "SEARCH">("GPS")
+  const [locationSource, setLocationSource] = useState<"GPS" | "SEARCH">("GPS");
 
   useEffect(() => {
     (async () => {
@@ -61,7 +61,7 @@ const useCompose = (closeComposeModal: () => void) => {
   };
 
   const handleLocationChange = (event) => {
-    setLocationSource("GPS")
+    setLocationSource("GPS");
     const { longitude, latitude } = event.nativeEvent.coordinate;
     setSelectedLocation({
       type: "Point",
@@ -70,15 +70,21 @@ const useCompose = (closeComposeModal: () => void) => {
   };
 
   const onFindMe = async () => {
-    setLocationSource("GPS")
+    setLocationSource("GPS");
     const region = {
       latitude: currentLocation.coordinates[1],
       longitude: currentLocation.coordinates[0],
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0922,
+      latitudeDelta: 0.0122,
+      longitudeDelta: 0.0122,
     };
-    
-    setSelectedLocation({ type: "Point", coordinates: [currentLocation.coordinates[0], currentLocation.coordinates[1]] });
+
+    setSelectedLocation({
+      type: "Point",
+      coordinates: [
+        currentLocation.coordinates[0],
+        currentLocation.coordinates[1],
+      ],
+    });
 
     if (
       currentLocation.coordinates[0] !== 0 &&
@@ -97,7 +103,6 @@ const useCompose = (closeComposeModal: () => void) => {
   };
 
   const onCancelLocation = () => {
-    setLocationSource("GPS")
     setMapVisible(false);
   };
 
@@ -220,18 +225,22 @@ const useCompose = (closeComposeModal: () => void) => {
     });
   };
 
-  const onPressGoogleInputSuggestion = (lat: number, lng: number, address: string) => {
+  const onPressGoogleInputSuggestion = (
+    lat: number,
+    lng: number,
+    address: string,
+  ) => {
     setSearchInputVisible(false);
     const region = {
       latitude: lat,
       longitude: lng,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0922,
+      latitudeDelta: 0.0122,
+      longitudeDelta: 0.0122,
     };
     mapRef.current.animateToRegion(region, 2000);
-    setLocationSource("SEARCH")
+    setLocationSource("SEARCH");
     setSelectedLocation({ type: "Point", coordinates: [lng, lat] });
-    setCoordinatesInfo(address)
+    setCoordinatesInfo(address);
   };
 
   const openSearchInput = () => {
