@@ -6,17 +6,13 @@ import { getCurrentLocation, getCoordinatesInfo } from "../../../services";
 const useCompose = (closeComposeModal: () => void) => {
   const [timeCapsuleData, setTimeCapsuleData] = useState<TimeCapsule>({
     recipients: [],
-    audience: "public",
     location: { locationDataType: null, coordinates: [] },
-    urls: [],
     text: "",
     revealIdentityAtRevealTime: null,
     anonymous: false,
     revealTime: null,
-    media: [],
+    media: []
   });
-  const options = ["public", "followers", "specified Users"];
-  const [audienceModalVisible, setAudienceModalVisible] = useState(false);
   const [cameraOptionsModalVisible, setCameraOptionsModalVisible] =
     useState(false);
   const [mapVisible, setMapVisible] = useState(false);
@@ -250,14 +246,11 @@ const useCompose = (closeComposeModal: () => void) => {
   return {
     timeCapsuleData,
     onNext,
-    options,
     setTimeCapsuleData,
     addAudio,
     addMedia,
     addLocation,
     capture,
-    audienceModalVisible,
-    setAudienceModalVisible,
     cameraOptionsModalVisible,
     setCameraOptionsModalVisible,
     mapVisible,

@@ -6,15 +6,9 @@ import { Button } from "react-native-paper";
 const Header = ({
   closeComposeModal,
   onNext,
-  audienceModalVisible,
-  setAudienceModalVisible,
-  timeCapsuleData,
 }: {
   closeComposeModal: () => void;
   onDone: () => void;
-  audienceModalVisible: boolean;
-  setAudienceModalVisible: () => void;
-  timeCapsuleData: TimeCapsule;
 }) => {
   return (
     <View style={styles.container}>
@@ -25,20 +19,6 @@ const Header = ({
           size={32}
           color={colors.offWhite}
         />
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() =>
-          setAudienceModalVisible(audienceModalVisible ? false : true)
-        }
-      >
-        <Button
-          style={styles.outlinedBtn}
-          labelStyle={styles.outlinedBtnTxt}
-          mode="outlined"
-          icon="account-arrow-down"
-        >
-          {timeCapsuleData?.audience}
-        </Button>
       </TouchableOpacity>
       <View style={styles.right}>
         <Button

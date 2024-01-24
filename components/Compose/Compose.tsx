@@ -13,7 +13,6 @@ import { useCompose } from "../../hooks";
 import Header from "./Header";
 import Body from "./Body";
 import Footer from "./Footer";
-import AudienceModal from "./AudienceModal";
 import Alert from "../App/Alert";
 import MapModal from "../Common/MapModal";
 import FullScreenLoader from "../App/FullScreenLoader";
@@ -29,14 +28,11 @@ const Compose = ({
   const {
     timeCapsuleData,
     onNext,
-    options,
     setTimeCapsuleData,
     addAudio,
     addMedia,
     addLocation,
     capture,
-    audienceModalVisible,
-    setAudienceModalVisible,
     cameraOptionsModalVisible,
     setCameraOptionsModalVisible,
     mapVisible,
@@ -94,13 +90,6 @@ const Compose = ({
         visible={cameraOptionsModalVisible}
         setVisible={setCameraOptionsModalVisible}
       />
-      <AudienceModal
-        audienceModalVisible={audienceModalVisible}
-        setAudienceModalVisible={setAudienceModalVisible}
-        options={options}
-        setTimeCapsuleData={setTimeCapsuleData}
-        timeCapsuleData={timeCapsuleData}
-      />
       <KeyboardAvoidingView
         style={styles.container}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -109,9 +98,6 @@ const Compose = ({
           <Header
             onNext={onNext}
             closeComposeModal={closeComposeModal}
-            timeCapsuleData={timeCapsuleData}
-            audienceModalVisible={audienceModalVisible}
-            setAudienceModalVisible={setAudienceModalVisible}
           />
           <Body
             timeCapsuleData={timeCapsuleData}

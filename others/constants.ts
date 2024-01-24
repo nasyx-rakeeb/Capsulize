@@ -1,2 +1,2 @@
-export const BASE_API_URL = "http://192.168.172.193:3001/api";
+export const BASE_API_URL = "http://192.168.86.193:3001/api";
 export const GOOGLE_API_KEY = "AIzaSyAia7At5e9LEFY9gwwkCpqLXJAhQAHOu48";
