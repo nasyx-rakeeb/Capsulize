@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     borderRadius: 200,
     alignSelf: "center",
+    marginTop: 18
   },
   location: {
     fontFamily: "Roboto-Medium",
