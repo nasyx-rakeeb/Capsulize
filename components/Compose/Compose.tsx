@@ -55,7 +55,10 @@ const Compose = ({
     fullscreenMediaVisible,
     fullscreenMedia,
     coordinatesInfo,
-    onRemoveLocation
+    onRemoveLocation,
+    searchInputVisible,
+    onPressGoogleInputSuggestion,
+    openSearchInput,
   } = useCompose(closeComposeModal);
 
   return (
@@ -77,6 +80,9 @@ const Compose = ({
         onFindMe={onFindMe}
         mapRef={mapRef}
         address={coordinatesInfo}
+        searchInputVisible={searchInputVisible}
+        onPressGoogleInputSuggestion={onPressGoogleInputSuggestion}
+        openSearchInput={openSearchInput}
       />
       <Alert
         title="Capture Media"

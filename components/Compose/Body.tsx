@@ -4,13 +4,12 @@ import {
   TextInput,
   Text,
   TouchableOpacity,
-  Dimensions
+  Dimensions,
 } from "react-native";
 import colors from "../../others/colors";
 import SelectedMedia from "./SelectedMedia";
 import { Feather } from "react-native-vector-icons";
-
-const WIDTH = Dimensions.get("window").width
+const WIDTH = Dimensions.get("window").width;
 
 const Body = ({
   timeCapsuleData,
@@ -18,14 +17,14 @@ const Body = ({
   onRemove,
   openFullscreenMedia,
   address,
-  onRemoveLocation
+  onRemoveLocation,
 }: {
   timeCapsuleData: TimeCapsule;
   setTimeCapsuleData: () => void;
   onRemove: () => void;
   openFullscreenMedia: () => void;
   address: string | null | undefined;
-  onRemoveLocation: () => void
+  onRemoveLocation: () => void;
 }) => {
   return (
     <View style={styles.container}>
@@ -48,17 +47,19 @@ const Body = ({
           openFullscreenMedia={openFullscreenMedia}
         />
       </View>
-      {address && <View style={styles.locationContainer}>
-        <View style={styles.location}>
-          <Feather name="map-pin" size={18} color={colors.blackPrimary} />
-          <>
-            <Text style={styles.locationTxt}>{address}</Text>
-            <TouchableOpacity onPress={onRemoveLocation}>
-              <Feather name="x" size={22} color={colors.blackPrimary} />
-            </TouchableOpacity>
-          </>
+      {address && (
+        <View style={styles.locationContainer}>
+          <View style={styles.location}>
+            <Feather name="map-pin" size={18} color={colors.blackPrimary} />
+            <>
+              <Text style={styles.locationTxt}>{address}</Text>
+              <TouchableOpacity onPress={onRemoveLocation}>
+                <Feather name="x" size={22} color={colors.blackPrimary} />
+              </TouchableOpacity>
+            </>
+          </View>
         </View>
-      </View>}
+      )}
     </View>
   );
 };
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.blackPrimary,
     width: "100%",
-    paddingVertical: 12
+    paddingVertical: 12,
   },
   inputContainer: {
     width: "100%",
@@ -88,7 +89,7 @@ const styles = StyleSheet.create({
   locationContainer: {
     marginTop: 18,
     alignItems: "flex-start",
-    maxWidth: WIDTH -16,
+    maxWidth: WIDTH - 16,
   },
   location: {
     flexDirection: "row",
@@ -96,14 +97,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: colors.wisteria,
     borderRadius: 100,
-    paddingHorizontal: 8,
+    paddingLeft: 15,
+    paddingRight: 15,
     paddingVertical: 4,
     marginHorizontal: 16,
   },
   locationTxt: {
     fontFamily: "Roboto-Medium",
     color: colors.blackPrimary,
-    marginRight: 20,
+    marginRight: 15,
     marginLeft: 5,
   },
 });

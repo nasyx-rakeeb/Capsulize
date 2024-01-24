@@ -1,9 +1,10 @@
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
-import { StyleSheet, View, Modal, Text } from "react-native";
+import { StyleSheet, View, Modal, Text, TouchableOpacity } from "react-native";
 import { Button } from "react-native-paper";
 import colors from "../../others/colors";
 import mapStyles from "../../others/mapStyles";
-import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
+import { MaterialCommunityIcons, Ionicons } from "react-native-vector-icons";
+import GooglePlacesInput from "./GooglePlacesInput";
 
 const MapModal = ({
   visible,
@@ -16,6 +17,9 @@ const MapModal = ({
   onFindMe,
   mapRef,
   address,
+  searchInputVisible,
+  onPressGoogleInputSuggestion,
+  openSearchInput,
 }: {
   visible: boolean;
   setVisible: () => void;
@@ -27,18 +31,27 @@ const MapModal = ({
   onFindMe: () => void;
   mapRef: any;
   address: string | null | undefined;
+  searchInputVisible: boolean;
+  onPressGoogleInputSuggestion: () => void;
+  openSearchInput: () => void;
 }) => {
   return (
     <Modal transparent={true} animationType="slide" visible={visible}>
-      <View style={styles.header}>
-        <MaterialCommunityIcon
-          style={styles.locationIcon}
-          name="google-maps"
-          size={20}
-          color={colors.offWhite}
-        />
-        <Text style={styles.heading}>{address ?? "Select Location"}</Text>
-      </View>
+      {!searchInputVisible ? (
+        <View style={styles.header}>
+          <MaterialCommunityIcons
+            style={styles.locationIcon}
+            name="google-maps"
+            size={20}
+            color={colors.offWhite}
+          />
+          <Text style={styles.heading}>{address ?? "Select Location"}</Text>
+        </View>
+      ) : (
+        <View style={styles.searchHeader}>
+          <GooglePlacesInput onPress={onPressGoogleInputSuggestion} />
+        </View>
+      )}
       <View style={styles.container}>
         <MapView
           ref={mapRef}
@@ -60,6 +73,14 @@ const MapModal = ({
             }}
           />
         </MapView>
+        <TouchableOpacity style={styles.searchIcon}>
+          <Ionicons
+            onPress={openSearchInput}
+            size={24}
+            name="search"
+            color={colors.offWhite}
+          />
+        </TouchableOpacity>
       </View>
       <View style={styles.btnContainer}>
         <Button
@@ -97,6 +118,7 @@ const MapModal = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    position: "relative",
   },
   map: {
     width: "100%",
@@ -134,6 +156,13 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     flexDirection: "row",
   },
+  searchHeader: {
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: colors.blackPrimary,
+    flexDirection: "row",
+  },
   heading: {
     fontFamily: "Roboto-Regular",
     color: colors.offWhite,
@@ -142,8 +171,17 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   locationIcon: {
-    marginLeft: 8
-  }
+    marginLeft: 8,
+  },
+  searchIcon: {
+    position: "absolute",
+    top: 10,
+    right: 10,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    padding: 5,
+    borderRadius: 6,
+    zIndex: 1,
+  },
 });
 
 export default MapModal;

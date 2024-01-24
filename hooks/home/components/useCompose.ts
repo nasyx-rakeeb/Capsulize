@@ -36,10 +36,12 @@ const useCompose = (closeComposeModal: () => void) => {
     url: string;
   }>(null);
   const [coordinatesInfo, setCoordinatesInfo] = useState<null | string>(null);
+  const [searchInputVisible, setSearchInputVisible] = useState(false);
+  const [locationSource, setLocationSource] = useState<"GPS" | "SEARCH">("GPS")
 
   useEffect(() => {
     (async () => {
-      if (selectedLocation.coordinates[0] !== 0) {
+      if (selectedLocation.coordinates[0] !== 0 && locationSource === "GPS") {
         const { success, data } = await getCoordinatesInfo(
           selectedLocation?.coordinates[1],
           selectedLocation?.coordinates[0],
@@ -47,7 +49,7 @@ const useCompose = (closeComposeModal: () => void) => {
         setCoordinatesInfo(data);
       }
     })();
-  }, [selectedLocation]);
+  }, [selectedLocation, locationSource]);
 
   const getLocation = async () => {
     const { status, lat, lng } = await getCurrentLocation();
@@ -59,6 +61,7 @@ const useCompose = (closeComposeModal: () => void) => {
   };
 
   const handleLocationChange = (event) => {
+    setLocationSource("GPS")
     const { longitude, latitude } = event.nativeEvent.coordinate;
     setSelectedLocation({
       type: "Point",
@@ -67,12 +70,15 @@ const useCompose = (closeComposeModal: () => void) => {
   };
 
   const onFindMe = async () => {
+    setLocationSource("GPS")
     const region = {
       latitude: currentLocation.coordinates[1],
       longitude: currentLocation.coordinates[0],
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0922,
     };
+    
+    setSelectedLocation({ type: "Point", coordinates: [currentLocation.coordinates[0], currentLocation.coordinates[1]] });
 
     if (
       currentLocation.coordinates[0] !== 0 &&
@@ -91,6 +97,7 @@ const useCompose = (closeComposeModal: () => void) => {
   };
 
   const onCancelLocation = () => {
+    setLocationSource("GPS")
     setMapVisible(false);
   };
 
@@ -106,7 +113,7 @@ const useCompose = (closeComposeModal: () => void) => {
       setLoading(false);
       setMapVisible(true);
     } else {
-      setMapVisible(true)
+      setMapVisible(true);
     }
   };
 
@@ -204,14 +211,32 @@ const useCompose = (closeComposeModal: () => void) => {
     setFullscreenMedia({ url, type });
     setFullscreenMediaVisible(true);
   };
-  
+
   const onRemoveLocation = () => {
-    setCoordinatesInfo(null)
+    setCoordinatesInfo(null);
     setSelectedLocation({
-    type: "Point",
-    coordinates: [0, 0],
-  })
-  }
+      type: "Point",
+      coordinates: [0, 0],
+    });
+  };
+
+  const onPressGoogleInputSuggestion = (lat: number, lng: number, address: string) => {
+    setSearchInputVisible(false);
+    const region = {
+      latitude: lat,
+      longitude: lng,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0922,
+    };
+    mapRef.current.animateToRegion(region, 2000);
+    setLocationSource("SEARCH")
+    setSelectedLocation({ type: "Point", coordinates: [lng, lat] });
+    setCoordinatesInfo(address)
+  };
+
+  const openSearchInput = () => {
+    setSearchInputVisible(searchInputVisible ? false : true);
+  };
 
   return {
     timeCapsuleData,
@@ -242,7 +267,10 @@ const useCompose = (closeComposeModal: () => void) => {
     closeFullscreenMedia,
     openFullscreenMedia,
     coordinatesInfo,
-    onRemoveLocation
+    onRemoveLocation,
+    searchInputVisible,
+    onPressGoogleInputSuggestion,
+    openSearchInput,
   };
 };
 
