@@ -1,5 +1,5 @@
 interface TimeCapsule {
-  creator?: string,
+  creator?: string;
   recipients: string[];
   location: {
     locationDataType: "Point" | null;
@@ -10,8 +10,13 @@ interface TimeCapsule {
   anonymous: boolean;
   revealTime: Date | null;
   media: { mediaType: "image" | "video" | "audio"; url: string }[];
-  reactions?: {userId: string, reactionType: string}[]
-  comments?: {userId: string, comment: string, createdAt: Date, updatedAt: Date}[]
-  createdAt?: Date,
-  updatedAt?: Date
+  reactions?: { userId: string; reactionType: string }[];
+  comments?: {
+    userId: string;
+    comment: string;
+    createdAt: Date;
+    updatedAt: Date;
+  }[];
+  createdAt?: Date;
+  updatedAt?: Date;
 }

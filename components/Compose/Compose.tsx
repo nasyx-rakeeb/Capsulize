@@ -55,6 +55,7 @@ const Compose = ({
     searchInputVisible,
     onPressGoogleInputSuggestion,
     openSearchInput,
+    keyboardVisible,
   } = useCompose(closeComposeModal);
 
   return (
@@ -95,10 +96,7 @@ const Compose = ({
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
         <ScrollView style={styles.innerContainer}>
-          <Header
-            onNext={onNext}
-            closeComposeModal={closeComposeModal}
-          />
+          <Header onNext={onNext} closeComposeModal={closeComposeModal} />
           <Body
             timeCapsuleData={timeCapsuleData}
             setTimeCapsuleData={setTimeCapsuleData}
@@ -115,6 +113,9 @@ const Compose = ({
           capture={capture}
           cameraOptionsModalVisible={cameraOptionsModalVisible}
           setCameraOptionsModalVisible={setCameraOptionsModalVisible}
+          timeCapsuleData={timeCapsuleData}
+          setTimeCapsuleData={setTimeCapsuleData}
+          keyboardVisible={keyboardVisible}
         />
       </KeyboardAvoidingView>
     </Modal>

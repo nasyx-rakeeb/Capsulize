@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import * as ImagePicker from "expo-image-picker";
 import * as DocumentPicker from "expo-document-picker";
 import { getCurrentLocation, getCoordinatesInfo } from "../../../services";
+import { Keyboard } from "react-native";
 
 const useCompose = (closeComposeModal: () => void) => {
   const [timeCapsuleData, setTimeCapsuleData] = useState<TimeCapsule>({
@@ -11,7 +12,7 @@ const useCompose = (closeComposeModal: () => void) => {
     revealIdentityAtRevealTime: null,
     anonymous: false,
     revealTime: null,
-    media: []
+    media: [],
   });
   const [cameraOptionsModalVisible, setCameraOptionsModalVisible] =
     useState(false);
@@ -34,6 +35,7 @@ const useCompose = (closeComposeModal: () => void) => {
   const [coordinatesInfo, setCoordinatesInfo] = useState<null | string>(null);
   const [searchInputVisible, setSearchInputVisible] = useState(false);
   const [locationSource, setLocationSource] = useState<"GPS" | "SEARCH">("GPS");
+  const [keyboardVisible, setKeyboardVisible] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -46,6 +48,26 @@ const useCompose = (closeComposeModal: () => void) => {
       }
     })();
   }, [selectedLocation, locationSource]);
+
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      "keyboardDidShow",
+      () => {
+        setKeyboardVisible(true);
+      },
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      "keyboardDidHide",
+      () => {
+        setKeyboardVisible(false);
+      },
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
 
   const getLocation = async () => {
     const { status, lat, lng } = await getCurrentLocation();
@@ -273,6 +295,7 @@ const useCompose = (closeComposeModal: () => void) => {
     searchInputVisible,
     onPressGoogleInputSuggestion,
     openSearchInput,
+    keyboardVisible,
   };
 };
 
