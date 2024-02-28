@@ -9,13 +9,18 @@ import {
 import colors from "../../../others/colors";
 import { Feather, AntDesign } from "react-native-vector-icons";
 import { useAudioMediaItem } from "../../../hooks";
+import CapsulizeSwitch from "../CapsulizeSwitch"
 
 const AudioMediaItem = ({
   url,
   onRemove,
+  isCapsulized,
+  onCapsulize
 }: {
   url: string;
   onRemove: () => void;
+  isCapsulized: boolean
+  onCapsulize: () => void
 }) => {
   const { play, pause, playing, loading, error, position, duration } =
     useAudioMediaItem(url);
@@ -25,6 +30,7 @@ const AudioMediaItem = ({
       <TouchableOpacity onPress={() => onRemove(url)} style={styles.icon}>
         <Feather name="x" size={20} color={colors.offWhite} />
       </TouchableOpacity>
+       <CapsulizeSwitch value={isCapsulized} onChange={() => onCapsulize(url)} />
       <Image
         source={require("../../../assets/images/audio-player-background.jpg")}
         style={styles.audioItem}

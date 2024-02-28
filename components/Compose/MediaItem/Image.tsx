@@ -1,15 +1,21 @@
-import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Image, TouchableOpacity, Text } from "react-native";
 import colors from "../../../others/colors";
 import { Feather, Ionicons } from "react-native-vector-icons";
+import { Switch } from "react-native-paper";
+import CapsulizeSwitch from "../CapsulizeSwitch"
 
 const ImageMediaItem = ({
   url,
   onRemove,
   openFullscreenMedia,
+  isCapsulized,
+  onCapsulize 
 }: {
   url: string;
   onRemove: () => void;
   openFullscreenMedia: () => void;
+  isCapsulized: boolean
+  onCapsulize: () => void
 }) => {
   return (
     <View style={styles.itemContainer}>
@@ -25,8 +31,9 @@ const ImageMediaItem = ({
       >
         <Ionicons name="resize-outline" size={19} color={colors.offWhite} />
       </TouchableOpacity>
+      <CapsulizeSwitch value={isCapsulized} onChange={() => onCapsulize(url)} />
       <Image
-        resizeMode="cover"
+        resizeMode='cover'
         source={{ uri: url }}
         style={styles.imageItem}
       />
@@ -65,7 +72,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0, 0.5)",
     zIndex: 1,
     padding: 2,
-  },
+  }
 });
 
 export default ImageMediaItem;

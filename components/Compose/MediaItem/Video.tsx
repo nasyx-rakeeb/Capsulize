@@ -2,21 +2,27 @@ import { View, StyleSheet, TouchableOpacity } from "react-native";
 import colors from "../../../others/colors";
 import VideoPlayer from "react-native-video-controls";
 import { Feather, Ionicons } from "react-native-vector-icons";
+import CapsulizeSwitch from "../CapsulizeSwitch"
 
 const VideoMediaItem = ({
   url,
   onRemove,
   openFullscreenMedia,
+  isCapsulized,
+  onCapsulize
 }: {
   url: string;
   onRemove: () => void;
   openFullscreenMedia: () => void;
+  isCapsulized: boolean
+  onCapsulize: () => void
 }) => {
   return (
     <View style={styles.itemContainer}>
       <TouchableOpacity onPress={() => onRemove(url)} style={styles.icon}>
         <Feather name="x" size={20} color={colors.offWhite} />
       </TouchableOpacity>
+       <CapsulizeSwitch value={isCapsulized} onChange={() => onCapsulize(url)} />
       <TouchableOpacity
         onPress={() => openFullscreenMedia(url, "video")}
         style={styles.resizeIcon}

@@ -6,10 +6,12 @@ const SelectedMedia = ({
   data,
   onRemove,
   openFullscreenMedia,
+  onCapsulize 
 }: {
   data: TimeCapsule;
   onRemove: () => void;
   openFullscreenMedia: () => void;
+  onCapsulize: () => void
 }) => {
   return (
     <View style={styles.container}>
@@ -21,6 +23,7 @@ const SelectedMedia = ({
             item={item}
             onRemove={onRemove}
             openFullscreenMedia={openFullscreenMedia}
+            onCapsulize={onCapsulize}
           />
         )}
         horizontal={true}

@@ -56,6 +56,7 @@ const Compose = ({
     onPressGoogleInputSuggestion,
     openSearchInput,
     keyboardVisible,
+    onCapsulize 
   } = useCompose(closeComposeModal);
 
   return (
@@ -104,6 +105,7 @@ const Compose = ({
             openFullscreenMedia={openFullscreenMedia}
             address={coordinatesInfo}
             onRemoveLocation={onRemoveLocation}
+            onCapsulize={onCapsulize}
           />
         </ScrollView>
         <Footer
