@@ -6,12 +6,14 @@ const MediaItem = ({
   item,
   onRemove,
   openFullscreenMedia,
-  onCapsulize
+  onCapsulize,
+  setBlurAmount,
 }: {
   item: { mediaType: "audio" | "video" | "image"; url: string };
   onRemove: () => void;
   openFullscreenMedia: () => void;
-  onCapsulize: () => void
+  onCapsulize: () => void;
+  setBlurAmount: () => void;
 }) => {
   return item?.mediaType === "video" ? (
     <VideoMediaItem
@@ -20,10 +22,18 @@ const MediaItem = ({
       openFullscreenMedia={openFullscreenMedia}
       isCapsulized={item?.isCapsulized}
       onCapsulize={onCapsulize}
+      setBlurAmount={setBlurAmount}
+      blurAmount={item?.blurAmount}
     />
   ) : item?.mediaType === "audio" ? (
-    <AudioMediaItem onRemove={onRemove} url={item?.url} isCapsulized={item?.isCapsulized}
-      onCapsulize={onCapsulize} />
+    <AudioMediaItem
+      onRemove={onRemove}
+      url={item?.url}
+      isCapsulized={item?.isCapsulized}
+      onCapsulize={onCapsulize}
+      setBlurAmount={setBlurAmount}
+      blurAmount={item?.blurAmount}
+    />
   ) : item?.mediaType === "image" ? (
     <ImageMediaItem
       onRemove={onRemove}
@@ -31,6 +41,8 @@ const MediaItem = ({
       openFullscreenMedia={openFullscreenMedia}
       isCapsulized={item?.isCapsulized}
       onCapsulize={onCapsulize}
+      setBlurAmount={setBlurAmount}
+      blurAmount={item?.blurAmount}
     />
   ) : null;
 };

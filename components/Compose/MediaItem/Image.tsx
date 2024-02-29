@@ -2,20 +2,27 @@ import { View, StyleSheet, Image, TouchableOpacity, Text } from "react-native";
 import colors from "../../../others/colors";
 import { Feather, Ionicons } from "react-native-vector-icons";
 import { Switch } from "react-native-paper";
-import CapsulizeSwitch from "../CapsulizeSwitch"
+import CapsulizeSwitch from "../CapsulizeSwitch";
+import { useState } from "react";
+import BlurAmountSlider from "../BlurAmountSlider";
+import BlurAmountPreview from "../BlurAmountPreview";
 
 const ImageMediaItem = ({
   url,
   onRemove,
   openFullscreenMedia,
   isCapsulized,
-  onCapsulize 
+  onCapsulize,
+  blurAmount,
+  setBlurAmount,
 }: {
   url: string;
   onRemove: () => void;
   openFullscreenMedia: () => void;
-  isCapsulized: boolean
-  onCapsulize: () => void
+  isCapsulized: boolean;
+  onCapsulize: () => void;
+  blurAmount: number;
+  setBlurAmount: () => void;
 }) => {
   return (
     <View style={styles.itemContainer}>
@@ -33,10 +40,21 @@ const ImageMediaItem = ({
       </TouchableOpacity>
       <CapsulizeSwitch value={isCapsulized} onChange={() => onCapsulize(url)} />
       <Image
-        resizeMode='cover'
+        resizeMode="cover"
         source={{ uri: url }}
         style={styles.imageItem}
+        blurRadius={isCapsulized ? blurAmount : 0}
       />
+      {isCapsulized && (
+        <>
+          <BlurAmountSlider
+            blurAmount={blurAmount}
+            setBlurAmount={setBlurAmount}
+            url={url}
+          />
+          <BlurAmountPreview blurAmount={blurAmount} />
+        </>
+      )}
     </View>
   );
 };
@@ -72,7 +90,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0, 0.5)",
     zIndex: 1,
     padding: 2,
-  }
+  },
 });
 
 export default ImageMediaItem;

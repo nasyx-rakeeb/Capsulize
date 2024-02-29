@@ -56,7 +56,8 @@ const Compose = ({
     onPressGoogleInputSuggestion,
     openSearchInput,
     keyboardVisible,
-    onCapsulize 
+    onCapsulize,
+    setBlurAmount,
   } = useCompose(closeComposeModal);
 
   return (
@@ -106,6 +107,7 @@ const Compose = ({
             address={coordinatesInfo}
             onRemoveLocation={onRemoveLocation}
             onCapsulize={onCapsulize}
+            setBlurAmount={setBlurAmount}
           />
         </ScrollView>
         <Footer

@@ -9,7 +9,12 @@ interface TimeCapsule {
   revealIdentityAtRevealTime: boolean | null;
   anonymous: boolean;
   revealTime: Date | null;
-  media: { mediaType: "image" | "video" | "audio"; url: string }[];
+  media: {
+    mediaType: "image" | "video" | "audio";
+    url: string;
+    isCapsulized: boolean;
+    blurAmount: number;
+  }[];
   reactions?: { userId: string; reactionType: string }[];
   comments?: {
     userId: string;

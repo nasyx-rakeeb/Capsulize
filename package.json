@@ -7,9 +7,9 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "buildTesting": "eas build -p android -e testing",
-    "buildProduction": "eas build -p android -e production",
-    "buildDevelopment": "eas build -p android -e development",
+    "buildTest": "eas build -p android -e testing",
+    "buildProd": "eas build -p android -e production",
+    "buildDev": "eas build -p android -e development",
     "dev": "npx expo start --dev-client"
   },
   "dependencies": {
@@ -17,6 +17,7 @@
     "@notifee/react-native": "^7.8.2",
     "@react-native-community/blur": "^4.3.2",
     "@react-native-community/datetimepicker": "^7.6.2",
+    "@react-native-community/slider": "^4.5.0",
     "@react-native-firebase/app": "^18.7.3",
     "@react-native-firebase/messaging": "^18.7.3",
     "@react-navigation/material-top-tabs": "^6.6.5",

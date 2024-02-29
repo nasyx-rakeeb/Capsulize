@@ -18,7 +18,8 @@ const Body = ({
   openFullscreenMedia,
   address,
   onRemoveLocation,
-  onCapsulize 
+  onCapsulize,
+  setBlurAmount,
 }: {
   timeCapsuleData: TimeCapsule;
   setTimeCapsuleData: () => void;
@@ -26,7 +27,8 @@ const Body = ({
   openFullscreenMedia: () => void;
   address: string | null | undefined;
   onRemoveLocation: () => void;
-  onCapsulize: () => void
+  onCapsulize: () => void;
+  setBlurAmount: () => void;
 }) => {
   return (
     <View style={styles.container}>
@@ -48,6 +50,7 @@ const Body = ({
           setData={setTimeCapsuleData}
           openFullscreenMedia={openFullscreenMedia}
           onCapsulize={onCapsulize}
+          setBlurAmount={setBlurAmount}
         />
       </View>
       {address && (

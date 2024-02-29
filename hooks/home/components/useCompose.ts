@@ -154,7 +154,12 @@ const useCompose = (closeComposeModal: () => void) => {
           ...p,
           media: [
             ...p?.media,
-            { mediaType: result.assets[0].type, url: result.assets[0].uri, isCapsulized: true},
+            {
+              mediaType: result.assets[0].type,
+              url: result.assets[0].uri,
+              isCapsulized: true,
+              blurAmount: 20,
+            },
           ],
         }));
       }
@@ -190,7 +195,12 @@ const useCompose = (closeComposeModal: () => void) => {
           ...p,
           media: [
             ...p?.media,
-            { mediaType: result.assets[0].type, url: result.assets[0].uri, isCapsulized: true},
+            {
+              mediaType: result.assets[0].type,
+              url: result.assets[0].uri,
+              isCapsulized: true,
+              blurAmount: 20,
+            },
           ],
         }));
       }
@@ -209,7 +219,12 @@ const useCompose = (closeComposeModal: () => void) => {
           ...p,
           media: [
             ...p?.media,
-            { mediaType: "audio", url: result.assets[0].uri, isCapsulized: true },
+            {
+              mediaType: "audio",
+              url: result.assets[0].uri,
+              isCapsulized: true,
+              blurAmount: 20,
+            },
           ],
         }));
       }
@@ -264,15 +279,26 @@ const useCompose = (closeComposeModal: () => void) => {
   const openSearchInput = () => {
     setSearchInputVisible(searchInputVisible ? false : true);
   };
-  
-  const onCapsulize =  (url) => {
+
+  const onCapsulize = (url: string) => {
     setTimeCapsuleData((prevData) => ({
-    ...prevData,
-    media: prevData.media.map((item) =>
-      item.url === url ? { ...item, isCapsulized: !item.isCapsulized } : item
-    ),
-  }));
-  }
+      ...prevData,
+      media: prevData.media.map((item) =>
+        item.url === url
+          ? { ...item, isCapsulized: !item.isCapsulized, blurAmount: 20 }
+          : item,
+      ),
+    }));
+  };
+
+  const setBlurAmount = (url: string, amount: number) => {
+    setTimeCapsuleData((prevData) => ({
+      ...prevData,
+      media: prevData.media.map((item) =>
+        item.url === url ? { ...item, blurAmount: amount } : item,
+      ),
+    }));
+  };
 
   return {
     timeCapsuleData,
@@ -305,7 +331,8 @@ const useCompose = (closeComposeModal: () => void) => {
     onPressGoogleInputSuggestion,
     openSearchInput,
     keyboardVisible,
-    onCapsulize
+    onCapsulize,
+    setBlurAmount,
   };
 };
 
